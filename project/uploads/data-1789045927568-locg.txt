@@ -1,0 +1,15 @@
+Please proceed with the following screen selections, permission scope, and layout variations:
+
+1. Screens to build:
+   - Dashboard (global)
+   - Department view
+   - Task/Meta detail
+   - Drive sync settings
+   - Conflict resolution UI
+
+2. Write-back permissions:
+   - Edit status & notes only (Users can update task statuses and add blocker notes directly from the mobile UI, preserving spreadsheet formulas).
+
+3. Design Variations requested:
+   - Provide 2-3 global dashboard layout options.
+   - Provide variations on task card display (Compact list vs. Detailed card view).

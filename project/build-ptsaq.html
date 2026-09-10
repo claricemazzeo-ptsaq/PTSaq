@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/broadsheet-8ff2b896-b69e-4bab-9fc2-7a7d4f3965a6/styles.css">
+<script src="_ds/broadsheet-8ff2b896-b69e-4bab-9fc2-7a7d4f3965a6/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap">
+<style>
+body{margin:0;background:#e8e6dd;font-family:Roboto,system-ui,sans-serif;color:#14201c}
+a{color:#136AA0;text-decoration:none}
+a:hover{color:#0E4E76}
+*{box-sizing:border-box}
+button,input,textarea{font-family:inherit}
+button{transition:filter .14s ease, background .14s ease, border-color .14s ease}
+button:hover:not(:disabled){filter:brightness(.965)}
+button:active:not(:disabled){filter:brightness(.93);transform:translateY(.5px)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #136AA0;outline-offset:2px;border-radius:4px}
+input:focus,textarea:focus{border-color:#136AA0}
+::selection{background:#20B38833}
+.ph{scrollbar-width:none}
+.ph::-webkit-scrollbar{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulsedot{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes rise{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+</style>
+</helmet>
+
+<section id="t1" style="padding:44px 48px 40px;border-bottom:1px solid rgba(20,32,28,.12)">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
+<a href="#t1" style="font:600 10px 'Roboto Mono',monospace;padding:4px 8px;background:#14201c;color:#FFF9E7;border-radius:3px">1</a>
+<span style="font:600 14px Outfit,sans-serif;color:#14201c">PTSaq Operations Hub — protótipo e variações do painel</span>
+</div>
+<p style="margin:0 0 30px;max-width:70ch;font:400 13px/1.6 Roboto,sans-serif;color:#5a625d">Dados reais das planilhas <em>Painel Operacional</em> (27/08/2026) e <em>Plano de Trabalho</em>. Onde a planilha não traz valor confiável — orçamento, percentual de meta — a interface mostra a lacuna em vez de inventar número.</p>
+
+<div style="display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">
+
+<div id="1a" style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:9px;font:400 11px Roboto,sans-serif;color:#6b736d"><a href="#1a" style="font:500 10.5px 'Roboto Mono',monospace;padding:3px 7px;background:rgba(20,32,28,.09);color:#14201c;border-radius:4px">1a</a>Protótipo navegável · repositório, permissões por frente, histórico e avisos</div>
+
+<div style="width:414px;height:868px;padding:12px;border-radius:46px;background:linear-gradient(160deg,#2b3531,#151d1a);box-shadow:0 18px 44px rgba(20,32,28,.28)">
+<div style="position:relative;width:390px;height:844px;border-radius:36px;overflow:hidden;background:#FFF9E7">
+
+<div style="position:absolute;top:0;left:0;right:0;height:46px;z-index:40;display:flex;align-items:flex-end;justify-content:space-between;padding:0 26px 6px;font:500 13px Outfit,sans-serif;color:#14201c;pointer-events:none">
+<span>9:41</span>
+<span style="display:flex;gap:5px;align-items:center"><span style="width:16px;height:9px;border:1.5px solid #14201c;border-radius:2px;display:inline-block"></span><span style="width:22px;height:9px;border:1.5px solid #14201c;border-radius:3px;display:inline-block;position:relative"><span style="position:absolute;inset:1.5px;right:6px;background:#14201c;border-radius:1px"></span></span></span>
+</div>
+
+<div style="position:absolute;top:46px;left:0;right:0;z-index:30;background:#FFF9E7;padding:6px 0 0;border-bottom:1px solid rgba(20,32,28,.08)">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 20px 10px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg width="30" height="18" viewBox="0 0 206.48 122.07" aria-hidden="true"><defs><linearGradient id="ptsMark1" x1="8.95" y1="60.82" x2="198.54" y2="60.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00be82"></stop><stop offset="1" stop-color="#06c"></stop></linearGradient></defs><path fill="url(#ptsMark1)" d="M23.45,29.22h-7.93c-3.63,0-6.57-2.94-6.57-6.57v-7.93c0-3.63,2.94-6.57,6.57-6.57h7.93c3.63,0,6.57,2.94,6.57,6.57v7.93c0,3.63-2.94,6.57-6.57,6.57ZM153.84,47.73l-13.69-13.69c-3.08-3.08-7.25-4.81-11.61-4.81h-49.6c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h14.02c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h82.26c2.32,0,4.55.92,6.19,2.56l15.94,15.94c1.64,1.64,3.87,2.56,6.19,2.56h17.19c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-31.94c-2.32,0-4.55-.92-6.19-2.56ZM128.54,71.35h-28.53c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h35.09c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h58.02c4.35,0,8.53,1.73,11.61,4.81l11.45,11.45c3.08,3.08,7.25,4.81,11.61,4.81h14.02c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-28.77c-4.35,0-8.53-1.73-11.61-4.81l-11.45-11.45c-3.08-3.08-7.25-4.81-11.61-4.81Z"></path></svg>
+<div>
+<div style="font:600 15px/1 Outfit,sans-serif;letter-spacing:-.2px">PTSaq</div>
+<div style="font:400 10px/1.3 Roboto,sans-serif;color:#7a827c">Hub de Operações</div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:6px">
+<button onClick="{{ openNotifs }}" style="position:relative;width:36px;height:36px;border:0;border-radius:50%;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="background:#EDEBE0">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5a625d" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 6-2 7-2 7h16s-2-1-2-7"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg>
+<sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ true }}">
+<span style="position:absolute;top:5px;right:5px;min-width:15px;height:15px;padding:0 4px;border-radius:8px;background:#D6455A;color:#fff;font:600 9px/15px Outfit,sans-serif">{{ unreadCount }}</span>
+</sc-if>
+</button>
+<button onClick="{{ openRole }}" style="{{ avatarStyle }}">{{ meInitial }}</button>
+</div>
+</div>
+<button onClick="{{ goSync }}" style="{{ barStyle }}" style-hover="filter:brightness(.97)">
+<span style="{{ barDotStyle }}"></span>
+<span style="flex:1;min-width:0;text-align:left;overflow:hidden;text-overflow:ellipsis">{{ barText }}</span>
+<span style="flex:none;opacity:.65">{{ barRight }}</span>
+</button>
+</div>
+
+<div class="ph" style="position:absolute;top:128px;bottom:76px;left:0;right:0;overflow-y:auto;-webkit-overflow-scrolling:touch">
+
+<sc-if value="{{ isDash }}" hint-placeholder-val="{{ true }}">
+<div style="padding:18px 20px 28px">
+<div style="font:400 11px/1 Roboto,sans-serif;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Visão geral</div>
+<h1 style="margin:8px 0 2px;font:600 27px/1.15 Outfit,sans-serif;letter-spacing:-.5px">Bom dia, {{ meName }}</h1>
+<p style="margin:0 0 16px;font:400 13px/1.5 Roboto,sans-serif;color:#6b736d">{{ dashSubtitle }}</p>
+
+<button onClick="{{ openNotifs }}" style="width:100%;text-align:left;padding:14px 15px;border-radius:13px;border:1px solid rgba(20,32,28,.1);background:#fff;cursor:pointer;display:flex;gap:12px;align-items:center;margin-bottom:12px" style-hover="border-color:#136AA0">
+<span style="width:34px;height:34px;flex:none;border-radius:9px;background:#FBF2D9;color:#7A5E08;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif">{{ digestCount }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.3 Outfit,sans-serif;color:#14201c">Resumo do dia</span>
+<span style="display:block;font:400 11px/1.45 Roboto,sans-serif;color:#7a827c;margin-top:3px">Suas entregas dos próximos 7 dias · {{ digestLine }}</span>
+</span>
+<span style="color:#a3a99f;font-size:15px">›</span>
+</button>
+
+<div style="display:flex;gap:16px;align-items:center;padding:18px;border-radius:14px;background:#136AA0;color:#FFF9E7;margin-bottom:12px">
+<div style="position:relative;width:78px;height:78px;flex:none">
+<svg width="78" height="78" viewBox="0 0 78 78"><circle cx="39" cy="39" r="33" fill="none" stroke="rgba(255,249,231,.22)" stroke-width="9"/><circle cx="39" cy="39" r="33" fill="none" stroke="#20B388" stroke-width="9" stroke-linecap="round" transform="rotate(-90 39 39)" stroke-dasharray="{{ metaDash }}"/></svg>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<span style="font:600 20px/1 Outfit,sans-serif">{{ metaPct }}%</span>
+</div>
+</div>
+<div style="min-width:0">
+<div style="font:500 13px/1.3 Outfit,sans-serif;letter-spacing:.02em">Plano de Trabalho</div>
+<div style="font:400 12px/1.55 Roboto,sans-serif;color:rgba(255,249,231,.78);margin-top:4px">{{ metaSummary }}</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+<div style="padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="font:600 26px/1 Outfit,sans-serif;color:#14201c">{{ activeTasks }}</div>
+<div style="font:400 11.5px/1.35 Roboto,sans-serif;color:#6b736d;margin-top:5px">tarefas em execução<br>de {{ totalTasks }} no painel</div>
+</div>
+<div style="padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="font:600 20px/1.1 Outfit,sans-serif;color:#14201c">R$ 38.000</div>
+<div style="font:400 11.5px/1.35 Roboto,sans-serif;color:#6b736d;margin-top:5px">total orçado<br><span style="color:#B8860B">1 de 24 tarefas com valor</span></div>
+</div>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin:24px 0 10px">
+<h2 style="margin:0;font:600 16px Outfit,sans-serif">Precisa de atenção</h2>
+<span style="font:500 11px 'Roboto Mono',monospace;color:#D6455A;background:#FBE9EC;padding:3px 7px;border-radius:20px">{{ blockedCount }} bloqueios</span>
+</div>
+<div class="ph" style="display:flex;gap:10px;overflow-x:auto;margin:0 -20px;padding:2px 20px 8px">
+<sc-for list="{{ blockedTasks }}" as="b" hint-placeholder-count="3">
+<button onClick="{{ b.open }}" style="flex:none;width:246px;min-height:48px;text-align:left;padding:14px;border-radius:12px;border:1px solid #F2C9CF;background:#fff;cursor:pointer;display:block">
+<div style="display:flex;align-items:center;gap:6px;font:500 10px 'Roboto Mono',monospace;color:#D6455A;letter-spacing:.04em;text-transform:uppercase">
+<span style="width:6px;height:6px;border-radius:50%;background:#D6455A;animation:pulsedot 2s infinite"></span>{{ b.blockerKind }}
+</div>
+<div style="font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;margin:8px 0 6px">{{ b.title }}</div>
+<div style="font:400 11.5px/1.45 Roboto,sans-serif;color:#6b736d">{{ b.note }}</div>
+<div style="display:flex;justify-content:space-between;margin-top:10px;font:400 11px Roboto,sans-serif;color:#8a918b">
+<span>{{ b.owner }}</span><span>{{ b.dueLabel }}</span>
+</div>
+</button>
+</sc-for>
+</div>
+
+<h2 style="margin:24px 0 10px;font:600 16px Outfit,sans-serif">Atividade da equipe</h2>
+<div style="display:flex;flex-direction:column;gap:12px;padding:15px 16px;border-radius:13px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<sc-for list="{{ feed }}" as="f" hint-placeholder-count="4">
+<div style="display:flex;gap:10px;align-items:flex-start">
+<span style="{{ f.dotStyle }}"></span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:400 12.5px/1.45 Roboto,sans-serif;color:#14201c">{{ f.line }}</span>
+<span style="display:block;font:400 10.5px/1.4 'Roboto Mono',monospace;color:#8a918b;margin-top:2px">{{ f.when }}</span>
+</span>
+</div>
+</sc-for>
+</div>
+
+<h2 style="margin:24px 0 10px;font:600 16px Outfit,sans-serif">Frentes</h2>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ deptCards }}" as="d" hint-placeholder-count="4">
+<button onClick="{{ d.open }}" style="min-height:48px;width:100%;text-align:left;padding:13px 14px;border-radius:12px;border:1px solid rgba(20,32,28,.08);background:#fff;cursor:pointer;display:flex;align-items:center;gap:12px" style-hover="border-color:#136AA0">
+<span style="{{ d.markStyle }}">{{ d.initial }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 13.5px/1.3 Outfit,sans-serif;color:#14201c">{{ d.short }}</span>
+<span style="display:block;font:400 11px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:2px">{{ d.leads }}</span>
+<span style="display:block;height:4px;border-radius:2px;background:#EDEBE0;margin-top:8px"><span style="{{ d.barStyle }}"></span></span>
+</span>
+<span style="font:500 12px 'Roboto Mono',monospace;color:#6b736d">{{ d.pctLabel }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDept }}" hint-placeholder-val="{{ false }}">
+<div style="padding:18px 20px 28px">
+<button onClick="{{ goDash }}" style="min-height:36px;border:0;background:none;padding:0;margin-bottom:10px;font:400 12px Roboto,sans-serif;color:#136AA0;cursor:pointer">← Todas as frentes</button>
+<div style="font:500 10px/1 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.08em;text-transform:uppercase">Frente</div>
+<h1 style="margin:8px 0 4px;font:600 23px/1.2 Outfit,sans-serif;letter-spacing:-.4px">{{ deptName }}</h1>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
+<span style="font:400 12.5px Roboto,sans-serif;color:#6b736d">Liderança:</span>
+<span style="font:500 12.5px Outfit,sans-serif;color:#136AA0">{{ deptLeads }}</span>
+</div>
+
+<sc-if value="{{ hasDeptSignDocs }}" hint-placeholder-val="{{ true }}">
+<div style="margin-bottom:18px">
+<h2 style="margin:0 0 10px;font:600 14px Outfit,sans-serif">Documentos em revisão nesta frente</h2>
+<div class="ph" style="display:flex;gap:9px;overflow-x:auto;margin:0 -20px;padding:2px 20px 6px">
+<sc-for list="{{ deptSignDocs }}" as="d" hint-placeholder-count="2">
+<button onClick="{{ d.go }}" style="flex:none;width:218px;min-height:48px;text-align:left;padding:12px;border-radius:12px;border:1px solid #E8D9A8;background:#fff;cursor:pointer;display:flex;gap:10px;align-items:flex-start">
+<span style="{{ d.tileStyle }}">{{ d.ext }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12px/1.35 Outfit,sans-serif;color:#14201c;text-wrap:pretty">{{ d.title }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7A5E08;margin-top:4px">{{ d.meta }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div style="display:flex;padding:3px;border-radius:10px;background:#EDEBE0;margin-bottom:12px">
+<button onClick="{{ setPainel }}" style="{{ tabPainelStyle }}">Painel Operacional</button>
+<button onClick="{{ setPlano }}" style="{{ tabPlanoStyle }}">Plano de Trabalho</button>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+<span style="font:400 11.5px Roboto,sans-serif;color:#7a827c">{{ listCountLabel }}</span>
+<div style="display:flex;gap:2px;padding:2px;border-radius:8px;background:#EDEBE0">
+<button onClick="{{ setCompact }}" style="{{ densCompactStyle }}">Compacto</button>
+<button onClick="{{ setDetailed }}" style="{{ densDetailStyle }}">Detalhado</button>
+</div>
+</div>
+
+<sc-if value="{{ showPainel }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ deptTasks }}" as="t" hint-placeholder-count="5">
+<button onClick="{{ t.open }}" style="{{ t.cardStyle }}">
+<span style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<span style="font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;flex:1;text-wrap:pretty">{{ t.title }}</span>
+<span style="{{ t.pillStyle }}">{{ t.status }}</span>
+</span>
+<sc-if value="{{ t.detailed }}" hint-placeholder-val="{{ true }}">
+<span style="display:block">
+<sc-if value="{{ t.hasNote }}" hint-placeholder-val="{{ false }}">
+<span style="display:flex;gap:7px;align-items:flex-start;margin-top:9px;padding:8px 10px;border-radius:8px;background:#FBE9EC">
+<span style="font:500 11px/1.4 Roboto,sans-serif;color:#8F1B2E">⚑ {{ t.note }}</span>
+</span>
+</sc-if>
+<sc-if value="{{ t.hasBudget }}" hint-placeholder-val="{{ false }}">
+<span style="display:inline-block;margin-top:9px;padding:5px 9px;border-radius:7px;background:#E4F7F0;font:500 11.5px 'Roboto Mono',monospace;color:#0B6B4F">{{ t.budget }}</span>
+</sc-if>
+</span>
+</sc-if>
+<span style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;font:400 11.5px Roboto,sans-serif;color:#7a827c">
+<span>{{ t.owner }}</span>
+<span style="{{ t.dueStyle }}">{{ t.dueLabel }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ showPlano }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ deptMetas }}" as="m" hint-placeholder-count="5">
+<button onClick="{{ m.open }}" style="{{ m.cardStyle }}">
+<span style="display:flex;align-items:center;gap:8px">
+<span style="font:500 11px 'Roboto Mono',monospace;color:#FFF9E7;background:#136AA0;padding:3px 6px;border-radius:4px">{{ m.id }}</span>
+<span style="{{ m.pillStyle }}">{{ m.status }}</span>
+</span>
+<span style="display:block;font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;margin-top:9px;text-wrap:pretty">{{ m.title }}</span>
+<span style="display:block;height:5px;border-radius:3px;background:#EDEBE0;margin-top:11px"><span style="{{ m.barStyle }}"></span></span>
+<span style="display:flex;justify-content:space-between;margin-top:8px;font:400 11.5px Roboto,sans-serif;color:#7a827c">
+<span>{{ m.owner }} · {{ m.schedule }}</span><span>{{ m.pctLabel }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMine }}" hint-placeholder-val="{{ false }}">
+<div style="padding:18px 20px 28px">
+<div style="display:flex;gap:13px;align-items:center;margin-bottom:16px">
+<span style="width:52px;height:52px;flex:none;border-radius:50%;background:#136AA0;color:#FFF9E7;display:flex;align-items:center;justify-content:center;font:600 20px Outfit,sans-serif">{{ meInitial }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:400 11px/1 Roboto,sans-serif;color:#7a827c">Bom dia,</span>
+<span style="display:block;font:600 20px/1.15 Outfit,sans-serif;color:#14201c;letter-spacing:-.3px;margin-top:4px">{{ meName }}</span>
+<span style="display:block;font:400 11.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ meJob }}</span>
+<span style="display:inline-flex;align-items:center;gap:6px;margin-top:7px;padding:3px 9px;border-radius:20px;background:#EDEBE0;font:500 10.5px Outfit,sans-serif;color:#5A5F58">{{ meDeptTag }}</span>
+</span>
+</div>
+
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+<span style="{{ availDotStyle }}"></span>
+<span style="font:400 11.5px Roboto,sans-serif;color:#7a827c">{{ availLabel }}</span>
+</div>
+<div style="display:flex;gap:3px;padding:3px;border-radius:11px;background:#EDEBE0;margin-bottom:18px">
+<sc-for list="{{ availOptions }}" as="a" hint-placeholder-count="3">
+<button onClick="{{ a.pick }}" style="{{ a.style }}">{{ a.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin-bottom:22px">
+<div style="padding:11px 8px;border-radius:11px;background:#fff;border:1px solid rgba(20,32,28,.08)"><div style="font:600 19px/1 Outfit,sans-serif">{{ mineTotal }}</div><div style="font:400 10px/1.3 Roboto,sans-serif;color:#6b736d;margin-top:4px">atribuídas</div></div>
+<div style="padding:11px 8px;border-radius:11px;background:#fff;border:1px solid rgba(20,32,28,.08)"><div style="font:600 19px/1 Outfit,sans-serif;color:#20B388">{{ mineWeek }}</div><div style="font:400 10px/1.3 Roboto,sans-serif;color:#6b736d;margin-top:4px">executadas</div></div>
+<div style="padding:11px 8px;border-radius:11px;background:#fff;border:1px solid rgba(20,32,28,.08)"><div style="font:600 19px/1 Outfit,sans-serif;color:#136AA0">{{ minePend }}</div><div style="font:400 10px/1.3 Roboto,sans-serif;color:#6b736d;margin-top:4px">pendentes</div></div>
+<div style="padding:11px 8px;border-radius:11px;background:#fff;border:1px solid rgba(20,32,28,.08)"><div style="font:600 19px/1 Outfit,sans-serif;color:#D6455A">{{ mineHeld }}</div><div style="font:400 10px/1.3 Roboto,sans-serif;color:#6b736d;margin-top:4px">travadas</div></div>
+</div>
+<sc-if value="{{ hasApprovals }}" hint-placeholder-val="{{ false }}">
+<div style="margin-bottom:22px">
+<h2 style="margin:0 0 10px;font:600 15px Outfit,sans-serif">Contas aguardando sua aprovação</h2>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ approvals }}" as="p" hint-placeholder-count="2">
+<div style="padding:13px;border-radius:12px;background:#fff;border:1px solid #E8D9A8">
+<div style="font:500 13px/1.3 Outfit,sans-serif;color:#14201c">{{ p.name }}</div>
+<div style="font:400 11px/1.45 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ p.email }} · {{ p.dept }} · {{ p.when }}</div>
+<button onClick="{{ p.approve }}" style="margin-top:10px;min-height:40px;padding:0 14px;border:0;border-radius:9px;background:#20B388;color:#08281f;font:500 11.5px Outfit,sans-serif;cursor:pointer">Aprovar acesso</button>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasSignDocs }}" hint-placeholder-val="{{ true }}">
+<div style="margin-bottom:24px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+<h2 style="margin:0;font:600 15px Outfit,sans-serif">Aguardando sua revisão</h2>
+<span style="font:500 10.5px 'Roboto Mono',monospace;color:#7A5E08;background:#FBF2D9;padding:3px 8px;border-radius:20px">{{ signCount }} documento(s)</span>
+</div>
+<div class="ph" style="display:flex;gap:9px;overflow-x:auto;margin:0 -20px;padding:2px 20px 6px">
+<sc-for list="{{ signDocs }}" as="d" hint-placeholder-count="3">
+<button onClick="{{ d.go }}" style="flex:none;width:224px;min-height:48px;text-align:left;padding:13px;border-radius:12px;border:1px solid #E8D9A8;background:#fff;cursor:pointer;display:flex;gap:11px;align-items:flex-start">
+<span style="{{ d.tileStyle }}">{{ d.ext }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif;color:#14201c;text-wrap:pretty">{{ d.title }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7A5E08;margin-top:4px">{{ d.meta }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<h2 style="margin:0 0 10px;font:600 15px Outfit,sans-serif">Minha fila</h2>
+<sc-if value="{{ queueEmptyMine }}" hint-placeholder-val="{{ false }}">
+<div style="padding:20px;border-radius:12px;background:#fff;border:1px dashed rgba(20,32,28,.16);margin-bottom:24px">
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#7a827c">Nada na sua fila hoje. Suas entregas aparecem aqui assim que alguém marcar você como responsável na planilha.</p>
+</div>
+</sc-if>
+<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px">
+<sc-for list="{{ myQueue }}" as="t" hint-placeholder-count="5">
+<div style="{{ t.cardStyle }}">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<span style="font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;flex:1;text-wrap:pretty">{{ t.title }}</span>
+<span style="{{ t.pillStyle }}">{{ t.status }}</span>
+</div>
+<sc-if value="{{ t.isBlocked }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ t.openBlocker }}" style="width:100%;text-align:left;margin-top:10px;padding:9px 11px;border:0;border-radius:9px;background:#FBF2D9;cursor:pointer;display:flex;gap:8px;align-items:flex-start">
+<span style="width:6px;height:6px;flex:none;border-radius:50%;background:#E0A11B;margin-top:5px"></span>
+<span style="font:500 11px/1.45 Roboto,sans-serif;color:#7A5E08;text-align:left">{{ t.blockedText }}</span>
+</button>
+</sc-if>
+<sc-if value="{{ t.isBlocking }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:10px;padding:9px 11px;border-radius:9px;background:#FBE9EC;display:flex;gap:8px;align-items:flex-start">
+<span style="width:6px;height:6px;flex:none;border-radius:50%;background:#D6455A;margin-top:5px;animation:pulsedot 2s infinite"></span>
+<span style="font:500 11px/1.45 Roboto,sans-serif;color:#8F1B2E">{{ t.blockingText }}</span>
+</div>
+</sc-if>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:9px;font:400 11.5px Roboto,sans-serif;color:#7a827c">
+<span>{{ t.frente }}</span><span style="{{ t.dueStyle }}">{{ t.dueLabel }}</span>
+</div>
+<div style="display:flex;gap:7px;margin-top:12px">
+<button onClick="{{ t.advance }}" style="{{ t.nextStyle }}">{{ t.nextLabel }}</button>
+<button onClick="{{ t.note }}" style="flex:none;min-height:44px;padding:0 14px;border:1px solid rgba(20,32,28,.14);border-radius:10px;background:none;color:#5a625d;font:500 11.5px Outfit,sans-serif;cursor:pointer">Anotar</button>
+</div>
+</div>
+</sc-for>
+</div>
+
+<sc-if value="{{ hasMyDocs }}" hint-placeholder-val="{{ true }}">
+<div style="margin-bottom:24px">
+<h2 style="margin:0 0 10px;font:600 15px Outfit,sans-serif">Meus documentos</h2>
+<div style="display:flex;flex-direction:column;gap:7px">
+<sc-for list="{{ myDocs }}" as="d" hint-placeholder-count="3">
+<button onClick="{{ d.go }}" style="width:100%;text-align:left;padding:11px 12px;border-radius:11px;border:1px solid rgba(20,32,28,.1);background:#fff;cursor:pointer;display:flex;gap:11px;align-items:center">
+<span style="{{ d.tileStyle }}">{{ d.ext }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif;color:#14201c">{{ d.title }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ d.meta }}</span>
+</span>
+<span style="{{ d.pillStyle }}">{{ d.status }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasMyLog }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="margin:0 0 12px;font:600 15px Outfit,sans-serif">Minha atividade</h2>
+<div style="display:flex;flex-direction:column;gap:13px;padding:15px 16px;border-radius:13px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<sc-for list="{{ myLog }}" as="l" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;align-items:flex-start">
+<span style="{{ l.dotStyle }}"></span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:400 12.5px/1.45 Roboto,sans-serif;color:#14201c">{{ l.line }}</span>
+<span style="display:block;font:400 10.5px/1.4 'Roboto Mono',monospace;color:#8a918b;margin-top:2px">{{ l.when }} · sincronizado com o Sheets</span>
+</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08);margin-top:24px">
+<span style="font:400 12px/1.45 Roboto,sans-serif;color:#5a625d">Precisa de retorno de outra frente?</span>
+<button onClick="{{ pingLead }}" style="flex:none;min-height:40px;padding:0 13px;border:1px solid rgba(20,32,28,.16);border-radius:9px;background:none;color:#136AA0;font:500 11.5px Outfit,sans-serif;cursor:pointer">Cobrar</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSync }}" hint-placeholder-val="{{ false }}">
+<div style="padding:18px 20px 28px">
+<div style="font:400 11px/1 Roboto,sans-serif;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Conta</div>
+<h1 style="margin:8px 0 14px;font:600 25px/1.15 Outfit,sans-serif;letter-spacing:-.4px">Perfil e ajustes</h1>
+
+<div style="display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08);margin-bottom:12px">
+<span style="width:44px;height:44px;flex:none;border-radius:50%;background:#136AA0;color:#FFF9E7;display:flex;align-items:center;justify-content:center;font:600 17px Outfit,sans-serif">{{ meInitial }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 14px/1.25 Outfit,sans-serif;color:#14201c">{{ meName }}</span>
+<span style="display:block;font:400 11px/1.45 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ meJob }} · {{ meScope }}</span>
+</span>
+</div>
+<div style="display:flex;gap:8px;margin-bottom:26px">
+<button onClick="{{ openRole }}" style="flex:1;min-height:48px;border:1px solid rgba(20,32,28,.14);border-radius:11px;background:#fff;color:#14201c;font:500 12px Outfit,sans-serif;cursor:pointer">Trocar de sessão</button>
+<button onClick="{{ signOut }}" style="flex:1;min-height:48px;border:1px solid rgba(20,32,28,.14);border-radius:11px;background:none;color:#8F1B2E;font:500 12px Outfit,sans-serif;cursor:pointer" style-hover="background:#FBE9EC">Sair</button>
+</div>
+
+<div style="font:400 11px/1 Roboto,sans-serif;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Origem dos dados</div>
+<h2 style="margin:8px 0 16px;font:600 18px/1.2 Outfit,sans-serif;letter-spacing:-.3px">Sincronização</h2>
+
+<div style="{{ syncBannerStyle }}">
+<div style="font:500 13px/1.4 Outfit,sans-serif">{{ syncBannerTitle }}</div>
+<div style="font:400 11.5px/1.5 Roboto,sans-serif;margin-top:4px;opacity:.85">{{ syncBannerBody }}</div>
+</div>
+
+<div style="margin-top:14px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08);overflow:hidden">
+<div style="padding:14px;border-bottom:1px solid rgba(20,32,28,.07)">
+<div style="font:500 12.5px Outfit,sans-serif">Planilhas conectadas</div>
+</div>
+<sc-for list="{{ sheets }}" as="s" hint-placeholder-count="2">
+<div style="padding:13px 14px;border-bottom:1px solid rgba(20,32,28,.07);display:flex;align-items:center;gap:11px">
+<span style="width:30px;height:30px;flex:none;border-radius:7px;background:#E4F7F0;display:flex;align-items:center;justify-content:center;font:500 12px 'Roboto Mono',monospace;color:#0B6B4F">▦</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.3 Outfit,sans-serif">{{ s.name }}</span>
+<span style="display:block;font:400 11px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:2px">{{ s.meta }}</span>
+</span>
+<a href="#1a" style="font:400 11.5px Roboto,sans-serif">Abrir ↗</a>
+</div>
+</sc-for>
+<button onClick="{{ doSync }}" style="width:100%;min-height:48px;border:0;background:#20B388;color:#08281f;font:500 13px Outfit,sans-serif;cursor:pointer" style-hover="background:#1a9b74">Sincronizar agora</button>
+</div>
+
+<h2 style="margin:22px 0 10px;font:600 15px Outfit,sans-serif">Comportamento</h2>
+<div style="border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.08);overflow:hidden">
+<button onClick="{{ toggleAuto }}" style="width:100%;min-height:56px;padding:12px 14px;border:0;border-bottom:1px solid rgba(20,32,28,.07);background:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer">
+<span><span style="display:block;font:500 12.5px Outfit,sans-serif;color:#14201c">Sincronização automática</span><span style="display:block;font:400 11px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Recebe alterações da planilha a cada 60s</span></span>
+<span style="{{ autoTrackStyle }}"><span style="{{ autoKnobStyle }}"></span></span>
+</button>
+<button onClick="{{ toggleWifi }}" style="width:100%;min-height:56px;padding:12px 14px;border:0;border-bottom:1px solid rgba(20,32,28,.07);background:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer">
+<span><span style="display:block;font:500 12.5px Outfit,sans-serif;color:#14201c">Somente em Wi-Fi</span><span style="display:block;font:400 11px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Fora do Wi-Fi, envia só ao puxar para atualizar</span></span>
+<span style="{{ wifiTrackStyle }}"><span style="{{ wifiKnobStyle }}"></span></span>
+</button>
+<button onClick="{{ toggleOffline }}" style="width:100%;min-height:56px;padding:12px 14px;border:0;background:none;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer">
+<span><span style="display:block;font:500 12.5px Outfit,sans-serif;color:#14201c">Simular modo offline</span><span style="display:block;font:400 11px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">As edições entram na fila e sobem ao reconectar</span></span>
+<span style="{{ offTrackStyle }}"><span style="{{ offKnobStyle }}"></span></span>
+</button>
+</div>
+
+<h2 style="margin:22px 0 10px;font:600 15px Outfit,sans-serif">Fila de envio</h2>
+<sc-if value="{{ hasQueue }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ queue }}" as="q" hint-placeholder-count="2">
+<div style="padding:12px 13px;border-radius:11px;background:#fff;border:1px solid #E8D9A8;display:flex;gap:10px;align-items:flex-start">
+<span style="{{ q.iconStyle }}">{{ q.icon }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif">{{ q.title }}</span>
+<span style="display:block;font:400 11px/1.45 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ q.detail }}</span>
+</span>
+<span style="font:400 10.5px 'Roboto Mono',monospace;color:#8a918b">{{ q.state }}</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ queueEmpty }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;font:400 12px/1.6 Roboto,sans-serif;color:#7a827c">Nada pendente. Todas as edições feitas no app já estão na planilha.</p>
+</sc-if>
+
+<sc-if value="{{ conflictPending }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ openConflict }}" style="margin-top:22px;width:100%;min-height:48px;border:1px solid #D6455A;border-radius:11px;background:none;color:#8F1B2E;font:500 12.5px Outfit,sans-serif;cursor:pointer" style-hover="background:#FBE9EC">Ver conflito pendente (1)</button>
+</sc-if>
+
+<p style="margin:18px 0 0;font:400 11px/1.6 Roboto,sans-serif;color:#8a918b">O app escreve apenas nas colunas <em>Status</em> e <em>Observação</em>. Fórmulas, formatação condicional e colunas calculadas da planilha permanecem intactas.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ isDocs }}" hint-placeholder-val="{{ false }}">
+<div style="padding:18px 20px 28px">
+<div style="font:400 11px/1 Roboto,sans-serif;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Pasta mestra no Drive</div>
+<h1 style="margin:8px 0 14px;font:600 25px/1.15 Outfit,sans-serif;letter-spacing:-.4px">Repositório</h1>
+
+<div style="display:flex;align-items:center;gap:9px;padding:0 13px;min-height:48px;border-radius:12px;background:#fff;border:1px solid rgba(20,32,28,.12);margin-bottom:12px">
+<span style="color:#a3a99f;font-size:14px">⌕</span>
+<input value="{{ docQ }}" onChange="{{ onDocQ }}" placeholder="Buscar por título ou tipo…" style="flex:1;min-width:0;border:0;outline:none;background:none;font:400 13.5px Roboto,sans-serif;color:#14201c">
+</div>
+
+<div class="ph" style="display:flex;gap:7px;overflow-x:auto;margin:0 -20px 9px;padding:2px 20px">
+<sc-for list="{{ docScopes }}" as="s" hint-placeholder-count="6">
+<button onClick="{{ s.pick }}" style="{{ s.style }}">{{ s.label }}</button>
+</sc-for>
+</div>
+<div class="ph" style="display:flex;gap:6px;overflow-x:auto;margin:0 -20px 14px;padding:2px 20px">
+<sc-for list="{{ docTypes }}" as="t" hint-placeholder-count="5">
+<button onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
+<span style="font:400 11.5px Roboto,sans-serif;color:#7a827c">{{ docCountLabel }}</span>
+<span style="font:400 11.5px Roboto,sans-serif;color:#0B6B4F">⤓ {{ pinnedCount }} offline</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ docList }}" as="f" hint-placeholder-count="6">
+<button onClick="{{ f.open }}" style="{{ f.cardStyle }}">
+<span style="{{ f.tileStyle }}">{{ f.ext }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;text-wrap:pretty">{{ f.title }}</span>
+<span style="display:block;font:400 11px/1.45 Roboto,sans-serif;color:#7a827c;margin-top:4px">{{ f.meta }}</span>
+<span style="display:flex;align-items:center;gap:7px;margin-top:9px;flex-wrap:wrap">
+<span style="{{ f.pillStyle }}">{{ f.status }}</span>
+<sc-if value="{{ f.hasLinks }}" hint-placeholder-val="{{ true }}">
+<span style="font:400 10.5px 'Roboto Mono',monospace;color:#136AA0">{{ f.linkLabel }}</span>
+</sc-if>
+<sc-if value="{{ f.pinned }}" hint-placeholder-val="{{ false }}">
+<span style="font:400 10.5px 'Roboto Mono',monospace;color:#0B6B4F">⤓ offline</span>
+</sc-if>
+</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ docEmpty }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;padding:22px 0;font:400 12.5px/1.6 Roboto,sans-serif;color:#7a827c">Nenhum documento com esses filtros. A pasta mestra tem 17 arquivos.</p>
+</sc-if>
+
+<button onClick="{{ fetchDocs }}" style="margin-top:16px;width:100%;min-height:48px;border:1px solid rgba(20,32,28,.14);border-radius:12px;background:#fff;color:#136AA0;font:500 12.5px Outfit,sans-serif;cursor:pointer" style-hover="background:#E7F1F8">Buscar documentos novos</button>
+<p style="margin:12px 0 0;font:400 11px/1.6 Roboto,sans-serif;color:#8a918b">Espelha <span style="font-family:'Roboto Mono',monospace">/folders/1rtRecy…QoBM</span> em segundo plano. O app lê o Drive; nunca altera nem apaga arquivo.</p>
+</div>
+</sc-if>
+</div>
+
+<div style="position:absolute;bottom:0;left:0;right:0;z-index:35;height:76px;background:#FFF9E7;border-top:1px solid rgba(20,32,28,.09);display:flex;padding:6px 8px 14px">
+<sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+<button onClick="{{ n.go }}" style="{{ n.style }}">
+<span style="{{ n.iconStyle }}">{{ n.icon }}</span>
+<span style="font:500 10px Outfit,sans-serif;letter-spacing:.01em">{{ n.label }}</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:50;background:rgba(20,32,28,.42)">
+<div class="ph" style="position:absolute;left:0;right:0;bottom:0;top:86px;background:#FFF9E7;border-radius:22px 22px 0 0;overflow-y:auto;animation:rise .26s ease-out">
+<div style="position:sticky;top:0;background:#FFF9E7;padding:10px 20px 12px;border-bottom:1px solid rgba(20,32,28,.08);z-index:2">
+<div style="width:38px;height:4px;border-radius:2px;background:#D9D6C7;margin:0 auto 12px"></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:500 10.5px 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.07em;text-transform:uppercase">{{ selKind }}</span>
+<button onClick="{{ closeSel }}" style="min-width:48px;min-height:36px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#136AA0;cursor:pointer">Fechar</button>
+</div>
+</div>
+<div style="padding:16px 20px 32px">
+<div style="display:flex;gap:7px;align-items:center;margin-bottom:10px">
+<sc-if value="{{ selHasMeta }}" hint-placeholder-val="{{ false }}">
+<span style="font:500 11px 'Roboto Mono',monospace;color:#FFF9E7;background:#136AA0;padding:4px 7px;border-radius:4px">Meta {{ selMetaId }}</span>
+</sc-if>
+<span style="{{ selPillStyle }}">{{ selStatus }}</span>
+</div>
+<h1 style="margin:0 0 14px;font:600 21px/1.28 Outfit,sans-serif;letter-spacing:-.3px;text-wrap:pretty">{{ selTitle }}</h1>
+
+<sc-if value="{{ showPresence }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;align-items:center;gap:9px;padding:10px 13px;border-radius:11px;background:#E7F1F8;margin-bottom:16px">
+<span style="width:7px;height:7px;flex:none;border-radius:50%;background:#136AA0;animation:pulsedot 1.6s infinite"></span>
+<span style="font:400 12px/1.45 Roboto,sans-serif;color:#0E4E76">{{ presenceText }}</span>
+</div>
+</sc-if>
+
+<sc-if value="{{ selBlocked }}" hint-placeholder-val="{{ false }}">
+<div style="padding:13px 14px;border-radius:12px;background:#FBE9EC;border-left:0;margin-bottom:16px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#8F1B2E;letter-spacing:.06em;text-transform:uppercase">Dependência</div>
+<div style="font:400 13px/1.5 Roboto,sans-serif;color:#8F1B2E;margin-top:6px">{{ selNote }}</div>
+<sc-if value="{{ selHasLink }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ openLinked }}" style="margin-top:10px;min-height:40px;padding:0 13px;border:1px solid #D6455A;border-radius:9px;background:#fff;color:#8F1B2E;font:500 11.5px Outfit,sans-serif;cursor:pointer">Ver tarefa bloqueadora →</button>
+</sc-if>
+</div>
+</sc-if>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(20,32,28,.09);border-radius:12px;overflow:hidden;margin-bottom:20px">
+<div style="background:#fff;padding:13px 14px"><div style="font:400 10.5px Roboto,sans-serif;color:#7a827c;text-transform:uppercase;letter-spacing:.06em">Responsável</div><div style="font:500 13.5px Outfit,sans-serif;margin-top:5px">{{ selOwner }}</div></div>
+<div style="background:#fff;padding:13px 14px"><div style="font:400 10.5px Roboto,sans-serif;color:#7a827c;text-transform:uppercase;letter-spacing:.06em">Prazo</div><div style="{{ selDueStyle }}">{{ selDue }}</div></div>
+<div style="background:#fff;padding:13px 14px"><div style="font:400 10.5px Roboto,sans-serif;color:#7a827c;text-transform:uppercase;letter-spacing:.06em">Frente</div><div style="font:500 13.5px Outfit,sans-serif;margin-top:5px">{{ selFrente }}</div></div>
+<div style="background:#fff;padding:13px 14px"><div style="font:400 10.5px Roboto,sans-serif;color:#7a827c;text-transform:uppercase;letter-spacing:.06em">Valor orçado</div><div style="{{ selBudgetStyle }}">{{ selBudget }}</div></div>
+</div>
+
+<h2 style="margin:0 0 9px;font:600 14px Outfit,sans-serif">Dependência</h2>
+<sc-if value="{{ hasDep }}" hint-placeholder-val="{{ true }}">
+<div>
+<div style="{{ depBannerStyle }}">
+<div style="{{ depKickerStyle }}">{{ depKicker }}</div>
+<div style="{{ depTextStyle }}">{{ depText }}</div>
+<div style="display:flex;gap:8px;margin-top:11px">
+<button onClick="{{ depGo }}" style="min-height:40px;padding:0 13px;border:1px solid rgba(20,32,28,.16);border-radius:9px;background:#fff;color:#14201c;font:500 11.5px Outfit,sans-serif;cursor:pointer">Abrir o item bloqueador</button>
+<button onClick="{{ clearDep }}" style="min-height:40px;padding:0 13px;border:0;border-radius:9px;background:none;color:#5a625d;font:500 11.5px Outfit,sans-serif;cursor:pointer">Desvincular</button>
+</div>
+</div>
+</div>
+</sc-if>
+<button onClick="{{ openDepPicker }}" style="width:100%;min-height:48px;margin-bottom:20px;border:1px dashed rgba(20,32,28,.24);border-radius:11px;background:none;color:#136AA0;font:500 12px Outfit,sans-serif;cursor:pointer" style-hover="background:#E7F1F8">+ Vincular a outro item</button>
+
+<sc-if value="{{ selHasDocs }}" hint-placeholder-val="{{ false }}">
+<h2 style="margin:0 0 9px;font:600 14px Outfit,sans-serif">Documentos vinculados</h2>
+<div style="display:flex;flex-direction:column;gap:7px;margin-bottom:20px">
+<sc-for list="{{ selDocs }}" as="dd" hint-placeholder-count="1">
+<button onClick="{{ dd.go }}" style="width:100%;text-align:left;padding:11px 12px;border-radius:11px;border:1px solid rgba(20,32,28,.1);background:#fff;cursor:pointer;display:flex;gap:11px;align-items:center">
+<span style="{{ dd.tileStyle }}">{{ dd.ext }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif;color:#14201c">{{ dd.title }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ dd.meta }}</span>
+</span>
+<span style="{{ dd.pillStyle }}">{{ dd.status }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ canEditSel }}" hint-placeholder-val="{{ true }}">
+<div>
+<h2 style="margin:0 0 9px;font:600 14px Outfit,sans-serif">Atualizar status</h2>
+<div style="display:flex;gap:7px;margin-bottom:20px">
+<sc-for list="{{ statusOptions }}" as="o" hint-placeholder-count="3">
+<button onClick="{{ o.pick }}" style="{{ o.style }}">{{ o.label }}</button>
+</sc-for>
+</div>
+<h2 style="margin:0 0 9px;font:600 14px Outfit,sans-serif">Observação</h2>
+<textarea onChange="{{ onNote }}" value="{{ noteDraft }}" placeholder="Registre um bloqueio, dependência ou justificativa…" style="width:100%;min-height:88px;padding:12px;border-radius:11px;border:1px solid rgba(20,32,28,.14);background:#fff;font:400 13px/1.5 Roboto,sans-serif;color:#14201c;resize:none"></textarea>
+<button onClick="{{ saveEdit }}" style="{{ saveBtnStyle }}">{{ saveLabel }}</button>
+<p style="margin:10px 0 0;font:400 10.5px/1.55 Roboto,sans-serif;color:#a3a99f">O envio grava apenas <span style="font-family:'Roboto Mono',monospace">Status</span>, <span style="font-family:'Roboto Mono',monospace">Observações</span> e <span style="font-family:'Roboto Mono',monospace">Percentual da meta</span>. Fórmulas e formatação condicional não são tocadas.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ readOnlySel }}" hint-placeholder-val="{{ false }}">
+<div style="padding:14px 15px;border-radius:12px;background:#EFEDE4">
+<div style="display:flex;align-items:center;gap:8px">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5A5F58" stroke-width="1.9" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+<span style="font:500 11px 'Roboto Mono',monospace;color:#4A4F49;letter-spacing:.05em;text-transform:uppercase">Somente leitura</span>
+</div>
+<p style="margin:8px 0 0;font:400 12.5px/1.55 Roboto,sans-serif;color:#4A4F49">{{ readOnlyNote }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasAudit }}" hint-placeholder-val="{{ true }}">
+<h2 style="margin:24px 0 12px;font:600 14px Outfit,sans-serif">Histórico</h2>
+<div style="display:flex;flex-direction:column;gap:14px;padding-left:2px">
+<sc-for list="{{ audit }}" as="a" hint-placeholder-count="3">
+<div style="display:flex;gap:11px;align-items:flex-start">
+<span style="{{ a.dotStyle }}"></span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:400 12.5px/1.5 Roboto,sans-serif;color:#14201c">{{ a.line }}</span>
+<span style="display:block;font:400 10.5px/1.4 'Roboto Mono',monospace;color:#8a918b;margin-top:3px">{{ a.via }} · {{ a.when }}</span>
+</span>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+<div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(20,32,28,.09)">
+<div style="font:400 11px/1.6 Roboto,sans-serif;color:#8a918b">Origem: <span style="font-family:'Roboto Mono',monospace">{{ selCell }}</span></div>
+<a href="#1a" style="display:inline-block;margin-top:8px;min-height:40px;line-height:40px;font:500 12.5px Outfit,sans-serif">Abrir a célula no Google Sheets ↗</a>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ notifOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:56;background:rgba(20,32,28,.42)">
+<div class="ph" style="position:absolute;left:0;right:0;bottom:0;top:120px;background:#FFF9E7;border-radius:22px 22px 0 0;overflow-y:auto;animation:rise .24s ease-out">
+<div style="position:sticky;top:0;background:#FFF9E7;padding:10px 20px 12px;border-bottom:1px solid rgba(20,32,28,.08);z-index:2">
+<div style="width:38px;height:4px;border-radius:2px;background:#D9D6C7;margin:0 auto 12px"></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 16px Outfit,sans-serif">Avisos</span>
+<button onClick="{{ closeNotifs }}" style="min-width:48px;min-height:36px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#136AA0;cursor:pointer">Fechar</button>
+</div>
+</div>
+<div style="padding:14px 20px 32px;display:flex;flex-direction:column;gap:9px">
+<sc-if value="{{ notifsEmpty }}" hint-placeholder-val="{{ false }}">
+<p style="margin:20px 0;font:400 12.5px/1.6 Roboto,sans-serif;color:#7a827c">Nenhum aviso para você agora. Avisos chegam quando um item seu é bloqueado, quando uma dependência é liberada ou quando um prazo se aproxima.</p>
+</sc-if>
+<sc-for list="{{ notifs }}" as="n" hint-placeholder-count="3">
+<button onClick="{{ n.go }}" style="{{ n.cardStyle }}">
+<span style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<span style="{{ n.kindStyle }}">{{ n.kind }}</span>
+<span style="font:400 10.5px 'Roboto Mono',monospace;color:#8a918b">{{ n.when }}</span>
+</span>
+<span style="display:block;font:500 13.5px/1.4 Outfit,sans-serif;color:#14201c;margin-top:8px;text-wrap:pretty">{{ n.title }}</span>
+<span style="display:block;font:400 12px/1.5 Roboto,sans-serif;color:#6b736d;margin-top:5px">{{ n.body }}</span>
+</button>
+</sc-for>
+<button onClick="{{ markAllRead }}" style="{{ markStyle }}">{{ markLabel }}</button>
+<p style="margin:6px 0 0;font:400 10.5px/1.6 Roboto,sans-serif;color:#8a918b">Os avisos chegam pelo mesmo canal em tempo real da sincronização. Cada pessoa recebe só o que é da sua frente ou do que depende dela.</p>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ roleOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:57;background:rgba(20,32,28,.42);display:flex;align-items:flex-end">
+<div style="width:100%;background:#FFF9E7;border-radius:22px 22px 0 0;padding:14px 20px 26px;animation:rise .22s ease-out">
+<div style="width:38px;height:4px;border-radius:2px;background:#D9D6C7;margin:0 auto 14px"></div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px">
+<span style="font:600 16px Outfit,sans-serif">Sessão</span>
+<button onClick="{{ closeRole }}" style="min-width:48px;min-height:36px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#136AA0;cursor:pointer">Fechar</button>
+</div>
+<p style="margin:0 0 14px;font:400 11.5px/1.5 Roboto,sans-serif;color:#7a827c">Cada pessoa edita a própria frente e lê as demais. O executivo edita todas e vê o log mestre.</p>
+<div style="display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ userList }}" as="u" hint-placeholder-count="5">
+<button onClick="{{ u.pick }}" style="{{ u.style }}">
+<span style="{{ u.markStyle }}">{{ u.initial }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 13px/1.3 Outfit,sans-serif;color:#14201c">{{ u.name }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ u.title }} · {{ u.scope }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<button onClick="{{ signOut }}" style="margin-top:14px;width:100%;min-height:48px;border:1px solid rgba(20,32,28,.16);border-radius:12px;background:none;color:#8F1B2E;font:500 12.5px Outfit,sans-serif;cursor:pointer" style-hover="background:#FBE9EC">Sair da conta</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasDoc }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:52;background:rgba(20,32,28,.42)">
+<div class="ph" style="position:absolute;left:0;right:0;bottom:0;top:70px;background:#FFF9E7;border-radius:22px 22px 0 0;overflow-y:auto;animation:rise .26s ease-out">
+<div style="position:sticky;top:0;background:#FFF9E7;padding:10px 20px 12px;border-bottom:1px solid rgba(20,32,28,.08);z-index:2">
+<div style="width:38px;height:4px;border-radius:2px;background:#D9D6C7;margin:0 auto 12px"></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:500 10.5px 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.07em;text-transform:uppercase">Repositório · {{ docScopeLabel }}</span>
+<button onClick="{{ closeDoc }}" style="min-width:48px;min-height:36px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#136AA0;cursor:pointer">Fechar</button>
+</div>
+</div>
+<div style="padding:16px 20px 32px">
+<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:14px">
+<span style="{{ docExtStyle }}">{{ docExt }}</span>
+<span style="flex:1;min-width:0">
+<span style="display:block;font:600 18px/1.3 Outfit,sans-serif;color:#14201c;letter-spacing:-.2px;text-wrap:pretty">{{ docTitle }}</span>
+<span style="display:block;font:400 11.5px/1.5 Roboto,sans-serif;color:#7a827c;margin-top:5px">{{ docVersion }} · {{ docSize }} · atualizado {{ docUp }}</span>
+</span>
+</div>
+<div style="margin-bottom:16px"><span style="{{ docStatusStyle }}">{{ docStatus }}</span></div>
+
+<sc-if value="{{ docHasNote }}" hint-placeholder-val="{{ false }}">
+<div style="padding:12px 14px;border-radius:12px;background:#FBF2D9;margin-bottom:18px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#7A5E08;letter-spacing:.06em;text-transform:uppercase">Situação do arquivo</div>
+<div style="font:400 12.5px/1.5 Roboto,sans-serif;color:#7A5E08;margin-top:6px">{{ docNote }}</div>
+</div>
+</sc-if>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px">
+<button onClick="{{ openPreview }}" style="min-height:48px;border:0;border-radius:11px;background:#136AA0;color:#FFF9E7;font:500 12px Outfit,sans-serif;cursor:pointer">Prévia rápida</button>
+<button onClick="{{ togglePin }}" style="{{ docPinStyle }}">{{ docPinLabel }}</button>
+<button onClick="{{ shareDoc }}" style="min-height:48px;border:1px solid rgba(20,32,28,.14);border-radius:11px;background:#fff;color:#5a625d;font:500 11.5px Outfit,sans-serif;cursor:pointer">Compartilhar link</button>
+<a href="#1a" style="min-height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(20,32,28,.14);border-radius:11px;background:#fff;color:#5a625d;font:500 11.5px Outfit,sans-serif">Abrir no Drive ↗</a>
+</div>
+
+<sc-if value="{{ docHasLinks }}" hint-placeholder-val="{{ true }}">
+<h2 style="margin:0 0 9px;font:600 14px Outfit,sans-serif">Vinculado a</h2>
+<div style="display:flex;flex-direction:column;gap:7px;margin-bottom:22px">
+<sc-for list="{{ docLinkedTasks }}" as="l" hint-placeholder-count="2">
+<button onClick="{{ l.go }}" style="width:100%;text-align:left;padding:12px 13px;border-radius:11px;border:1px solid rgba(20,32,28,.1);background:#fff;cursor:pointer;display:flex;gap:10px;align-items:center">
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 10px 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">{{ l.kind }}</span>
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif;color:#14201c;margin-top:4px">{{ l.label }}</span>
+</span>
+<span style="{{ l.pillStyle }}">{{ l.status }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<div style="padding-top:14px;border-top:1px solid rgba(20,32,28,.09);font:400 11px/1.6 Roboto,sans-serif;color:#8a918b">Origem: <span style="font-family:'Roboto Mono',monospace">Drive /folders/1rtRecy…QoBM</span></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ docPreviewOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:58;background:#14201c;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:52px 18px 12px;color:#FFF9E7">
+<span style="font:500 12.5px/1.3 Outfit,sans-serif;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ docTitle }}</span>
+<button onClick="{{ closePreview }}" style="min-width:48px;min-height:40px;border:0;background:none;color:#FFF9E7;font:400 13px Roboto,sans-serif;cursor:pointer">Fechar</button>
+</div>
+<div class="ph" style="flex:1;overflow-y:auto;padding:0 18px 18px">
+<div style="background:#fff;border-radius:6px;padding:34px 30px;min-height:520px;box-shadow:0 8px 26px rgba(0,0,0,.4)">
+<div style="height:9px;width:34%;background:#14201c;border-radius:1px"></div>
+<div style="height:9px;width:52%;background:#14201c;border-radius:1px;margin-top:9px"></div>
+<div style="margin-top:26px;display:flex;flex-direction:column;gap:8px">
+<div style="height:5px;width:100%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:96%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:99%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:62%;background:#E3E0D5;border-radius:1px"></div>
+</div>
+<div style="margin-top:24px;display:flex;flex-direction:column;gap:8px">
+<div style="height:5px;width:100%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:88%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:94%;background:#E3E0D5;border-radius:1px"></div>
+<div style="height:5px;width:41%;background:#E3E0D5;border-radius:1px"></div>
+</div>
+<div style="margin-top:30px;height:120px;background:#F1EEE3;border-radius:3px"></div>
+<p style="margin:26px 0 0;font:400 11px/1.6 Roboto,sans-serif;color:#a3a99f;text-align:center">Placeholder de renderização — o visualizador real usa a prévia nativa do Drive.</p>
+</div>
+</div>
+<div style="padding:10px 18px 22px;display:flex;align-items:center;justify-content:space-between;color:rgba(255,249,231,.62);font:400 11px 'Roboto Mono',monospace">
+<span>{{ docExt }} · {{ docVersion }}</span><span>página 1 de 12</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ conflictOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:60;background:rgba(20,32,28,.52);display:flex;align-items:center;justify-content:center;padding:22px">
+<div style="width:100%;background:#FFF9E7;border-radius:18px;overflow:hidden;animation:rise .22s ease-out">
+<div style="padding:16px 18px;background:#D6455A;color:#FFF9E7">
+<div style="font:500 10.5px 'Roboto Mono',monospace;letter-spacing:.07em;text-transform:uppercase;opacity:.9">Conflito de edição</div>
+<div style="font:600 17px/1.3 Outfit,sans-serif;margin-top:5px">A mesma célula mudou nos dois lados</div>
+</div>
+<div style="padding:16px 18px">
+<p style="margin:0 0 14px;font:400 12.5px/1.55 Roboto,sans-serif;color:#5a625d"><strong style="font-weight:500">Lei de inovação de Saquarema</strong> · coluna <span style="font-family:'Roboto Mono',monospace">Status</span> (D12). Ana editou no app às 09:38; a planilha foi alterada às 09:41.</p>
+<div style="display:flex;flex-direction:column;gap:9px">
+<button onClick="{{ keepMine }}" style="{{ keepMineStyle }}">
+<span style="display:block;font:500 10.5px 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Sua versão · 09:38</span>
+<span style="display:block;font:500 14px Outfit,sans-serif;color:#14201c;margin-top:6px">Em execução</span>
+<span style="display:block;font:400 11px Roboto,sans-serif;color:#7a827c;margin-top:3px">Ana Flávia · no aplicativo</span>
+</button>
+<button onClick="{{ keepSheet }}" style="{{ keepSheetStyle }}">
+<span style="display:block;font:500 10.5px 'Roboto Mono',monospace;color:#7a827c;letter-spacing:.06em;text-transform:uppercase">Planilha · 09:41</span>
+<span style="display:block;font:500 14px Outfit,sans-serif;color:#14201c;margin-top:6px">Justificada</span>
+<span style="display:block;font:400 11px Roboto,sans-serif;color:#7a827c;margin-top:3px">André · Google Sheets</span>
+</button>
+</div>
+<button onClick="{{ resolveConflict }}" style="{{ resolveBtnStyle }}">{{ resolveLabel }}</button>
+<p style="margin:12px 0 0;font:400 10.5px/1.5 Roboto,sans-serif;color:#8a918b">A versão descartada fica no histórico da célula como comentário, com autor e horário.</p>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ depPickerOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:59;background:rgba(20,32,28,.42)">
+<div class="ph" style="position:absolute;left:0;right:0;bottom:0;top:150px;background:#FFF9E7;border-radius:22px 22px 0 0;overflow-y:auto;animation:rise .22s ease-out">
+<div style="position:sticky;top:0;background:#FFF9E7;padding:10px 20px 12px;border-bottom:1px solid rgba(20,32,28,.08);z-index:2">
+<div style="width:38px;height:4px;border-radius:2px;background:#D9D6C7;margin:0 auto 12px"></div>
+<div style="display:flex;align-items:center;justify-content:space-between">
+<span style="font:600 15px Outfit,sans-serif">Depende de qual item?</span>
+<button onClick="{{ closeDepPicker }}" style="min-width:48px;min-height:36px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#136AA0;cursor:pointer">Cancelar</button>
+</div>
+</div>
+<div style="padding:14px 20px 32px;display:flex;flex-direction:column;gap:7px">
+<p style="margin:0 0 4px;font:400 11.5px/1.55 Roboto,sans-serif;color:#7a827c">Quem for responsável pelo item escolhido recebe um aviso quando ele for concluído, e este aqui é liberado na hora.</p>
+<sc-for list="{{ depCandidates }}" as="c" hint-placeholder-count="6">
+<button onClick="{{ c.pick }}" style="width:100%;text-align:left;padding:12px 13px;border-radius:11px;border:1px solid rgba(20,32,28,.1);background:#fff;cursor:pointer;display:flex;gap:10px;align-items:center">
+<span style="flex:1;min-width:0">
+<span style="display:block;font:500 12.5px/1.35 Outfit,sans-serif;color:#14201c">{{ c.title }}</span>
+<span style="display:block;font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">{{ c.owner }}</span>
+</span>
+<span style="{{ c.pillStyle }}">{{ c.status }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ authOpen }}" hint-placeholder-val="{{ false }}">
+<div class="ph" style="position:absolute;inset:0;z-index:90;background:#FFF9E7;overflow-y:auto">
+
+<sc-if value="{{ isLogin }}" hint-placeholder-val="{{ true }}">
+<div style="min-height:844px;display:flex;flex-direction:column;padding:70px 26px 30px">
+<div style="display:flex;justify-content:center;margin-bottom:6px"><span style="{{ connStyle }}"><span style="width:6px;height:6px;border-radius:50%;background:#20B388;animation:pulsedot 3s infinite"></span>Servidor e Workspace conectados</span></div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:40px">
+<svg width="96" height="57" viewBox="0 0 206.48 122.07" aria-hidden="true" style="margin-bottom:22px"><defs><linearGradient id="ptsMarkLg" x1="8.95" y1="60.82" x2="198.54" y2="60.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00be82"></stop><stop offset="1" stop-color="#06c"></stop></linearGradient></defs  style="margin-bottom:20px"><path fill="url(#ptsMarkLg)" d="M23.45,29.22h-7.93c-3.63,0-6.57-2.94-6.57-6.57v-7.93c0-3.63,2.94-6.57,6.57-6.57h7.93c3.63,0,6.57,2.94,6.57,6.57v7.93c0,3.63-2.94,6.57-6.57,6.57ZM153.84,47.73l-13.69-13.69c-3.08-3.08-7.25-4.81-11.61-4.81h-49.6c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h14.02c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h82.26c2.32,0,4.55.92,6.19,2.56l15.94,15.94c1.64,1.64,3.87,2.56,6.19,2.56h17.19c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-31.94c-2.32,0-4.55-.92-6.19-2.56ZM128.54,71.35h-28.53c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h35.09c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h58.02c4.35,0,8.53,1.73,11.61,4.81l11.45,11.45c3.08,3.08,7.25,4.81,11.61,4.81h14.02c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-28.77c-4.35,0-8.53-1.73-11.61-4.81l-11.45-11.45c-3.08-3.08-7.25-4.81-11.61-4.81Z"></path></svg>
+<h1 style="margin:0 0 6px;font:600 30px/1.1 Outfit,sans-serif;letter-spacing:-.8px">Parque Tecnológico<br>de Saquarema</h1>
+<p style="margin:0 0 30px;font:400 13px/1.5 Roboto,sans-serif;color:#6b736d">Hub de Operações · acesso da equipe</p>
+
+<button onClick="{{ doGoogle }}" style="width:100%;min-height:52px;border:1px solid rgba(20,32,28,.16);border-radius:12px;background:#fff;color:#14201c;font:500 13.5px Outfit,sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#F6F3E6">
+<svg width="17" height="17" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45 24c0-1.6-.1-2.7-.4-3.9H24v7.1h12c-.2 1.9-1.5 4.7-4.4 6.6l6.8 5.3C42.4 35.4 45 30.2 45 24z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.8-5.3c-1.9 1.3-4.4 2.2-7.7 2.2-5.9 0-10.9-3.9-12.7-9.2l-7 5.4C7.9 41 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.3 28.4A13.6 13.6 0 0 1 10.6 24c0-1.5.3-3 .7-4.4l-7-5.4A22 22 0 0 0 2 24c0 3.5.8 6.9 2.3 9.8z"/><path fill="#EA4335" d="M24 10.6c4.2 0 7 1.8 8.6 3.3l6.3-6.1C35 4.2 29.9 2 24 2 15.4 2 7.9 7 4.3 14.2l7 5.4C13.1 14.5 18.1 10.6 24 10.6z"/></svg>
+Entrar com o Google corporativo
+</button>
+<div style="display:flex;align-items:center;gap:12px;margin:20px 0"><span style="flex:1;height:1px;background:rgba(20,32,28,.12)"></span><span style="font:400 11px Roboto,sans-serif;color:#a3a99f">ou</span><span style="flex:1;height:1px;background:rgba(20,32,28,.12)"></span></div>
+
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin-bottom:6px">E-mail corporativo</label>
+<input value="{{ email }}" onChange="{{ onEmail }}" style="width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid rgba(20,32,28,.14);background:#fff;font:400 13px Roboto,sans-serif;color:#14201c;outline:none">
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin:14px 0 6px">Senha</label>
+<div style="display:flex;align-items:center;gap:6px;padding-right:8px;border-radius:12px;border:1px solid rgba(20,32,28,.14);background:#fff">
+<input value="{{ pw }}" onChange="{{ onPw }}" type="{{ pwType }}" style="flex:1;min-width:0;min-height:50px;padding:0 14px;border:0;background:none;font:400 13px Roboto,sans-serif;color:#14201c;outline:none">
+<button onClick="{{ togglePw }}" style="min-height:40px;padding:0 10px;border:0;border-radius:8px;background:none;color:#136AA0;font:500 11px Outfit,sans-serif;cursor:pointer">{{ pwToggleLabel }}</button>
+</div>
+<button onClick="{{ forgot }}" style="align-self:flex-start;min-height:40px;margin-top:8px;border:0;background:none;padding:0;font:400 12px Roboto,sans-serif;color:#136AA0;cursor:pointer">Esqueci minha senha</button>
+<button onClick="{{ doLogin }}" style="margin-top:14px;width:100%;min-height:52px;border:0;border-radius:12px;background:#20B388;color:#08281f;font:500 13.5px Outfit,sans-serif;cursor:pointer" style-hover="background:#1a9b74">Entrar</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px;align-items:center">
+<button onClick="{{ goRegister }}" style="min-height:44px;border:0;background:none;font:400 12.5px Roboto,sans-serif;color:#136AA0;cursor:pointer">Primeiro acesso? Criar conta</button>
+<div style="display:flex;align-items:center;gap:9px;font:400 10.5px Roboto,sans-serif;color:#a3a99f"><span>Uma realização</span><span style="font:600 11px Outfit,sans-serif;color:#7a827c">Agência Inova</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRegister }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:844px;padding:64px 26px 30px">
+<button onClick="{{ goLogin }}" style="min-height:40px;border:0;background:none;padding:0;margin-bottom:16px;font:400 12.5px Roboto,sans-serif;color:#136AA0;cursor:pointer">← Voltar</button>
+<h1 style="margin:0 0 6px;font:600 26px/1.15 Outfit,sans-serif;letter-spacing:-.5px">Criar conta</h1>
+<p style="margin:0 0 24px;font:400 12.5px/1.55 Roboto,sans-serif;color:#6b736d">Contas novas passam por aprovação do executivo antes de ver os dados operacionais.</p>
+
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin-bottom:6px">Nome completo</label>
+<input value="{{ regName }}" onChange="{{ onRegName }}" placeholder="Como aparece na planilha" style="width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid rgba(20,32,28,.14);background:#fff;font:400 13px Roboto,sans-serif;color:#14201c;outline:none">
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin:14px 0 6px">E-mail corporativo</label>
+<input value="{{ regEmail }}" onChange="{{ onRegEmail }}" placeholder="nome@saquarema.rj.gov.br" style="width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid rgba(20,32,28,.14);background:#fff;font:400 13px Roboto,sans-serif;color:#14201c;outline:none">
+<p style="margin:6px 0 0;font:400 10.5px/1.5 Roboto,sans-serif;color:#a3a99f">Só domínios oficiais são aceitos.</p>
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin:14px 0 6px">Senha</label>
+<input value="{{ regPw }}" onChange="{{ onRegPw }}" type="password" placeholder="Mínimo de 10 caracteres" style="width:100%;min-height:50px;padding:0 14px;border-radius:12px;border:1px solid rgba(20,32,28,.14);background:#fff;font:400 13px Roboto,sans-serif;color:#14201c;outline:none">
+<label style="display:block;font:500 11px Outfit,sans-serif;color:#5a625d;margin:18px 0 8px">Frente de atuação</label>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ regDepts }}" as="r" hint-placeholder-count="4">
+<button onClick="{{ r.pick }}" style="{{ r.style }}">{{ r.label }}</button>
+</sc-for>
+</div>
+<button onClick="{{ doRegister }}" style="{{ regBtnStyle }}">Enviar para aprovação</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPending }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:844px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:60px 26px">
+<div style="width:52px;height:52px;border-radius:14px;background:#FBF2D9;color:#7A5E08;display:flex;align-items:center;justify-content:center;font:600 20px Outfit,sans-serif;margin-bottom:20px">⏳</div>
+<h1 style="margin:0 0 10px;font:600 26px/1.2 Outfit,sans-serif;letter-spacing:-.5px">Conta em aprovação</h1>
+<p style="margin:0 0 8px;max-width:32ch;font:400 13.5px/1.6 Roboto,sans-serif;color:#5a625d">O executivo recebeu o pedido e aprova pelo próprio aplicativo. Você recebe um e-mail assim que o acesso for liberado.</p>
+<p style="margin:0 0 26px;font:400 11.5px/1.6 Roboto,sans-serif;color:#a3a99f">Enquanto isso, nenhum dado operacional fica visível.</p>
+<button onClick="{{ goLogin }}" style="min-height:48px;padding:0 20px;border:1px solid rgba(20,32,28,.16);border-radius:12px;background:#fff;color:#14201c;font:500 12.5px Outfit,sans-serif;cursor:pointer">Voltar ao login</button>
+</div>
+</sc-if>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:20px;right:20px;bottom:92px;z-index:70;padding:13px 15px;border-radius:11px;background:#14201c;color:#FFF9E7;font:400 12.5px/1.45 Roboto,sans-serif;animation:rise .2s ease-out">{{ toastText }}</div>
+</sc-if>
+
+</div>
+</div>
+</div>
+
+<div id="1b" style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:9px;font:400 11px Roboto,sans-serif;color:#6b736d"><a href="#1b" style="font:500 10.5px 'Roboto Mono',monospace;padding:3px 7px;background:rgba(20,32,28,.09);color:#14201c;border-radius:4px">1b</a>Painel “Semáforo” — status antes de número</div>
+<div style="width:414px;height:868px;padding:12px;border-radius:46px;background:linear-gradient(160deg,#2b3531,#151d1a);box-shadow:0 18px 44px rgba(20,32,28,.28)">
+<div class="ph" style="width:390px;height:844px;border-radius:36px;overflow-y:auto;background:#FFF9E7;padding:52px 20px 28px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px">
+<div style="display:flex;align-items:center;gap:9px">
+<svg width="30" height="18" viewBox="0 0 206.48 122.07" aria-hidden="true"><defs><linearGradient id="ptsMark2" x1="8.95" y1="60.82" x2="198.54" y2="60.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00be82"></stop><stop offset="1" stop-color="#06c"></stop></linearGradient></defs><path fill="url(#ptsMark2)" d="M23.45,29.22h-7.93c-3.63,0-6.57-2.94-6.57-6.57v-7.93c0-3.63,2.94-6.57,6.57-6.57h7.93c3.63,0,6.57,2.94,6.57,6.57v7.93c0,3.63-2.94,6.57-6.57,6.57ZM153.84,47.73l-13.69-13.69c-3.08-3.08-7.25-4.81-11.61-4.81h-49.6c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h14.02c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h82.26c2.32,0,4.55.92,6.19,2.56l15.94,15.94c1.64,1.64,3.87,2.56,6.19,2.56h17.19c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-31.94c-2.32,0-4.55-.92-6.19-2.56ZM128.54,71.35h-28.53c-4.35,0-8.53,1.73-11.61,4.81l-11.45,11.45c-3.08,3.08-7.25,4.81-11.61,4.81H15.52c-3.63,0-6.57,2.94-6.57,6.57v7.93c0,3.63,2.94,6.57,6.57,6.57h35.09c4.35,0,8.53-1.73,11.61-4.81l11.45-11.45c3.08-3.08,7.25-4.81,11.61-4.81h58.02c4.35,0,8.53,1.73,11.61,4.81l11.45,11.45c3.08,3.08,7.25,4.81,11.61,4.81h14.02c3.63,0,6.57-2.94,6.57-6.57v-7.93c0-3.63-2.94-6.57-6.57-6.57h-28.77c-4.35,0-8.53-1.73-11.61-4.81l-11.45-11.45c-3.08-3.08-7.25-4.81-11.61-4.81Z"></path></svg>
+<span style="font:600 15px Outfit,sans-serif">PTSaq</span>
+</div>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:20px;background:#E4F7F0;font:500 11px Outfit,sans-serif;color:#0B6B4F"><span style="width:6px;height:6px;border-radius:50%;background:#20B388"></span>27/08 · 09:41</span>
+</div>
+<h1 style="margin:0 0 4px;font:600 27px/1.15 Outfit,sans-serif;letter-spacing:-.5px">24 tarefas</h1>
+<p style="margin:0 0 18px;font:400 13px/1.5 Roboto,sans-serif;color:#6b736d">no Painel Operacional, em quatro frentes</p>
+<div style="display:flex;height:44px;border-radius:10px;overflow:hidden;margin-bottom:10px">
+<div style="width:54%;background:#136AA0;display:flex;align-items:center;padding-left:12px;color:#FFF9E7;font:600 14px Outfit,sans-serif">13</div>
+<div style="width:38%;background:#20B388;display:flex;align-items:center;padding-left:12px;color:#08281f;font:600 14px Outfit,sans-serif">9</div>
+<div style="width:8%;background:#C9C6B8"></div>
+</div>
+<div style="display:flex;gap:14px;font:400 11px Roboto,sans-serif;color:#6b736d;margin-bottom:26px">
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#136AA0"></span>Em execução</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#20B388"></span>Executado</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#C9C6B8"></span>Não iniciado</span>
+</div>
+<div style="padding:16px;border-radius:14px;background:#FBE9EC;margin-bottom:22px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#8F1B2E;letter-spacing:.07em;text-transform:uppercase">3 bloqueios travando 3 frentes</div>
+<div style="margin-top:12px;display:flex;flex-direction:column;gap:11px">
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="width:6px;height:6px;border-radius:50%;background:#D6455A;margin-top:6px;flex:none"></span><span><span style="display:block;font:500 13px/1.35 Outfit,sans-serif;color:#14201c">Recepção: marcenaria</span><span style="display:block;font:400 11.5px/1.4 Roboto,sans-serif;color:#8F1B2E;margin-top:2px">Precisa do Termo de cessão de uso · R$ 38.000,00</span></span></div>
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="width:6px;height:6px;border-radius:50%;background:#D6455A;margin-top:6px;flex:none"></span><span><span style="display:block;font:500 13px/1.35 Outfit,sans-serif;color:#14201c">Lei de inovação de Saquarema</span><span style="display:block;font:400 11.5px/1.4 Roboto,sans-serif;color:#8F1B2E;margin-top:2px">Depende da Assembleia Legislativa</span></span></div>
+<div style="display:flex;gap:10px;align-items:flex-start"><span style="width:6px;height:6px;border-radius:50%;background:#D6455A;margin-top:6px;flex:none"></span><span><span style="display:block;font:500 13px/1.35 Outfit,sans-serif;color:#14201c">Adesivação de salas</span><span style="display:block;font:400 11.5px/1.4 Roboto,sans-serif;color:#8F1B2E;margin-top:2px">Aguardando Projeto Cerberus</span></span></div>
+</div>
+</div>
+<h2 style="margin:0 0 12px;font:600 16px Outfit,sans-serif">Vence até 31/08</h2>
+<div style="display:flex;flex-direction:column;gap:1px;background:rgba(20,32,28,.09);border-radius:12px;overflow:hidden">
+<div style="background:#fff;padding:13px 14px;display:flex;justify-content:space-between;gap:10px"><span style="font:500 13px/1.35 Outfit,sans-serif">Correções no prédio</span><span style="font:400 11.5px 'Roboto Mono',monospace;color:#D6455A;white-space:nowrap">4 dias</span></div>
+<div style="background:#fff;padding:13px 14px;display:flex;justify-content:space-between;gap:10px"><span style="font:500 13px/1.35 Outfit,sans-serif">Edital de chamamento</span><span style="font:400 11.5px 'Roboto Mono',monospace;color:#D6455A;white-space:nowrap">4 dias</span></div>
+<div style="background:#fff;padding:13px 14px;display:flex;justify-content:space-between;gap:10px"><span style="font:500 13px/1.35 Outfit,sans-serif">Plano de viabilidade econômico-financeira</span><span style="font:400 11.5px 'Roboto Mono',monospace;color:#D6455A;white-space:nowrap">4 dias</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="1c" style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:baseline;gap:9px;font:400 11px Roboto,sans-serif;color:#6b736d"><a href="#1c" style="font:500 10.5px 'Roboto Mono',monospace;padding:3px 7px;background:rgba(20,32,28,.09);color:#14201c;border-radius:4px">1c</a>Painel “Frentes” — a organização como primeira tela</div>
+<div style="width:414px;height:868px;padding:12px;border-radius:46px;background:linear-gradient(160deg,#2b3531,#151d1a);box-shadow:0 18px 44px rgba(20,32,28,.28)">
+<div class="ph" style="width:390px;height:844px;border-radius:36px;overflow-y:auto;background:#136AA0;padding:52px 0 28px">
+<div style="padding:0 20px">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+<span style="font:600 15px Outfit,sans-serif;color:#FFF9E7">PTSaq</span>
+<span style="display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:20px;background:rgba(255,249,231,.16);font:500 11px Outfit,sans-serif;color:#FFF9E7"><span style="width:6px;height:6px;border-radius:50%;background:#20B388"></span>Sincronizado</span>
+</div>
+<div style="font:400 12px Roboto,sans-serif;color:rgba(255,249,231,.7)">Plano de Trabalho · 36 metas</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin:6px 0 4px">
+<span style="font:600 54px/1 Outfit,sans-serif;color:#FFF9E7;letter-spacing:-2px">8</span>
+<span style="font:600 22px/1 Outfit,sans-serif;color:#20B388">%</span>
+<span style="font:400 12.5px Roboto,sans-serif;color:rgba(255,249,231,.72);margin-left:4px">concluídas · 39% em andamento</span>
+</div>
+<div style="display:flex;height:6px;border-radius:3px;overflow:hidden;margin:14px 0 26px">
+<div style="width:8%;background:#20B388"></div><div style="width:39%;background:rgba(255,249,231,.55)"></div><div style="flex:1;background:rgba(255,249,231,.18)"></div>
+</div>
+</div>
+<div style="background:#FFF9E7;border-radius:22px 22px 0 0;padding:20px;min-height:520px">
+<h2 style="margin:0 0 14px;font:600 16px Outfit,sans-serif">Quatro frentes</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div style="padding:15px;border-radius:14px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="width:30px;height:30px;border-radius:8px;background:#E4F7F0;color:#0B6B4F;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif">C</div>
+<div style="font:500 13px/1.3 Outfit,sans-serif;margin-top:11px">Comunicação</div>
+<div style="font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Clarice · André</div>
+<div style="font:600 20px/1 Outfit,sans-serif;margin-top:12px;color:#136AA0">4<span style="font:400 11px Roboto,sans-serif;color:#7a827c"> abertas</span></div>
+<div style="height:4px;border-radius:2px;background:#EDEBE0;margin-top:9px"><div style="width:33%;height:4px;border-radius:2px;background:#20B388"></div></div>
+</div>
+<div style="padding:15px;border-radius:14px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="width:30px;height:30px;border-radius:8px;background:#E7F1F8;color:#0E4E76;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif">J</div>
+<div style="font:500 13px/1.3 Outfit,sans-serif;margin-top:11px">Jurídico</div>
+<div style="font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Ana Flávia</div>
+<div style="font:600 20px/1 Outfit,sans-serif;margin-top:12px;color:#136AA0">9<span style="font:400 11px Roboto,sans-serif;color:#7a827c"> abertas</span></div>
+<div style="height:4px;border-radius:2px;background:#EDEBE0;margin-top:9px"><div style="width:44%;height:4px;border-radius:2px;background:#20B388"></div></div>
+</div>
+<div style="padding:15px;border-radius:14px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="width:30px;height:30px;border-radius:8px;background:#E7F1F8;color:#0E4E76;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif">T</div>
+<div style="font:500 13px/1.3 Outfit,sans-serif;margin-top:11px">Tecnologia</div>
+<div style="font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Ailton · Mário</div>
+<div style="font:600 20px/1 Outfit,sans-serif;margin-top:12px;color:#136AA0">2<span style="font:400 11px Roboto,sans-serif;color:#7a827c"> abertas</span></div>
+<div style="height:4px;border-radius:2px;background:#EDEBE0;margin-top:9px"><div style="width:9%;height:4px;border-radius:2px;background:#20B388"></div></div>
+</div>
+<div style="padding:15px;border-radius:14px;background:#fff;border:1px solid rgba(20,32,28,.08)">
+<div style="width:30px;height:30px;border-radius:8px;background:#E4F7F0;color:#0B6B4F;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif">A</div>
+<div style="font:500 13px/1.3 Outfit,sans-serif;margin-top:11px">Administrativo</div>
+<div style="font:400 10.5px/1.4 Roboto,sans-serif;color:#7a827c;margin-top:3px">Gabriel · Carlos · Rhanon</div>
+<div style="font:600 20px/1 Outfit,sans-serif;margin-top:12px;color:#136AA0">4<span style="font:400 11px Roboto,sans-serif;color:#7a827c"> abertas</span></div>
+<div style="height:4px;border-radius:2px;background:#EDEBE0;margin-top:9px"><div style="width:29%;height:4px;border-radius:2px;background:#20B388"></div></div>
+</div>
+</div>
+<div style="margin-top:20px;padding:15px;border-radius:14px;background:#14201c;color:#FFF9E7">
+<div style="font:500 10.5px 'Roboto Mono',monospace;letter-spacing:.07em;text-transform:uppercase;color:#FF9AA8">Atenção</div>
+<div style="font:400 12.5px/1.55 Roboto,sans-serif;margin-top:8px;color:rgba(255,249,231,.86)">Três tarefas estão paradas esperando terceiros. A mais cara — <strong style="font-weight:500;color:#FFF9E7">R$ 38.000,00</strong> de marcenaria da recepção — depende de um termo que está na sua própria fila.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<p style="margin:26px 0 0;font:400 12px/1.6 Roboto,sans-serif;color:#6b736d">Próximos passos: “levar o bloco de bloqueios de <a href="#1b">1b</a> para dentro de <a href="#1a">1a</a>” · “transformar <a href="#1c">1c</a> em tela inicial” · “mostrar os documentos aguardando assinatura no painel”.</p>
+</section>
+
+<section id="spec" style="padding:44px 48px 60px;max-width:1180px">
+<div style="display:flex;align-items:baseline;gap:12px;margin-bottom:30px">
+<span style="font:600 10px 'Roboto Mono',monospace;padding:4px 8px;background:#14201c;color:#FFF9E7;border-radius:3px">SPEC</span>
+<span style="font:600 14px Outfit,sans-serif">Especificação — sistema, arquitetura e padrões de sincronização</span>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">1 · Sistema de design</h2>
+<p style="margin:0 0 22px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Paleta e tipografia vêm do brandbook PTSaq v1.0 (jun.26). A estrutura de página — hierarquia por escala e espaço em branco, sem molduras nem divisórias decorativas — segue o sistema Broadsheet do projeto. <strong style="font-weight:500">Aloevera Display não está disponível em web font;</strong> as telas usam Outfit como substituta de proporção equivalente. Textos longos usam Roboto, conforme o brandbook.</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:20px">
+<div style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(20,32,28,.08)"><div style="height:74px;background:#20B388"></div><div style="padding:12px 14px"><div style="font:500 13px Outfit,sans-serif">Verde Saquarema</div><div style="font:400 11.5px/1.6 'Roboto Mono',monospace;color:#6b736d;margin-top:4px">#20B388 · principal<br>conclusão, progresso, ações</div></div></div>
+<div style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(20,32,28,.08)"><div style="height:74px;background:#136AA0"></div><div style="padding:12px 14px"><div style="font:500 13px Outfit,sans-serif">Azul Mar</div><div style="font:400 11.5px/1.6 'Roboto Mono',monospace;color:#6b736d;margin-top:4px">#136AA0 · secundária<br>em execução, navegação</div></div></div>
+<div style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(20,32,28,.08)"><div style="height:74px;background:#FFF9E7;border-bottom:1px solid rgba(20,32,28,.08)"></div><div style="padding:12px 14px"><div style="font:500 13px Outfit,sans-serif">Branco Praia</div><div style="font:400 11.5px/1.6 'Roboto Mono',monospace;color:#6b736d;margin-top:4px">#FFF9E7 · neutra<br>fundo de todas as telas</div></div></div>
+<div style="background:#fff;border-radius:12px;overflow:hidden;border:1px solid rgba(20,32,28,.08)"><div style="height:74px;background:#D6455A"></div><div style="padding:12px 14px"><div style="font:500 13px Outfit,sans-serif">Coral de alerta</div><div style="font:400 11.5px/1.6 'Roboto Mono',monospace;color:#6b736d;margin-top:4px">#D6455A · semântica<br>bloqueio, conflito, atraso</div></div></div>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;overflow:hidden;margin-bottom:34px">
+<table style="width:100%;border-collapse:collapse;font:400 12.5px/1.5 Roboto,sans-serif">
+<thead><tr style="background:#F3F0E3;text-align:left"><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Valor na planilha</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Badge</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Fundo / texto</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Contraste</th></tr></thead>
+<tbody>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px"><code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Executado</code> · <code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Concluída</code></td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#E4F7F0;color:#0B6B4F;font:500 11px Outfit,sans-serif">Executado</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#E4F7F0 / #0B6B4F</td><td style="padding:11px 14px;color:#0B6B4F">7.1:1</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px"><code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Em execução</code> · <code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Em andamento</code></td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#E7F1F8;color:#0E4E76;font:500 11px Outfit,sans-serif">Em execução</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#E7F1F8 / #0E4E76</td><td style="padding:11px 14px;color:#0B6B4F">8.4:1</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px"><code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Não iniciado</code> · <code style="font-family:'Roboto Mono',monospace;font-size:11.5px">A iniciar</code></td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#EFEDE4;color:#5A5F58;font:500 11px Outfit,sans-serif">Não iniciado</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#EFEDE4 / #5A5F58</td><td style="padding:11px 14px;color:#0B6B4F">5.9:1</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px"><code style="font-family:'Roboto Mono',monospace;font-size:11.5px">Justificada</code> · bloqueada</td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#FBE9EC;color:#8F1B2E;font:500 11px Outfit,sans-serif">Justificada</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#FBE9EC / #8F1B2E</td><td style="padding:11px 14px;color:#0B6B4F">8.0:1</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">2 · Arquitetura de informação</h2>
+<p style="margin:0 0 18px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Quatro destinos na barra inferior. Detalhe de tarefa e de meta compartilham a mesma folha, porque compartilham as mesmas ações: mudar status e escrever observação.</p>
+<pre style="margin:0 0 34px;padding:20px 22px;background:#14201c;color:#D7E6DF;border-radius:12px;font:400 12px/1.85 'Roboto Mono',monospace;overflow-x:auto">Barra persistente (todas as telas)
+├── estado da conexão {ao vivo · sincronizando · offline + fila}
+├── sino de avisos (n)                 → Avisos
+└── avatar                             → Sessão / papel
+
+Início · Produção individual (raiz, pós-login)
+├── perfil + disponibilidade + 4 contadores
+├── Aguardando sua revisão (carrossel do Drive) → Documento
+├── Minha fila (ordenada por urgência)
+│   ├── banner âmbar “travada por …”          → item bloqueador
+│   ├── banner coral “ao concluir, libera …”
+│   └── ações de um toque + Anotar            → Detalhe
+├── Meus documentos                            → Documento
+└── Minha atividade
+
+Painel global
+├── Resumo do dia (entregas em 7 dias + avisos novos)
+├── KPI: % de metas · tarefas em execução · total orçado
+├── Carrossel "Precisa de atenção"  → Detalhe
+└── Lista de frentes                → Frente
+
+Frentes
+└── Frente {Comunicação · Jurídico · Tecnologia · Administrativo}
+    ├── Documentos em revisão nesta frente     → Documento
+    ├── aba Painel Operacional  → lista de tarefas   → Detalhe
+    ├── aba Plano de Trabalho   → lista de metas     → Detalhe
+    └── densidade {compacto · detalhado}
+
+Docs  (Repositório — pasta mestra do Drive)
+├── busca por título ou tipo
+├── filtro por escopo {4 frentes + Global}
+├── filtro por extensão {PDF · DOCX · XLSX · SVG}
+├── lista de documentos                → Detalhe do documento
+│   ├── prévia rápida (visualizador embutido)
+│   ├── fixar offline · compartilhar link · abrir no Drive
+│   └── vínculos → Tarefa ou Meta
+└── "Buscar documentos novos"
+
+Perfil e ajustes
+├── planilhas conectadas + "Sincronizar agora"
+├── comportamento {auto · somente Wi-Fi · offline}
+├── fila de envio (n)
+└── conflitos pendentes                → Resolução de conflito
+
+Detalhe (folha modal, sobre qualquer tela)
+├── metadados: responsável · prazo · frente · valor orçado
+├── presença ao vivo (quem está com o item aberto)
+├── callout de dependência             → tarefa bloqueadora
+├── histórico de edições (ator · campo · origem · hora)
+├── editar status  (grava na coluna D)
+├── editar observação (grava na coluna G)
+├── documentos vinculados              → Detalhe do documento
+└── link para a célula de origem no Google Sheets</pre>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">3 · Repositório de documentos</h2>
+<p style="margin:0 0 20px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">O módulo espelha a pasta mestra <span style="font-family:'Roboto Mono',monospace;font-size:12.5px">/folders/1rtRecy4IjFejSXOG7UHsVEYm-4h7QoBM</span> em modo somente leitura. O app nunca renomeia, move ou exclui arquivo; o que ele grava fica nas duas planilhas.</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:22px">
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Cartão de documento</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Ladrilho de extensão 42px (a cor vem do tipo de arquivo, não do departamento) · título em duas linhas no máximo · versão, data e tamanho numa linha só · badge de situação · contador de vínculos · marca de fixado offline.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Vínculo cruzado</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">O vínculo é bidirecional e vive no documento: a tarefa lista os arquivos, o arquivo lista tarefas e metas. Assim <em>Adesivação de salas</em> chega ao <em>Cerberus Brandbook</em> em um toque, e vice-versa.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Sincronização de arquivos</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Polling em segundo plano lê apenas metadados (nome, versão, data, proprietário) — barato e rápido. O binário só é baixado quando o usuário abre a prévia ou fixa offline. “Buscar documentos novos” força a leitura.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Offline</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Fixar guarda o arquivo no aparelho e o mantém atualizado enquanto houver rede. Sem rede, os fixados abrem normalmente; os demais aparecem esmaecidos com a data da última versão conhecida.</p>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;overflow:hidden;margin-bottom:34px">
+<table style="width:100%;border-collapse:collapse;font:400 12.5px/1.5 Roboto,sans-serif">
+<thead><tr style="background:#F3F0E3;text-align:left"><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Situação do documento</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Badge</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Fundo / texto</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Extensões</th></tr></thead>
+<tbody>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Aprovado</td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#E4F7F0;color:#0B6B4F;font:500 11px Outfit,sans-serif">Aprovado</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#E4F7F0 / #0B6B4F</td><td style="padding:11px 14px"><span style="display:inline-block;padding:3px 7px;border-radius:5px;background:#FBE9EC;color:#8F1B2E;font:600 10.5px 'Roboto Mono',monospace">PDF</span></td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Em revisão</td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#E7F1F8;color:#0E4E76;font:500 11px Outfit,sans-serif">Em revisão</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#E7F1F8 / #0E4E76</td><td style="padding:11px 14px"><span style="display:inline-block;padding:3px 7px;border-radius:5px;background:#E7F1F8;color:#0E4E76;font:600 10.5px 'Roboto Mono',monospace">DOCX</span></td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Aguardando assinatura</td><td style="padding:11px 14px"><span style="display:inline-block;padding:4px 9px;border-radius:20px;background:#FBF2D9;color:#7A5E08;font:500 11px Outfit,sans-serif">Aguardando assinatura</span></td><td style="padding:11px 14px;font-family:'Roboto Mono',monospace;font-size:11.5px;color:#6b736d">#FBF2D9 / #7A5E08</td><td style="padding:11px 14px"><span style="display:inline-block;padding:3px 7px;border-radius:5px;background:#E4F7F0;color:#0B6B4F;font:600 10.5px 'Roboto Mono',monospace">XLSX</span> <span style="display:inline-block;padding:3px 7px;border-radius:5px;background:#EFEDE4;color:#5A5F58;font:600 10.5px 'Roboto Mono',monospace">SVG</span></td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">4 · Padrões de sincronização</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:34px">
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#136AA0;letter-spacing:.07em;text-transform:uppercase">Leitura</div>
+<h3 style="margin:9px 0 8px;font:600 15px Outfit,sans-serif">Automática, com puxar para atualizar</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Polling a cada 60s em primeiro plano. O gesto de puxar existe como confirmação, não como obrigação: o usuário puxa quando quer certeza, não porque o app depende disso. A pílula no topo mostra sempre o horário do último dado confirmado, nunca “agora”.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#136AA0;letter-spacing:.07em;text-transform:uppercase">Escrita</div>
+<h3 style="margin:9px 0 8px;font:600 15px Outfit,sans-serif">Otimista, com fila visível</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">A tela reflete a edição imediatamente e a operação entra numa fila com estado próprio (<em>na fila · enviando · gravado</em>). Só as colunas Status e Observação são graváveis; fórmulas e colunas calculadas nunca são tocadas.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#D6455A;letter-spacing:.07em;text-transform:uppercase">Conflito</div>
+<h3 style="margin:9px 0 8px;font:600 15px Outfit,sans-serif">Escolha explícita, nunca silenciosa</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Quando a mesma célula muda dos dois lados, o app não decide. Mostra as duas versões com autor e horário e pede uma escolha. A versão descartada vira comentário na célula, então nada se perde.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<div style="font:500 10.5px 'Roboto Mono',monospace;color:#B8860B;letter-spacing:.07em;text-transform:uppercase">Offline</div>
+<h3 style="margin:9px 0 8px;font:600 15px Outfit,sans-serif">Leitura completa, escrita enfileirada</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Sem rede, tudo continua legível a partir do cache e a pílula fica âmbar com o horário do último dado. As edições ficam na fila e sobem sozinhas ao reconectar; o contador na barra inferior diz quantas.</p>
+</div>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">5 · O que os dados não trazem</h2>
+<p style="margin:0 0 12px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Três lacunas nas planilhas afetam diretamente o que a interface consegue mostrar. Nenhuma foi preenchida com número inventado.</p>
+<ul style="margin:0;padding-left:20px;max-width:72ch;font:400 13.5px/1.8 Roboto,sans-serif;color:#4d554f">
+<li><strong style="font-weight:500">Valor orçado:</strong> só a marcenaria da recepção (R$ 38.000,00) tem valor válido. As demais células da coluna F contêm números de linha, não moeda. O KPI de orçamento mostra a cobertura — <em>1 de 24</em> — junto do total.</li>
+<li><strong style="font-weight:500">Percentual da meta:</strong> a coluna G do Plano de Trabalho também traz sequências de linha (37, 42, 47, 51…), não progresso. As barras derivam da <em>Situação</em>: Concluída 100%, Em andamento 50%, A iniciar 0%.</li>
+<li><strong style="font-weight:500">Numeração das metas:</strong> existem 3.1.2 e 3.1.3 sem 3.1.1, e a meta 3.1 tem cronograma “Mês 24”. Reproduzido como está, com aviso na tela de detalhe.</li>
+</ul>
+
+<div style="margin-top:52px;padding-top:28px;border-top:1px solid rgba(20,32,28,.14)">
+<p style="margin:0 0 26px;max-width:72ch;font:400 12px/1.6 Roboto,sans-serif;color:#8a918b">Sections 6–9 are written in English, as requested. Product copy inside the app stays in pt-BR, matching the team that uses it.</p>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">6 · Real-time bi-directional engine</h2>
+<p style="margin:0 0 18px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Two channels, one direction each. Reads arrive over a persistent stream; writes leave over plain HTTPS and are confirmed by the same stream, so a change never appears twice.</p>
+<pre style="margin:0 0 20px;padding:20px 22px;background:#14201c;color:#D7E6DF;border-radius:12px;font:400 12px/1.85 'Roboto Mono',monospace;overflow-x:auto">READ PATH  (Sheets/Drive → device, target latency &lt; 2 s)
+
+  Google Sheets edit ─┐
+  Drive folder change ┤→ Drive push webhook → sync service
+                       → diff against last known revision
+                       → SSE frame to every subscribed device
+                       → local cache write → UI re-render
+
+WRITE PATH  (device → Sheets, target confirmation &lt; 3 s)
+
+  status / note edit → optimistic UI + local queue entry
+                     → POST /cells  {sheet, row, column, value,
+                                     baseRevision, actor}
+                     → guard: baseRevision matches?
+                          yes → batchUpdate on the three writable
+                                columns only, then SSE echo → "gravado"
+                          no  → 409 → conflict sheet opens on device</pre>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:34px">
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Transport</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Server-Sent Events, not WebSockets: the read path is one-way, SSE reconnects on its own, and it survives mobile network changes without a heartbeat protocol. The status bar shows <em>Sincronização ao vivo · SSE conectado</em> only while the stream is open — never as a decorative label.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Concurrency</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Presence is published per item, so opening a task announces it. When someone else holds the item — Rhanon in Sheets, Ana in the app — the detail sheet shows a live presence line before the edit controls, which is warning enough to prevent most collisions. The ones that get through are caught by the revision guard.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Formula protection</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">The write endpoint accepts three column keys and nothing else: <span style="font-family:'Roboto Mono',monospace;font-size:11.5px">Status</span>, <span style="font-family:'Roboto Mono',monospace;font-size:11.5px">Observações</span>, <span style="font-family:'Roboto Mono',monospace;font-size:11.5px">Percentual da meta</span>. Values go in as <span style="font-family:'Roboto Mono',monospace;font-size:11.5px">RAW</span>, never <span style="font-family:'Roboto Mono',monospace;font-size:11.5px">USER_ENTERED</span>, so a note beginning with “=” lands as text. Rows are addressed by a stable key column, not by index, so a sort in Sheets cannot misdirect a queued write.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Failure behaviour</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">A dropped stream degrades to 60-second polling and the bar turns amber; it never silently pretends to be live. Writes retry with exponential backoff and stay in the visible queue until the server echoes them back.</p>
+</div>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">7 · Notifications</h2>
+<p style="margin:0 0 16px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Four triggers, each routed to the smallest audience that can act on it. A person who cannot act on an event does not receive it.</p>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;overflow:hidden;margin-bottom:34px">
+<table style="width:100%;border-collapse:collapse;font:400 12.5px/1.5 Roboto,sans-serif">
+<thead><tr style="background:#F3F0E3;text-align:left"><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Trigger</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Fires when</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Goes to</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Delivery</th></tr></thead>
+<tbody>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Blocker alert</td><td style="padding:11px 14px">Status becomes <em>Justificada</em>, or a note names a dependency</td><td style="padding:11px 14px">Task owner, their department lead, executive</td><td style="padding:11px 14px">Push, immediate</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Dependency unlocked</td><td style="padding:11px 14px">A blocking task or document reaches <em>Executado</em> / <em>Aprovado</em></td><td style="padding:11px 14px">Owners of every item that named it as a blocker</td><td style="padding:11px 14px">Push, immediate</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Deadline</td><td style="padding:11px 14px">An open item is 7 days, then 1 day, from its <em>Prazo</em></td><td style="padding:11px 14px">Owner only</td><td style="padding:11px 14px">Bundled into the digest</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Daily digest</td><td style="padding:11px 14px">07:00, local time, weekdays</td><td style="padding:11px 14px">Everyone with at least one open item</td><td style="padding:11px 14px">Card on the dashboard + one push</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">8 · Roles and audit trail</h2>
+<p style="margin:0 0 16px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Everyone sees everything; editing follows the department. Cross-departmental visibility is the point of the app, so read access is never restricted — the lock is on write, and it is explained in place rather than hidden.</p>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;overflow:hidden;margin-bottom:20px">
+<table style="width:100%;border-collapse:collapse;font:400 12.5px/1.5 Roboto,sans-serif">
+<thead><tr style="background:#F3F0E3;text-align:left"><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Role</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">People</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Read</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Write</th><th style="padding:11px 14px;font:500 11px Outfit,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#5a625d">Admin</th></tr></thead>
+<tbody>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Executive / super-admin</td><td style="padding:11px 14px">André</td><td style="padding:11px 14px">All four fronts</td><td style="padding:11px 14px">All four fronts</td><td style="padding:11px 14px">Sync settings, conflict resolution, master audit log</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Department lead</td><td style="padding:11px 14px">Clarice · Ana Flávia · Ailton, Mário · Gabriel, Carlos, Rhanon</td><td style="padding:11px 14px">All four fronts</td><td style="padding:11px 14px">Own front only</td><td style="padding:11px 14px">Own front's audit log</td></tr>
+<tr style="border-top:1px solid rgba(20,32,28,.07)"><td style="padding:11px 14px">Contributor</td><td style="padding:11px 14px">Barbara · Alyne · Raphael Sanson</td><td style="padding:11px 14px">All four fronts</td><td style="padding:11px 14px">Items assigned to them</td><td style="padding:11px 14px">None</td></tr>
+</tbody>
+</table>
+</div>
+<p style="margin:0 0 34px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Every write produces one audit entry — actor, field, old value, new value, surface, timestamp — appended to a hidden log sheet and rendered as the <em>Histórico</em> timeline in the detail view. Entries are read-only for everyone, including the executive. A green marker means the edit came from Google Sheets, a blue one from the app, which is usually the first thing someone wants to know when two numbers disagree.</p>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">9 · Offline-first</h2>
+<p style="margin:0 0 16px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">The building is under renovation and cell coverage inside it is unreliable, so offline is the normal case, not the exception. Both spreadsheets, all document metadata and every pinned file live on the device; the app opens and works with the radio off.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">What the bar says</h3>
+<div style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:6px;background:#E4F7F0;color:#0B6B4F;font:500 10.5px 'Roboto Mono',monospace"><span style="width:6px;height:6px;border-radius:50%;background:#20B388"></span>Sincronização ao vivo · SSE conectado</div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:6px;background:#FBF2D9;color:#7A5E08;font:500 10.5px 'Roboto Mono',monospace"><span style="width:6px;height:6px;border-radius:50%;background:#E0A11B"></span>Sincronizando com o Google Drive…</div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border-radius:6px;background:#EFEDE4;color:#4A4F49;font:500 10.5px 'Roboto Mono',monospace"><span style="width:6px;height:6px;border-radius:50%;background:#9A9F97"></span>Offline · 3 edição(ões) na fila</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Cache</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Both sheets in full plus document metadata — roughly 1 MB. Pinned files add their own weight and are listed with their size before pinning, so nobody fills a phone by accident.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Queue</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Edits queue in order with three visible states — <em>na fila · enviando · gravado</em>. Two edits to the same cell collapse into the last one. On reconnect the queue drains oldest first; anything that fails the revision guard surfaces as a conflict rather than being dropped.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Honest staleness</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Offline, every screen keeps the timestamp of the data it is showing. The app never presents cached numbers as current — the cost of a wrong budget figure in a meeting is higher than the cost of an extra line of text.</p>
+</div>
+</div>
+
+<h2 style="margin:44px 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">10 · Authentication and onboarding</h2>
+<p style="margin:0 0 18px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Google Workspace sign-in is the primary path — the data already lives in Workspace, so a second credential store adds risk without adding access. Email and password exist as the fallback for staff without a corporate account yet, and both paths land in the same approval gate.</p>
+<pre style="margin:0 0 20px;padding:20px 22px;background:#14201c;color:#D7E6DF;border-radius:12px;font:400 12px/1.85 'Roboto Mono',monospace;overflow-x:auto">Splash
+└── Login
+    ├── Google corporate sign-in (OAuth 2.0, hosted domain pinned)
+    │   ├── domain matches  → session → Dashboard
+    │   └── domain unknown  → Pending approval
+    ├── Email + password (visibility toggle, 10-char minimum)
+    │   └── "Esqueci minha senha" → reset link to corporate inbox
+    └── Create account
+        ├── full name · corporate email · password · front
+        └── submit → Pending approval
+                     └── executive approves in-app → Dashboard
+
+Live connection chip is present on the login screen itself: the app
+states whether the server and Workspace are reachable BEFORE the user
+spends a credential on a request that cannot succeed.</pre>
+<p style="margin:0 0 34px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Pending accounts see no operational data at all — not a greyed-out shell, not a demo dataset. The approval queue lives on the executive's own production screen rather than in a separate admin console, because approving two accounts a month does not justify a second surface.</p>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">11 · Personal production dashboard</h2>
+<p style="margin:0 0 18px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">This is the home screen — first tab, and where every session lands after login. It answers one question, <em>what is mine today and what is in the way</em>, filtered to rows where <span style="font-family:'Roboto Mono',monospace;font-size:12.5px">Responsável</span> matches the signed-in person across both spreadsheets. The macro view moved to the third slot: a park-wide KPI is something a lead consults, not something they open the app for.</p>
+<p style="margin:0 0 18px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Dependencies are no longer a separate section. Each queue card carries its own state — an amber banner naming who is blocking it, or a coral one saying whose work it will unlock — so the person reads cause and action in the same glance instead of reconciling two lists. Sort order follows that: cards that block a colleague first, then blocked cards, then by deadline.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:22px">
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Profile header</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Avatar, name, job title, front tag, and an availability control with three states — <em>No escritório · Em campo / obra · Modo foco</em>. Availability is published on the same presence channel as item presence, so a colleague sees it before pinging.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Counters</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">Assigned · executed · pending · held. “Held” counts items with an unresolved dependency owned by someone else — the only number on the screen that another person can lower.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Active queue</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">One primary action per card, computed from the current status: <em>Iniciar</em> for a not-started item, <em>Marcar executado</em> for one in progress. A secondary <em>Anotar</em> opens the detail sheet with the note field. Rhanon, on a scaffold with one hand free, changes a status in one tap.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(20,32,28,.08);border-radius:12px;padding:18px">
+<h3 style="margin:0 0 8px;font:600 15px Outfit,sans-serif">Two dependency lists</h3>
+<p style="margin:0;font:400 12.5px/1.6 Roboto,sans-serif;color:#5a625d">“Esperando outras pessoas” in amber, “Pessoas esperando por você” in coral. The second list is deliberately the louder of the two: a person's own delay is visible to them before anyone has to ask.</p>
+</div>
+</div>
+<p style="margin:0 0 20px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Below the lists, the documents linked to that person's own items — Rhanon's carpentry drawings, Clarice's brandbook, Ana's contract drafts — then a personal activity log mirroring what was written back to Sheets. The session switcher carries seven people, including the two contributors, so the same layout can be checked against very different row sets.</p>
+<pre style="margin:0 0 34px;padding:20px 22px;background:#14201c;color:#D7E6DF;border-radius:12px;font:400 12px/1.8 'Roboto Mono',monospace;overflow-x:auto">SCREEN — Individual Member Production Dashboard
+Session: Rhanon · Equipe · Infraestrutura        390 × 844
+
+┌────────────────────────────────────────────┐
+│ ● Ao vivo · SSE conectado         3 online │ persistent bar, 26 px
+├────────────────────────────────────────────┤
+│ (R)  Rhanon                                │ avatar 52 px
+│      Marcenaria, sinalização e acabamento  │
+│      [ Administrativo ]                    │ front tag
+│                                            │
+│ ● Em campo / obra                          │ live availability
+│ [ No escritório ][ Em campo ][ Modo foco ] │ 3-way, 40 px targets
+│                                            │
+│ ┌── 1 ──┬── 0 ──┬── 1 ──┬── 1 ──┐          │
+│ │atrib. │exec.  │pend.  │travad.│          │ 4 counters
+│ └───────┴───────┴───────┴───────┘          │
+│                                            │
+│ AGUARDANDO SUA REVISÃO      2 documento(s) │ horizontal carousel
+│ ┌──────────────────┐┌────────────────────  │
+│ │[PDF] Projeto de  ││[PDF] Termo de cessão  │ from the Drive
+│ │ marcenaria       ││ de uso                │ master folder
+│ │ v3 · 21/08 16:20 ││ v3 · 26/08 16:20      │ single tap → sheet
+│ └──────────────────┘└────────────────────  │
+│                                            │
+│ MINHA FILA                sorted by urgency│
+│ ┌────────────────────────────────────────┐ │ amber border = blocked
+│ │ Recepção: marcenaria (projeto, logos,  │ │ Painel Operacional
+│ │ arquivos, LEDs)          [Em execução] │ │ row 4
+│ │ ┌────────────────────────────────────┐ │ │
+│ │ │ ● Travada por Ana Flávia · Termo   │ │ │ in-card blocker,
+│ │ │   de cessão de uso do espaço       │ │ │ tap → blocker item
+│ │ └────────────────────────────────────┘ │ │
+│ │ Infraestrutura e Espaço Físico  31/08  │ │ due in red, ≤ 7 d
+│ │ [ Marcar executado ][ Anotar ]         │ │ 44 px actions
+│ └────────────────────────────────────────┘ │
+│                                            │
+│ (session Ana Flávia, same card pattern)    │
+│ ┌────────────────────────────────────────┐ │ coral border =
+│ │ Termo de cessão de uso do espaço       │ │ blocking someone
+│ │ ┌────────────────────────────────────┐ │ │
+│ │ │ ● Ao concluir, libera "Adesivação  │ │ │ pulsing dot
+│ │ │   de salas" de Clarice             │ │ │
+│ │ └────────────────────────────────────┘ │ │
+│ │ [ Marcar executado ][ Anotar ]         │ │
+│ └────────────────────────────────────────┘ │
+│                                            │
+│ MEUS DOCUMENTOS                            │
+│ [PDF] Projeto de marcenaria da recepção    │ v3 · 21/08 · 9,4 MB
+│       [ Aguardando assinatura ]            │
+│ [PDF] Termo de cessão de uso do espaço     │ pinned offline
+│       [ Aguardando assinatura ]            │
+│                                            │
+│ MINHA ATIVIDADE                            │
+│ ● anotou "Precisa do Termo de cessão"      │ 26/08 · 16:12
+│ ● mudou o status para Em execução          │ 19/08 · 08:40
+├────────────────────────────────────────────┤
+│ [Início]  Frentes   Painel   Docs   Perfil │ 5 tabs, 48 px
+└────────────────────────────────────────────┘
+
+Same screen, session Clarice · Comunicação
+  counters              2 atribuídas · 1 exec. · 1 pend. · 1 travada
+  review carousel       Plano Mestre de Comunicação (v2, em revisão)
+  queue                 "Adesivação de salas" — Em execução, 30/09
+                        in-card banner: Travada por Ana Flávia ·
+                        Termo de cessão de uso do espaço
+  documents             Cerberus Brandbook (v1.0, pinned) ·
+                        Marca PTSaq — formatos principais (SVG)
+  activity              anotou "Aguardando Projeto Cerberus." 25/08
+                        mudou o status para Em execução · Sheets 11/08
+
+Empty states
+  no queue          "Nada na sua fila hoje."
+  nothing blocking  the section is omitted, not shown empty
+  contributor       cards outside their own rows open read-only,
+                    with the reason stated in place</pre>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">12 · Dependency unlock flow</h2>
+<pre style="margin:0 0 20px;padding:20px 22px;background:#14201c;color:#D7E6DF;border-radius:12px;font:400 12px/1.85 'Roboto Mono',monospace;overflow-x:auto">Clarice links her task to Ana's
+  detail sheet → "+ Vincular a outro item" → picker
+  → deps["Adesivação de salas"] = "Termo de cessão de uso"
+  → Ana is told her item now blocks someone
+
+Ana marks the blocker Executado
+  ├─ t+0 ms    optimistic UI on Ana's device, queue entry
+  ├─ t+~200 ms batchUpdate on column Status only
+  ├─ t+~400 ms server resolves reverse dependencies
+  ├─ t+&lt;1 s    SSE frame + push to Clarice's device
+  └─ on Clarice's screen
+       ├─ badge Bloqueada (amber) → Liberada (green), 4 pulses
+       ├─ toast "Ana Flávia concluiu 'Termo de cessão de uso'.
+       │         A tarefa 'Adesivação de salas' está liberada."
+       ├─ card moves out of "Esperando outras pessoas"
+       └─ "held" counter drops by one
+
+If Clarice is offline
+  the event waits in her inbox; the badge transition plays on the
+  next foreground, so she never misses the unlock — she just sees
+  it late, with the original timestamp attached.</pre>
+<p style="margin:0 0 34px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">The pulse runs four times and stops. An indefinite animation would still be moving hours later, when it means nothing.</p>
+
+<h2 style="margin:0 0 6px;font:600 22px/1.2 Outfit,sans-serif;letter-spacing:-.4px">13 · Data isolation by role</h2>
+<p style="margin:0 0 34px;max-width:72ch;font:400 13.5px/1.65 Roboto,sans-serif;color:#4d554f">Three scopes, one dataset. <strong style="font-weight:500">Personal</strong> filters to rows where the person is <span style="font-family:'Roboto Mono',monospace;font-size:12.5px">Responsável</span> and is the only scope with one-tap write actions. <strong style="font-weight:500">Department</strong> gives full read and write inside the person's own front. <strong style="font-weight:500">Cross-departmental</strong> is read-only with a ping action — visibility is never restricted, because a park where four fronts cannot see each other is the problem this app exists to fix. The executive holds all three plus account approval and conflict resolution. Filtering happens server-side; the device never receives rows it is not entitled to write, so an intercepted cache cannot be edited into the spreadsheet.</p>
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1000}}">
+const STATUS = {
+  'Executado':    {bg:'#E4F7F0', fg:'#0B6B4F', dot:'#20B388'},
+  'Concluída':    {bg:'#E4F7F0', fg:'#0B6B4F', dot:'#20B388'},
+  'Em execução':  {bg:'#E7F1F8', fg:'#0E4E76', dot:'#136AA0'},
+  'Em andamento': {bg:'#E7F1F8', fg:'#0E4E76', dot:'#136AA0'},
+  'Não iniciado': {bg:'#EFEDE4', fg:'#5A5F58', dot:'#9A9F97'},
+  'A iniciar':    {bg:'#EFEDE4', fg:'#5A5F58', dot:'#9A9F97'},
+  'Justificada':  {bg:'#FBE9EC', fg:'#8F1B2E', dot:'#D6455A'}
+};
+
+const DEPTS = [
+  {id:'com', short:'Comunicação',   name:'Comunicação',                              leads:'Clarice · André',              initial:'C'},
+  {id:'jur', short:'Jurídico',      name:'Jurídico-Institucional & Licitações',      leads:'Ana Flávia',                   initial:'J'},
+  {id:'tec', short:'Tecnologia',    name:'Tecnologia & Inovação',                    leads:'Ailton · Mário',               initial:'T'},
+  {id:'adm', short:'Administrativo',name:'Administrativo, Operações e Infraestrutura',leads:'Gabriel · Carlos · Rhanon',    initial:'A'}
+];
+
+// Painel Operacional — planilha "Infraestrutura PTSaq", atualizada 27/08/2026.
+// Datas convertidas do serial Excel. Orçamento só onde a célula traz moeda real.
+const TASKS = [
+  {id:'T1', d:'adm', frente:'Infraestrutura e Espaço Físico', title:'Recepção: marcenaria (projeto, logos, arquivos, LEDs); acompanhamento e qualidade.', owner:'Rhanon', status:'Em execução', due:'31/08/2026', dueDays:4, budget:'R$ 38.000,00', note:'Precisa do Termo de cessão de uso.', blockerKind:'Bloqueio jurídico', linked:'T8', meta:'2.4', cell:'Painel Operacional!B4'},
+  {id:'T2', d:'adm', frente:'Infraestrutura e Espaço Físico', title:'Correções no prédio: relatório, acompanhamento, elétrica e hidráulica.', owner:'Carlos', status:'Em execução', due:'31/08/2026', dueDays:4, cell:'Painel Operacional!B5'},
+  {id:'T3', d:'adm', frente:'Infraestrutura e Espaço Físico', title:'Sala temporária: mesa e cadeira.', owner:'Carlos', status:'Executado', due:'06/08/2026', cell:'Painel Operacional!B6'},
+  {id:'T4', d:'com', frente:'Infraestrutura e Espaço Físico', title:'Adesivação de salas.', owner:'Clarice', status:'Em execução', due:'30/09/2026', dueDays:34, note:'Aguardando Projeto Cerberus.', blockerKind:'Dependência externa', cell:'Painel Operacional!B7'},
+  {id:'T5', d:'com', frente:'Comunicação', title:'Comunicação: redes sociais (Agência Inova, PTSaq); logo vetorizada.', owner:'Clarice', status:'Executado', due:'—', cell:'Painel Operacional!B8'},
+  {id:'T6', d:'jur', frente:'Jurídico-Institucional', title:'Plano de negócios', owner:'Ana Flávia', status:'Executado', due:'11/08/2026', meta:'1.1', cell:'Painel Operacional!B9'},
+  {id:'T7', d:'jur', frente:'Jurídico-Institucional', title:'Oficializar o Conselho Técnico', owner:'Ana Flávia', status:'Em execução', due:'25/09/2026', dueDays:29, meta:'2.2', cell:'Painel Operacional!B10'},
+  {id:'T8', d:'jur', frente:'Jurídico-Institucional', title:'Termo de cessão de uso do espaço', owner:'Ana Flávia', status:'Em execução', due:'30/09/2026', dueDays:34, meta:'1.4', cell:'Painel Operacional!B11'},
+  {id:'T9', d:'jur', frente:'Jurídico-Institucional', title:'Lei de inovação de Saquarema', owner:'Ana Flávia', status:'Em execução', due:'31/10/2026', dueDays:65, note:'Depende da Assembleia Legislativa.', blockerKind:'Fora de governança', contested:true, cell:'Painel Operacional!D12'},
+  {id:'T10', d:'jur', frente:'Jurídico-Institucional', title:'Regimento interno', owner:'Ana Flávia', status:'Executado', due:'31/08/2026', meta:'2.3', cell:'Painel Operacional!B13'},
+  {id:'T11', d:'jur', frente:'Jurídico-Institucional', title:'Edital de chamamento das empresas', owner:'Ana Flávia', status:'Em execução', due:'31/08/2026', dueDays:4, meta:'3.4.1', cell:'Painel Operacional!B14'},
+  {id:'T12', d:'jur', frente:'Jurídico-Institucional', title:'Decreto de constituição do programa PTSaq', owner:'Ana Flávia', status:'Em execução', due:'15/10/2026', dueDays:49, cell:'Painel Operacional!B15'},
+  {id:'T13', d:'jur', frente:'Licitações e Contratações', title:'Licitação de segurança', owner:'Ana Flávia', status:'Em execução', due:'10/10/2026', dueDays:44, cell:'Painel Operacional!B16'},
+  {id:'T14', d:'jur', frente:'Licitações e Contratações', title:'Contratação de internet', owner:'Ana Flávia', status:'Em execução', due:'—', cell:'Painel Operacional!B17'},
+  {id:'T15', d:'jur', frente:'Licitações e Contratações', title:'Licitação de mobiliário', owner:'Ana Flávia', status:'Executado', due:'—', cell:'Painel Operacional!B18'},
+  {id:'T16', d:'jur', frente:'Licitações e Contratações', title:'Licitação de computadores', owner:'Ana Flávia', status:'Executado', due:'—', cell:'Painel Operacional!B19'},
+  {id:'T17', d:'jur', frente:'Licitações e Contratações', title:'Licitação de limpeza', owner:'Ana Flávia', status:'Executado', due:'—', cell:'Painel Operacional!B20'},
+  {id:'T18', d:'adm', frente:'Mapeamento e Pesquisa', title:'Mapeamento do ecossistema de inovação', owner:'Gabriel, Mário', status:'Executado', due:'—', meta:'1.9', cell:'Painel Operacional!B21'},
+  {id:'T19', d:'adm', frente:'Mapeamento e Pesquisa', title:'Mapeamento de empresas / clientes', owner:'Gabriel, Mário', status:'Executado', due:'—', meta:'1.9', cell:'Painel Operacional!B22'},
+  {id:'T20', d:'tec', frente:'Capacitação / Geral', title:'Plano de estudos', owner:'Geral', status:'Em execução', due:'—', cell:'Painel Operacional!B23'},
+  {id:'T21', d:'tec', frente:'Infraestrutura e Espaço Físico', title:'Sala de podcast: estruturação do espaço', owner:'Ailton, Clarice', status:'Não iniciado', due:'—', meta:'2.5', cell:'Painel Operacional!B24'},
+  {id:'T22', d:'jur', frente:'Jurídico-Institucional', title:'Verificar e viabilizar a entrega do plano de negócios', owner:'Ana Flávia', status:'Em execução', due:'—', cell:'Painel Operacional!B25'},
+  {id:'T23', d:'jur', frente:'Jurídico-Institucional', title:'Plano de viabilidade econômico-financeira', owner:'Ana Flávia', status:'Não iniciado', due:'31/08/2026', dueDays:4, meta:'1.2', cell:'Painel Operacional!B26'},
+  {id:'T24', d:'adm', frente:'Infraestrutura e Espaço Físico', title:'Desenvolver projeto arquitetônico da área de convivência', owner:'Barbara', status:'Em execução', due:'—', cell:'Painel Operacional!B27'}
+];
+
+// Plano de Trabalho — situação preservada; percentual derivado da situação
+// (a coluna G da planilha traz números de linha, não progresso).
+const METAS = [
+  {id:'1.1', d:'jur', title:'Plano de Negócios Integrado', owner:'Ana', sched:'Mês 4', status:'Concluída'},
+  {id:'1.2', d:'jur', title:'Estudo de Viabilidade Econômico Financeira — estrutura, valores, parâmetros', owner:'Ana', sched:'Mês 5', status:'A iniciar', due:'15/09/2026'},
+  {id:'1.3', d:'jur', title:'Planejamento Estratégico de metas e indicadores', owner:'Ana', sched:'Mês 1 ao 6', status:'A iniciar', due:'30/09/2026'},
+  {id:'1.4', d:'jur', title:'Estudo jurídico e operacional de cessão de uso', owner:'Ana', sched:'Mês 5, 6 e 7', status:'Em andamento'},
+  {id:'1.7', d:'com', title:'Plano Mestre de Comunicação', owner:'Clarice, André', sched:'Mês 3 ao 9', status:'Em andamento', due:'05/09/2026'},
+  {id:'1.8', d:'com', title:'Estratégia de Disseminação Científica', owner:'Clarice', sched:'Mês 5 ao 10', status:'Em andamento'},
+  {id:'1.9', d:'adm', title:'Mapeamento de Clusters', owner:'Gabriel', sched:'Mês 6 ao 12', status:'Em andamento'},
+  {id:'2.1', d:'adm', title:'Implantação da equipe técnica', owner:'André', sched:'Mês 1, 2 e 3', status:'Em andamento', due:'30/11/2026'},
+  {id:'2.2', d:'jur', title:'Instituição do Comitê Técnico Científico — reunião pendente', owner:'Ana', sched:'Mês 2, 3 e 4', status:'Em andamento', due:'30/09/2026'},
+  {id:'2.3', d:'jur', title:'Elaboração de normas e regimento interno — revisão e procedimentos internos', owner:'Ana', sched:'Mês 4, 5 e 6', status:'Em andamento', due:'04/09/2026'},
+  {id:'2.4', d:'adm', title:'Ambientação mínima dos prédios disponibilizados', owner:'Barbara', sched:'Mês 1 ao 6', status:'Em andamento', due:'30/09/2026'},
+  {id:'2.5', d:'tec', title:'Estruturar espaços institucionais de atendimento, coworking e reunião', owner:'Ailton', sched:'Mês 1 ao 6', status:'Em andamento', due:'30/09/2026'},
+  {id:'2.6', d:'tec', title:'Implantar infraestrutura de conectividade e rede lógica básica', owner:'Ailton', sched:'Mês 1 ao 7', status:'A iniciar', due:'07/09/2026'},
+  {id:'2.7', d:'adm', title:'Instituir sistema de controle e protocolo da OS', owner:'Alyne', sched:'Mês 6, 7 e 8', status:'Em andamento'},
+  {id:'2.8', d:'com', title:'Criação da identidade visual provisória · Cerberus', owner:'Clarice', sched:'Mês 3, 4 e 5', status:'Concluída'},
+  {id:'2.9', d:'com', title:'Site institucional', owner:'Clarice', sched:'Mês 4, 5 e 6', status:'Concluída'},
+  {id:'3.1', d:'adm', title:'Criação e operacionalização da incubadora de empresas', owner:'Barbara', sched:'Mês 24', status:'A iniciar', flag:'Cronograma “Mês 24” fora do horizonte do plano; confirmar com a coordenação.'},
+  {id:'3.1.2', d:'adm', title:'Implantar estrutura física e modelo de operação', owner:'Barbara / Sanson', sched:'Mês 1 ao 10', status:'A iniciar', flag:'Numeração sem 3.1.1 na planilha de origem.'},
+  {id:'3.1.3', d:'adm', title:'Realizar processo seletivo para incubação', owner:'Raphael Sanson', sched:'Mês 10, 11 e 12', status:'A iniciar'},
+  {id:'3.2', d:'jur', title:'Implementação do Programa Sandbox Saquarema', owner:'Ana', sched:'—', status:'A iniciar'},
+  {id:'3.2.1', d:'jur', title:'Regulamentar e lançar o Sandbox', owner:'Ana', sched:'Mês 4 a 10', status:'A iniciar'},
+  {id:'3.2.2', d:'jur', title:'Selecionar e implementar projetos piloto', owner:'Ana / Clarice / Mário', sched:'Mês 10 a 14', status:'Em andamento'},
+  {id:'3.3', d:'tec', title:'Programa de capacitação para profissões do futuro', owner:'Ailton', sched:'—', status:'A iniciar'},
+  {id:'3.3.1', d:'tec', title:'Elaborar e lançar trilhas formativas tecnológicas', owner:'Ailton', sched:'Mês 5 a 10', status:'A iniciar'},
+  {id:'3.3.2', d:'tec', title:'Executar capacitações e formações técnicas', owner:'Ailton', sched:'Mês 10 a 16', status:'A iniciar'},
+  {id:'3.4', d:'jur', title:'Programa de residência de empresas de base tecnológica', owner:'—', sched:'—', status:'A iniciar'},
+  {id:'3.4.1', d:'jur', title:'Estruturar edital de residência', owner:'Ana', sched:'Mês 1 a 10', status:'Em andamento'},
+  {id:'3.4.2', d:'tec', title:'Selecionar empresas residentes', owner:'Ailton', sched:'Mês 10 a 15', status:'A iniciar'},
+  {id:'4.1.1', d:'tec', title:'Firmar parcerias técnicas e científicas', owner:'Ailton', sched:'Mês 1 a 12', status:'Em andamento'},
+  {id:'4.1.2', d:'tec', title:'Projetos P&D com ICTs em andamento', owner:'Ailton', sched:'Mês 1 a 18', status:'A iniciar'},
+  {id:'4.2.1', d:'adm', title:'Implantar equipe e estrutura de captação', owner:'André', sched:'Mês 1 a 6', status:'A iniciar'},
+  {id:'4.2.2', d:'adm', title:'Submeter projetos a agências de fomento', owner:'André', sched:'Mês 1 a 24', status:'A iniciar'},
+  {id:'4.3.1', d:'com', title:'Agenda de Eventos de Difusão Tecnológica', owner:'Clarice', sched:'Mês 1 a 24', status:'Em andamento'},
+  {id:'4.3.2', d:'tec', title:'Engajar estudantes e empreendedores locais', owner:'Ailton / Mário', sched:'Mês 1 a 24', status:'A iniciar'}
+];
+
+// Repositório institucional — pasta mestra do Drive
+// /folders/1rtRecy4IjFejSXOG7UHsVEYm-4h7QoBM
+const DOC_STATUS = {
+  'Aprovado':              {bg:'#E4F7F0', fg:'#0B6B4F'},
+  'Em revisão':            {bg:'#E7F1F8', fg:'#0E4E76'},
+  'Aguardando assinatura': {bg:'#FBF2D9', fg:'#7A5E08'}
+};
+const FILE_INK = {PDF:{bg:'#FBE9EC',fg:'#8F1B2E'}, DOCX:{bg:'#E7F1F8',fg:'#0E4E76'}, XLSX:{bg:'#E4F7F0',fg:'#0B6B4F'}, SVG:{bg:'#EFEDE4',fg:'#5A5F58'}, PNG:{bg:'#EFEDE4',fg:'#5A5F58'}};
+
+const DOCS = [
+  {id:'D1', d:'jur', type:'PDF', title:'Termo de cessão de uso do espaço', v:'v3', up:'26/08/2026 · 16:20', size:'1,4 MB', status:'Aguardando assinatura', tasks:['T8','T1'], note:'Duas assinaturas pendentes: Prefeitura e PTSaq.'},
+  {id:'D2', d:'jur', type:'DOCX', title:'Decreto de constituição do programa PTSaq', v:'v2', up:'25/08/2026 · 11:05', size:'86 KB', status:'Em revisão', tasks:['T12']},
+  {id:'D3', d:'jur', type:'PDF', title:'Edital de chamamento das empresas', v:'v5', up:'24/08/2026 · 09:47', size:'2,1 MB', status:'Em revisão', tasks:['T11','3.4.1']},
+  {id:'D4', d:'jur', type:'DOCX', title:'Lei de inovação de Saquarema — minuta', v:'v7', up:'22/08/2026 · 18:33', size:'124 KB', status:'Aguardando assinatura', tasks:['T9'], note:'Em tramitação na Assembleia Legislativa.'},
+  {id:'D5', d:'jur', type:'PDF', title:'Regimento interno', v:'v1', up:'18/08/2026 · 14:12', size:'640 KB', status:'Aprovado', tasks:['T10','2.3']},
+  {id:'D6', d:'jur', type:'PDF', title:'Plano de Negócios Integrado', v:'v4', up:'11/08/2026 · 10:02', size:'5,8 MB', status:'Aprovado', tasks:['T6','1.1']},
+  {id:'D7', d:'com', type:'PDF', title:'Cerberus Brandbook — Saquarema', v:'v1.0', up:'19/06/2026 · 08:30', size:'18,2 MB', status:'Aprovado', tasks:['T4','2.8']},
+  {id:'D8', d:'com', type:'DOCX', title:'Plano Mestre de Comunicação', v:'v2', up:'23/08/2026 · 17:41', size:'210 KB', status:'Em revisão', tasks:['1.7']},
+  {id:'D9', d:'com', type:'SVG', title:'Marca PTSaq — formatos principais', v:'v1', up:'19/06/2026 · 08:30', size:'320 KB', status:'Aprovado', tasks:['T5']},
+  {id:'D10', d:'adm', type:'PDF', title:'Projeto de marcenaria da recepção', v:'v3', up:'21/08/2026 · 15:58', size:'9,4 MB', status:'Aguardando assinatura', tasks:['T1','2.4'], note:'Liberação condicionada ao Termo de cessão.'},
+  {id:'D11', d:'adm', type:'PDF', title:'Planta da área de convivência', v:'v1', up:'20/08/2026 · 12:09', size:'7,7 MB', status:'Em revisão', tasks:['T24']},
+  {id:'D12', d:'adm', type:'XLSX', title:'Mapeamento do ecossistema de inovação', v:'v2', up:'15/08/2026 · 16:44', size:'1,1 MB', status:'Aprovado', tasks:['T18','1.9']},
+  {id:'D13', d:'tec', type:'PDF', title:'Especificação de rede e conectividade', v:'v2', up:'23/08/2026 · 10:26', size:'3,2 MB', status:'Em revisão', tasks:['2.6']},
+  {id:'D14', d:'tec', type:'DOCX', title:'Trilhas formativas tecnológicas — ementa', v:'v1', up:'19/08/2026 · 09:15', size:'96 KB', status:'Em revisão', tasks:['3.3.1']},
+  {id:'D15', d:'glo', type:'XLSX', title:'Painel Operacional', v:'—', up:'27/08/2026 · 09:41', size:'480 KB', status:'Aprovado', tasks:[]},
+  {id:'D16', d:'glo', type:'XLSX', title:'Plano de Trabalho', v:'—', up:'26/08/2026 · 17:02', size:'512 KB', status:'Aprovado', tasks:[]},
+  {id:'D17', d:'glo', type:'PDF', title:'Estatuto do Parque Tecnológico de Saquarema', v:'v2', up:'10/08/2026 · 11:30', size:'1,9 MB', status:'Aprovado', tasks:['1.1']}
+];
+
+const DOC_SCOPES = [{id:'all',label:'Todos'},{id:'com',label:'Comunicação'},{id:'jur',label:'Jurídico'},{id:'tec',label:'Tecnologia'},{id:'adm',label:'Administrativo'},{id:'glo',label:'Global'}];
+const DOC_TYPES = ['Todos','PDF','DOCX','XLSX','SVG'];
+
+const USERS = [
+  {id:'andre',   name:'André',       role:'admin', title:'Executivo · Super-admin', dept:null,  scope:'Todas as frentes · gestão de sync · log mestre'},
+  {id:'ana',     name:'Ana Flávia',  role:'lead',  title:'Líder · Jurídico',        dept:'jur', scope:'Edita Jurídico · lê as demais'},
+  {id:'clarice', name:'Clarice',     role:'lead',  title:'Líder · Comunicação',     dept:'com', scope:'Edita Comunicação · lê as demais'},
+  {id:'ailton',  name:'Ailton',      role:'lead',  title:'Líder · Tecnologia',      dept:'tec', scope:'Edita Tecnologia · lê as demais'},
+  {id:'gabriel', name:'Gabriel',     role:'lead',  title:'Líder · Administrativo',  dept:'adm', scope:'Edita Administrativo · lê as demais'},
+  {id:'rhanon',  name:'Rhanon',      role:'contrib', title:'Equipe · Infraestrutura', dept:'adm', scope:'Edita os próprios itens · lê tudo'},
+  {id:'carlos',  name:'Carlos',      role:'contrib', title:'Equipe · Obras e manutenção', dept:'adm', scope:'Edita os próprios itens · lê tudo'}
+];
+
+const JOBS = {
+  andre: 'Diretor executivo', ana: 'Coordenadora jurídica e de licitações',
+  clarice: 'Coordenadora de comunicação', ailton: 'Coordenador de tecnologia e inovação',
+  gabriel: 'Coordenador administrativo e de infraestrutura',
+  rhanon: 'Marcenaria, sinalização e acabamento', carlos: 'Obras, elétrica e hidráulica'
+};
+const AVAIL = [
+  {id:'office', label:'No escritório', bg:'#E4F7F0', fg:'#0B6B4F', dot:'#20B388'},
+  {id:'field',  label:'Em campo / obra', bg:'#FBF2D9', fg:'#7A5E08', dot:'#E0A11B'},
+  {id:'focus',  label:'Modo foco', bg:'#E7F1F8', fg:'#0E4E76', dot:'#136AA0'}
+];
+
+// Quem está com o item aberto agora (presença via canal em tempo real)
+const PRESENCE = {T8: {who: 'Ana Flávia', where: 'no aplicativo'}, T1: {who: 'Rhanon', where: 'no Google Sheets'}};
+
+const AUDIT = {
+  T1: [{who:'Rhanon', what:'anotou “Precisa do Termo de cessão de uso.”', via:'Aplicativo', when:'26/08 · 16:12'},
+       {who:'Rhanon', what:'mudou o status para Em execução', via:'Aplicativo', when:'19/08 · 08:40'},
+       {who:'André', what:'lançou o valor orçado de R$ 38.000,00', via:'Google Sheets', when:'12/08 · 11:03'}],
+  T8: [{who:'Ana Flávia', what:'mudou o prazo para 30/09/2026', via:'Google Sheets', when:'27/08 · 09:22'},
+       {who:'Ana Flávia', what:'mudou o status para Em execução', via:'Aplicativo', when:'21/08 · 14:55'}],
+  T9: [{who:'André', what:'mudou o status para Justificada', via:'Google Sheets', when:'27/08 · 09:41'},
+       {who:'Ana Flávia', what:'mudou o status para Em execução', via:'Aplicativo', when:'27/08 · 09:38'},
+       {who:'Ana Flávia', what:'anotou “Depende da Assembleia Legislativa.”', via:'Aplicativo', when:'14/08 · 10:07'}],
+  T4: [{who:'Clarice', what:'anotou “Aguardando Projeto Cerberus.”', via:'Aplicativo', when:'25/08 · 13:30'},
+       {who:'Clarice', what:'mudou o status para Em execução', via:'Google Sheets', when:'11/08 · 09:14'}]
+};
+
+const NOTIFS = [
+  {id:'N1', kind:'Bloqueio', tone:'alert', title:'“Lei de inovação de Saquarema” foi marcada como Justificada', body:'André alterou o status na planilha às 09:41. A tarefa é sua, Ana Flávia.', when:'há 4 min', to:['ana','andre'], task:'T9'},
+  {id:'N2', kind:'Dependência liberada', tone:'good', title:'O Termo de cessão de uso saiu da fila de assinatura', body:'Com o termo assinado, “Adesivação de salas” e a marcenaria da recepção destravam.', when:'há 1 h', to:['clarice','andre','gabriel'], task:'T4'},
+  {id:'N3', kind:'Prazo', tone:'alert', title:'Três entregas vencem em 31/08', body:'Correções no prédio · Edital de chamamento · Plano de viabilidade econômico-financeira.', when:'hoje · 07:00', to:['ana','andre','gabriel'], task:'T23'},
+  {id:'N4', kind:'Documento', tone:'neutral', title:'Nova versão do Edital de chamamento (v5)', body:'Ana Flávia subiu o arquivo na pasta mestra do Drive.', when:'ontem · 09:47', to:['ana','andre'], doc:'D3'}
+];
+
+// Dependências explícitas entre itens: chave = item bloqueado, valor = item bloqueador
+const DEFAULT_DEPS = {T4: 'T8', T1: 'T8', T11: 'T12'};
+
+const PENDING_ACCOUNTS = [
+  {id:'P1', name:'Mário Lemos', email:'mario.lemos@saquarema.rj.gov.br', dept:'tec', when:'há 2 h'},
+  {id:'P2', name:'Bárbara Nunes', email:'barbara.nunes@saquarema.rj.gov.br', dept:'adm', when:'ontem'}
+];
+
+const FEED_SEED = [
+  {who:'Carlos', what:'atualizou o relatório de correções no prédio', when:'há 2 min', dept:'adm'},
+  {who:'Clarice', what:'anexou a v5 do Edital ao repositório', when:'há 18 min', dept:'com'},
+  {who:'André', what:'marcou “Lei de inovação” como Justificada na planilha', when:'há 24 min', dept:'jur'},
+  {who:'Ailton', what:'abriu a meta 2.6 · conectividade', when:'há 41 min', dept:'tec'}
+];
+
+const pctOf = s => s === 'Concluída' ? 100 : s === 'Em andamento' ? 50 : 0;
+
+class Component extends DCLogic {
+  state = {
+    screen: 'mine', dept: 'jur', tab: 'painel', dense: 'detailed',
+    sel: null, selType: 'task', noteDraft: '', dirty: false,
+    over: {},            // id -> {status, note}
+    queue: [], sync: 'ok', auto: true, wifi: false, offline: false,
+    conflict: false, conflictPick: 'mine', conflictDone: false, toast: '',
+    docQ: '', docScope: 'all', docType: 'Todos', docSel: null, docPreview: false, pinned: {D1: true, D7: true},
+    user: 'ana', notifOpen: false, roleOpen: false, read: {},
+    auth: 'login', email: 'ana.flavia@saquarema.rj.gov.br', pw: 'ptsaq2026', showPw: false,
+    regName: '', regEmail: '', regPw: '', regDept: '',
+    deps: {...DEFAULT_DEPS}, depPicker: false, unlocked: {}, feed: FEED_SEED, approved: {},
+    avail: 'office', quickNote: null
+  };
+
+  unlockCheck(taskId, newStatus) {
+    if (newStatus !== 'Executado' && newStatus !== 'Concluída') return;
+    const freed = Object.keys(this.state.deps).filter(k => this.state.deps[k] === taskId);
+    if (!freed.length) return;
+    const src = TASKS.find(t => t.id === taskId);
+    const tgt = TASKS.find(t => t.id === freed[0]);
+    this.setState(s => ({unlocked: freed.reduce((a, k) => (a[k] = true, a), {...s.unlocked})}));
+    if (src && tgt) this.flash(this.me().name + ' concluiu “' + src.title.replace(/\.$/, '') + '”. A tarefa “' + tgt.title.replace(/\.$/, '') + '” está liberada.');
+  }
+
+  me() { return USERS.find(u => u.id === this.state.user) || USERS[0]; }
+  canEdit(deptId, owner) {
+    const u = this.me();
+    if (u.role === 'admin') return true;
+    if (u.dept !== deptId) return false;
+    if (u.role === 'contrib') return (owner || '').includes(u.name.split(' ')[0]);
+    return true;
+  }
+
+  openDoc(id) { this.setState({docSel: id, docPreview: false}); }
+
+  componentWillUnmount() { clearTimeout(this._t); clearTimeout(this._q); }
+
+  flash(text) {
+    clearTimeout(this._t);
+    this.setState({toast: text});
+    this._t = setTimeout(() => this.setState({toast: ''}), 2600);
+  }
+
+  task(id) { const t = TASKS.find(x => x.id === id); return t ? {...t, ...(this.state.over[id] || {})} : null; }
+  meta(id) { const m = METAS.find(x => x.id === id); return m ? {...m, ...(this.state.over[id] || {})} : null; }
+  cur() { return this.state.selType === 'task' ? this.task(this.state.sel) : this.meta(this.state.sel); }
+
+  open(type, id) {
+    const rec = type === 'task' ? this.task(id) : this.meta(id);
+    this.setState({sel: id, selType: type, noteDraft: (rec && rec.note) || '', dirty: false});
+  }
+
+  pill(status) {
+    const s = STATUS[status] || STATUS['A iniciar'];
+    return 'display:inline-block;flex:none;padding:4px 9px;border-radius:20px;white-space:nowrap;background:' + s.bg + ';color:' + s.fg + ';font:500 10.5px Outfit,sans-serif';
+  }
+
+  enqueue(label, detail) {
+    const item = {key: Date.now() + Math.random(), title: label, detail, state: this.state.offline ? 'na fila' : 'enviando',
+      icon: this.state.offline ? '⏳' : '↑',
+      iconStyle: 'width:26px;height:26px;flex:none;border-radius:7px;background:#FBF2D9;color:#8A6A0B;display:flex;align-items:center;justify-content:center;font-size:12px'};
+    this.setState(s => ({queue: [item, ...s.queue], sync: s.offline ? 'offline' : 'pending'}));
+    if (!this.state.offline) {
+      clearTimeout(this._q);
+      this._q = setTimeout(() => this.setState({queue: [], sync: 'ok'}), 1800);
+    }
+  }
+
+  save = () => {
+    const rec = this.cur();
+    if (!rec) return;
+    if (rec.contested && !this.state.conflict) { this.setState({conflict: true}); return; }
+    this.setState(s => ({over: {...s.over, [s.sel]: {...(s.over[s.sel] || {}), note: s.noteDraft}}, dirty: false}));
+    this.enqueue(rec.title, 'Status e observação · ' + (rec.cell || 'Plano de Trabalho!' + rec.id));
+    this.flash(this.state.offline ? 'Guardado. Sobe assim que houver rede.' : 'Enviado para a planilha.');
+  };
+
+  setStatus = (v) => {
+    const id = this.state.sel;
+    this.setState(s => ({over: {...s.over, [id]: {...(s.over[id] || {}), status: v}}, dirty: true,
+      feed: [{who: this.me().name, what: 'mudou o status de um item para ' + v, when: 'agora', dept: this.me().dept || 'jur'}, ...s.feed].slice(0, 8)}));
+    this.unlockCheck(id, v);
+  };
+
+  renderVals() {
+    const st = this.state;
+    const all = TASKS.map(t => ({...t, ...(st.over[t.id] || {})}));
+    const metas = METAS.map(m => ({...m, ...(st.over[m.id] || {})}));
+
+    const shapeTask = (t) => ({
+      ...t,
+      detailed: st.dense === 'detailed',
+      hasNote: !!t.note, hasBudget: !!t.budget,
+      dueLabel: t.due && t.due !== '—' ? t.due : 'sem prazo',
+      dueStyle: 'font:400 11.5px Roboto,sans-serif;color:' + (t.dueDays != null && t.dueDays <= 7 ? '#D6455A' : '#7a827c'),
+      status: st.unlocked[t.id] ? 'Liberada' : t.status,
+      pillStyle: st.unlocked[t.id]
+        ? 'display:inline-block;flex:none;padding:4px 9px;border-radius:20px;white-space:nowrap;background:#20B388;color:#08281f;font:500 10.5px Outfit,sans-serif;animation:pulsedot 1.4s ease-in-out 4'
+        : this.pill(t.status),
+      cardStyle: 'width:100%;text-align:left;padding:' + (st.dense === 'detailed' ? '14px' : '11px 13px') +
+        ';border-radius:12px;border:1px solid ' + (t.note ? '#F2C9CF' : 'rgba(20,32,28,.08)') + ';background:#fff;cursor:pointer;display:block',
+      open: () => this.open('task', t.id)
+    });
+
+    const shapeMeta = (m) => {
+      const p = pctOf(m.status);
+      return {...m, schedule: m.sched, pctLabel: p + '%',
+        pillStyle: this.pill(m.status),
+        barStyle: 'display:block;height:5px;border-radius:3px;width:' + p + '%;background:' + (p === 100 ? '#20B388' : '#136AA0'),
+        cardStyle: 'width:100%;text-align:left;padding:14px;border-radius:12px;border:1px solid rgba(20,32,28,.08);background:#fff;cursor:pointer;display:block',
+        open: () => this.open('meta', m.id)};
+    };
+
+    const doneMetas = metas.filter(m => m.status === 'Concluída').length;
+    const runMetas = metas.filter(m => m.status === 'Em andamento').length;
+    const metaPct = Math.round(doneMetas / metas.length * 100);
+    const activeTasks = all.filter(t => t.status === 'Em execução').length;
+    const blocked = all.filter(t => t.note);
+
+    const dept = DEPTS.find(d => d.id === st.dept) || DEPTS[0];
+    const deptTasks = all.filter(t => t.d === st.dept);
+    const deptMetas = metas.filter(m => m.d === st.dept);
+
+    const me = this.me();
+    const first = me.name.split(' ')[0];
+    const mine = all.filter(t => (t.owner || '').includes(first));
+    const rec = this.cur();
+    const recDept = rec ? rec.d : null;
+    const editable = rec ? this.canEdit(recDept, rec.owner) : false;
+    const presence = rec ? PRESENCE[st.sel] : null;
+    const showPresence = !!(presence && presence.who !== me.name);
+    const depId = rec ? st.deps[st.sel] : null;
+    const depRaw = depId ? TASKS.find(t => t.id === depId) : null;
+    const depBlocker = depRaw ? {...depRaw, ...(st.over[depId] || {})} : null;
+    const mineIds = mine.map(t => t.id);
+    const waitingOn = mine.map(t => {
+      const bid = st.deps[t.id];
+      if (!bid || st.unlocked[t.id]) return null;
+      const b = TASKS.find(x => x.id === bid);
+      if (!b) return null;
+      const bb = {...b, ...(st.over[bid] || {})};
+      if ((bb.owner || '').includes(first)) return null;
+      return {mine: t, blocker: bb};
+    }).filter(Boolean);
+    const blocking = Object.keys(st.deps).map(k => {
+      const bid = st.deps[k];
+      if (!mineIds.includes(bid)) return null;
+      const w = TASKS.find(x => x.id === k);
+      const b = all.find(x => x.id === bid);
+      if (!w || !b || b.status === 'Executado') return null;
+      return {mine: b, waiter: {...w, ...(st.over[k] || {})}};
+    }).filter(Boolean);
+    const myDocs = DOCS.filter(dd => dd.tasks.some(x => mineIds.includes(x)));
+    const signDocs = DOCS.filter(dd => dd.status === 'Aguardando assinatura' || dd.status === 'Em revisão')
+      .filter(dd => me.role === 'admin' || dd.d === me.dept || dd.d === 'glo' || dd.tasks.some(x => mineIds.includes(x)));
+    const deptSignDocs = DOCS.filter(dd => dd.d === st.dept && (dd.status === 'Aguardando assinatura' || dd.status === 'Em revisão'));
+    const notifs = NOTIFS.filter(n => n.to.includes(me.id));
+    const unread = notifs.filter(n => !st.read[n.id]).length;
+    const recNote = rec ? (rec.note || '') : '';
+
+    const seg = (on) => 'flex:1;min-height:40px;border:0;border-radius:8px;cursor:pointer;font:500 12px Outfit,sans-serif;' +
+      (on ? 'background:#fff;color:#14201c;box-shadow:0 1px 3px rgba(20,32,28,.12)' : 'background:none;color:#6b736d');
+    const dens = (on) => 'min-height:32px;padding:0 11px;border:0;border-radius:6px;cursor:pointer;font:500 11px Outfit,sans-serif;' +
+      (on ? 'background:#fff;color:#14201c' : 'background:none;color:#6b736d');
+    const track = (on) => 'width:44px;height:26px;flex:none;border-radius:13px;padding:3px;display:flex;transition:.18s;background:' + (on ? '#20B388' : '#D5D2C4') + ';justify-content:' + (on ? 'flex-end' : 'flex-start');
+    const knob = 'width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2);display:block';
+
+    const syncMap = {
+      ok:      {bg:'#E4F7F0', fg:'#0B6B4F', dot:'#20B388', label:'27/08 · 09:41'},
+      pending: {bg:'#FBF2D9', fg:'#8A6A0B', dot:'#E0A11B', label:'Enviando…'},
+      offline: {bg:'#EFEDE4', fg:'#5A5F58', dot:'#9A9F97', label:'Offline'}
+    };
+    const sy = syncMap[st.offline ? 'offline' : st.sync];
+
+    const tile = (ext, size, fs) => {
+      const ink = FILE_INK[ext] || FILE_INK.PDF;
+      return 'width:' + size + 'px;height:' + size + 'px;flex:none;border-radius:' + Math.round(size / 4) + 'px;display:flex;align-items:center;justify-content:center;font:600 ' + fs + 'px "Roboto Mono",monospace;letter-spacing:-.02em;background:' + ink.bg + ';color:' + ink.fg;
+    };
+    const docPill = (s) => {
+      const c = DOC_STATUS[s] || DOC_STATUS['Em revisão'];
+      return 'display:inline-block;flex:none;padding:4px 9px;border-radius:20px;white-space:nowrap;background:' + c.bg + ';color:' + c.fg + ';font:500 10.5px Outfit,sans-serif';
+    };
+    const q = st.docQ.trim().toLowerCase();
+    const docList = DOCS.filter(dd =>
+      (st.docScope === 'all' || dd.d === st.docScope) &&
+      (st.docType === 'Todos' || dd.type === st.docType) &&
+      (!q || dd.title.toLowerCase().includes(q) || dd.type.toLowerCase().includes(q)));
+    const shapeDoc = (dd) => ({
+      title: dd.title, ext: dd.type, meta: dd.v + ' · ' + dd.up + ' · ' + dd.size,
+      tileStyle: tile(dd.type, 42, 12.5), pillStyle: docPill(dd.status), status: dd.status,
+      pinned: !!st.pinned[dd.id], linkLabel: dd.tasks.length ? '↔ ' + dd.tasks.length + ' vínculo(s)' : '',
+      hasLinks: dd.tasks.length > 0,
+      cardStyle: 'width:100%;text-align:left;padding:13px;border-radius:12px;border:1px solid rgba(20,32,28,.08);background:#fff;cursor:pointer;display:flex;gap:12px;align-items:flex-start',
+      open: () => this.openDoc(dd.id)
+    });
+    const doc = DOCS.find(dd => dd.id === st.docSel) || null;
+    const recDocs = rec ? DOCS.filter(dd => dd.tasks.includes(st.sel)) : [];
+
+    const navDef = [
+      {k:'mine', label:'Início', icon:'✓'},
+      {k:'dept', label:'Frentes', icon:'▤'},
+      {k:'dash', label:'Painel', icon:'◵'},
+      {k:'docs', label:'Docs', icon:'❐'},
+      {k:'sync', label:'Perfil', icon:'⇅'}
+    ];
+
+    return {
+      isDash: st.screen === 'dash', isDept: st.screen === 'dept', isMine: st.screen === 'mine', isSync: st.screen === 'sync', isDocs: st.screen === 'docs',
+      goDash: () => this.setState({screen: 'dash'}),
+      goSync: () => this.setState({screen: 'sync'}),
+
+      syncLabel: sy.label,
+      syncPillStyle: 'display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 11px;border:0;border-radius:20px;cursor:pointer;background:' + sy.bg + ';color:' + sy.fg + ';font:500 11px Outfit,sans-serif',
+      syncDotStyle: 'width:6px;height:6px;border-radius:50%;background:' + sy.dot + (st.sync === 'pending' && !st.offline ? ';animation:pulsedot 1s infinite' : ''),
+
+      dashSubtitle: activeTasks + ' tarefas em execução · ' + blocked.length + ' paradas por dependência',
+      metaPct, metaDash: (metaPct / 100 * 207.3).toFixed(1) + ' 207.3',
+      metaSummary: doneMetas + ' de ' + metas.length + ' metas concluídas, ' + runMetas + ' em andamento. Progresso derivado da coluna Situação.',
+      activeTasks, totalTasks: all.length, blockedCount: blocked.length,
+      blockedTasks: blocked.map(t => ({...shapeTask(t), blockerKind: t.blockerKind || 'Dependência'})),
+
+      deptCards: DEPTS.map(d => {
+        const ms = metas.filter(m => m.d === d.id);
+        const p = ms.length ? Math.round(ms.reduce((a, m) => a + pctOf(m.status), 0) / ms.length) : 0;
+        return {...d, pctLabel: p + '%',
+          markStyle: 'width:34px;height:34px;flex:none;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 14px Outfit,sans-serif;background:' + (d.id === st.dept ? '#136AA0' : '#EDEBE0') + ';color:' + (d.id === st.dept ? '#FFF9E7' : '#5A5F58'),
+          barStyle: 'display:block;height:4px;border-radius:2px;width:' + Math.max(p, 2) + '%;background:#20B388',
+          open: () => this.setState({screen: 'dept', dept: d.id})};
+      }),
+
+      deptName: dept.name, deptLeads: dept.leads,
+      showPainel: st.tab === 'painel', showPlano: st.tab === 'plano',
+      setPainel: () => this.setState({tab: 'painel'}), setPlano: () => this.setState({tab: 'plano'}),
+      tabPainelStyle: seg(st.tab === 'painel'), tabPlanoStyle: seg(st.tab === 'plano'),
+      setCompact: () => this.setState({dense: 'compact'}), setDetailed: () => this.setState({dense: 'detailed'}),
+      densCompactStyle: dens(st.dense === 'compact'), densDetailStyle: dens(st.dense === 'detailed'),
+      listCountLabel: st.tab === 'painel' ? deptTasks.length + ' tarefas' : deptMetas.length + ' metas',
+      deptTasks: deptTasks.map(shapeTask), deptMetas: deptMetas.map(shapeMeta),
+      deptSignDocs: deptSignDocs.map(dd => ({title: dd.title, ext: dd.type, meta: dd.status + ' · ' + dd.v,
+        tileStyle: tile(dd.type, 34, 10.5), go: () => this.setState({screen: 'docs', docSel: dd.id})})),
+      hasDeptSignDocs: deptSignDocs.length > 0,
+
+      mineTasks: mine.filter(t => t.status !== 'Executado').map(shapeTask),
+      mineOpen: mine.filter(t => t.status !== 'Executado').length,
+      mineSoon: mine.filter(t => t.dueDays != null && t.dueDays <= 7).length,
+      mineDone: mine.filter(t => t.status === 'Executado').length,
+
+      sheets: [
+        {name: 'Painel Operacional', meta: '24 linhas · atualizada 27/08/2026 09:41'},
+        {name: 'Plano de Trabalho', meta: '34 metas · atualizada 26/08/2026 17:02'},
+        {name: 'Repositório institucional', meta: '17 arquivos · pasta /1rtRecy…QoBM · leitura'}
+      ],
+      syncBannerStyle: 'padding:15px 16px;border-radius:12px;background:' + (st.offline ? '#EFEDE4' : st.queue.length ? '#FBF2D9' : '#E4F7F0') + ';color:' + (st.offline ? '#3D423C' : st.queue.length ? '#6E5408' : '#0B4E3A'),
+      syncBannerTitle: st.offline ? 'Sem conexão' : st.queue.length ? 'Enviando alterações' : 'Tudo sincronizado',
+      syncBannerBody: st.offline
+        ? 'Você está lendo o cache de 27/08/2026 09:41. ' + st.queue.length + ' edição(ões) aguardando rede.'
+        : st.queue.length ? st.queue.length + ' edição(ões) a caminho da planilha.'
+        : 'Última leitura em 27/08/2026 às 09:41. Nada pendente de envio.',
+      doSync: () => { this.setState({sync: 'pending'}); clearTimeout(this._q); this._q = setTimeout(() => this.setState({sync: 'ok', queue: []}), 1400); this.flash('Lendo as duas planilhas…'); },
+      toggleAuto: () => this.setState(s => ({auto: !s.auto})),
+      toggleWifi: () => this.setState(s => ({wifi: !s.wifi})),
+      toggleOffline: () => this.setState(s => ({offline: !s.offline, sync: !s.offline ? 'offline' : 'ok'})),
+      autoTrackStyle: track(st.auto), autoKnobStyle: knob,
+      wifiTrackStyle: track(st.wifi), wifiKnobStyle: knob,
+      offTrackStyle: track(st.offline), offKnobStyle: knob,
+      queue: st.queue, hasQueue: st.queue.length > 0, queueEmpty: st.queue.length === 0,
+
+      navItems: navDef.map(n => ({
+        label: n.label, icon: n.icon,
+        style: 'flex:1;min-height:48px;border:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:' + (st.screen === n.k ? '#136AA0' : '#8a918b'),
+        iconStyle: 'font-size:17px;line-height:1;color:' + (st.screen === n.k ? '#136AA0' : '#a3a99f'),
+        go: () => this.setState({screen: n.k})
+      })),
+
+      hasSel: !!rec,
+      selKind: st.selType === 'task' ? 'Painel Operacional' : 'Plano de Trabalho',
+      selTitle: rec ? rec.title : '', selStatus: rec ? rec.status : '',
+      selPillStyle: rec ? this.pill(rec.status) : '',
+      selHasMeta: !!(rec && (rec.meta || st.selType === 'meta')),
+      selMetaId: rec ? (rec.meta || rec.id) : '',
+      selOwner: rec ? (rec.owner || '—') : '',
+      selDue: rec ? (rec.due || rec.sched || '—') : '',
+      selDueStyle: 'font:500 13.5px Outfit,sans-serif;margin-top:5px;color:' + (rec && rec.dueDays != null && rec.dueDays <= 7 ? '#D6455A' : '#14201c'),
+      selFrente: rec ? (rec.frente || 'Plano de Trabalho') : '',
+      selBudget: rec && rec.budget ? rec.budget : 'não informado',
+      selBudgetStyle: 'font:500 13.5px ' + (rec && rec.budget ? "'Roboto Mono',monospace" : 'Outfit,sans-serif') + ';margin-top:5px;color:' + (rec && rec.budget ? '#0B6B4F' : '#a3a99f'),
+      selBlocked: !!(rec && (rec.note || rec.flag)), selNote: rec ? (rec.note || rec.flag || '') : '',
+      selHasLink: !!(rec && rec.linked),
+      openLinked: () => rec && rec.linked && this.open('task', rec.linked),
+      selCell: rec ? (rec.cell || 'Plano de Trabalho!A' + rec.id) : '',
+      closeSel: () => this.setState({sel: null, dirty: false}),
+
+      statusOptions: (st.selType === 'task' ? ['Não iniciado', 'Em execução', 'Executado'] : ['A iniciar', 'Em andamento', 'Concluída', 'Justificada']).map(v => ({
+        label: v, pick: () => this.setStatus(v),
+        style: 'flex:1;min-height:48px;padding:0 6px;border-radius:11px;cursor:pointer;font:500 11.5px Outfit,sans-serif;border:1px solid ' +
+          (rec && rec.status === v ? STATUS[v].dot : 'rgba(20,32,28,.14)') + ';background:' + (rec && rec.status === v ? STATUS[v].bg : '#fff') +
+          ';color:' + (rec && rec.status === v ? STATUS[v].fg : '#5a625d')
+      })),
+
+      noteDraft: st.noteDraft,
+      onNote: (e) => this.setState({noteDraft: e.target.value, dirty: true}),
+      saveEdit: this.save,
+      saveLabel: st.dirty || st.noteDraft !== recNote ? (st.offline ? 'Guardar na fila' : 'Enviar para a planilha') : 'Sem alterações',
+      saveBtnStyle: 'margin-top:12px;width:100%;min-height:52px;border:0;border-radius:12px;font:500 13.5px Outfit,sans-serif;cursor:pointer;background:' +
+        (st.dirty || st.noteDraft !== recNote ? '#20B388' : '#EDEBE0') + ';color:' + (st.dirty || st.noteDraft !== recNote ? '#08281f' : '#a3a99f'),
+
+      conflictOpen: st.conflict,
+      openConflict: () => this.setState({conflict: true}),
+      keepMine: () => this.setState({conflictPick: 'mine'}),
+      keepSheet: () => this.setState({conflictPick: 'sheet'}),
+      keepMineStyle: 'text-align:left;padding:13px 14px;border-radius:12px;cursor:pointer;background:#fff;border:2px solid ' + (st.conflictPick === 'mine' ? '#20B388' : 'rgba(20,32,28,.12)'),
+      keepSheetStyle: 'text-align:left;padding:13px 14px;border-radius:12px;cursor:pointer;background:#fff;border:2px solid ' + (st.conflictPick === 'sheet' ? '#20B388' : 'rgba(20,32,28,.12)'),
+      resolveLabel: st.conflictPick === 'mine' ? 'Manter “Em execução” e sobrescrever' : 'Aceitar “Justificada” da planilha',
+      resolveBtnStyle: 'margin-top:14px;width:100%;min-height:52px;border:0;border-radius:12px;background:#14201c;color:#FFF9E7;font:500 13px Outfit,sans-serif;cursor:pointer',
+      resolveConflict: () => {
+        const keep = st.conflictPick === 'mine' ? 'Em execução' : 'Justificada';
+        this.setState(s => ({conflict: false, conflictDone: true, over: {...s.over, T9: {...(s.over.T9 || {}), status: keep}}}));
+        this.flash('Conflito resolvido · versão anterior salva como comentário.');
+      },
+
+      // ——— Repositório de documentos ———
+      docQ: st.docQ,
+      onDocQ: (e) => this.setState({docQ: e.target.value}),
+      docScopes: DOC_SCOPES.map(s => ({label: s.label,
+        style: 'flex:none;min-height:34px;padding:0 12px;border-radius:18px;cursor:pointer;font:500 11.5px Outfit,sans-serif;border:1px solid ' +
+          (st.docScope === s.id ? '#136AA0' : 'rgba(20,32,28,.14)') + ';background:' + (st.docScope === s.id ? '#136AA0' : '#fff') + ';color:' + (st.docScope === s.id ? '#FFF9E7' : '#5a625d'),
+        pick: () => this.setState({docScope: s.id})})),
+      docTypes: DOC_TYPES.map(t => ({label: t,
+        style: 'flex:none;min-height:32px;padding:0 11px;border-radius:8px;cursor:pointer;font:500 11px "Roboto Mono",monospace;border:0;background:' +
+          (st.docType === t ? '#14201c' : '#EDEBE0') + ';color:' + (st.docType === t ? '#FFF9E7' : '#5a625d'),
+        pick: () => this.setState({docType: t})})),
+      docList: docList.map(shapeDoc),
+      docCountLabel: docList.length + ' de ' + DOCS.length + ' documentos',
+      docEmpty: docList.length === 0,
+      pinnedCount: Object.values(st.pinned).filter(Boolean).length,
+      fetchDocs: () => { this.setState({sync: 'pending'}); clearTimeout(this._q); this._q = setTimeout(() => this.setState({sync: 'ok'}), 1400); this.flash('Lendo a pasta mestra do Drive…'); },
+
+      hasDoc: !!doc,
+      docTitle: doc ? doc.title : '', docVersion: doc ? doc.v : '', docUp: doc ? doc.up : '', docSize: doc ? doc.size : '',
+      docExt: doc ? doc.type : '', docExtStyle: doc ? tile(doc.type, 46, 14) : '',
+      docStatus: doc ? doc.status : '', docStatusStyle: doc ? docPill(doc.status) : '',
+      docHasNote: !!(doc && doc.note), docNote: doc ? (doc.note || '') : '',
+      docScopeLabel: doc ? ((DOC_SCOPES.find(s => s.id === doc.d) || {}).label || '') : '',
+      closeDoc: () => this.setState({docSel: null, docPreview: false}),
+      docPinned: !!(doc && st.pinned[doc.id]),
+      docPinLabel: doc && st.pinned[doc.id] ? '✓ Fixado offline' : 'Fixar offline',
+      docPinStyle: 'min-height:48px;border-radius:11px;cursor:pointer;font:500 11.5px Outfit,sans-serif;border:1px solid ' +
+        (doc && st.pinned[doc.id] ? '#20B388' : 'rgba(20,32,28,.14)') + ';background:' + (doc && st.pinned[doc.id] ? '#E4F7F0' : '#fff') + ';color:' + (doc && st.pinned[doc.id] ? '#0B6B4F' : '#5a625d'),
+      togglePin: () => doc && this.setState(s => ({pinned: {...s.pinned, [doc.id]: !s.pinned[doc.id]}}),
+        () => this.flash(this.state.pinned[doc.id] ? 'Disponível offline neste aparelho.' : 'Removido do armazenamento offline.')),
+      shareDoc: () => this.flash('Link de visualização copiado.'),
+      docPreviewOpen: st.docPreview,
+      openPreview: () => this.setState({docPreview: true}),
+      closePreview: () => this.setState({docPreview: false}),
+      docLinkedTasks: doc ? doc.tasks.map(tid => {
+        const t = TASKS.find(x => x.id === tid);
+        if (t) { const tt = {...t, ...(st.over[tid] || {})}; return {label: tt.title, kind: 'Tarefa', pillStyle: this.pill(tt.status), status: tt.status, go: () => this.open('task', tid)}; }
+        const m = METAS.find(x => x.id === tid);
+        if (!m) return null;
+        const mm = {...m, ...(st.over[tid] || {})};
+        return {label: 'Meta ' + mm.id + ' · ' + mm.title, kind: 'Meta', pillStyle: this.pill(mm.status), status: mm.status, go: () => this.open('meta', tid)};
+      }).filter(Boolean) : [],
+      docHasLinks: !!(doc && doc.tasks.length),
+
+      selDocs: recDocs.map(dd => ({title: dd.title, meta: dd.type + ' · ' + dd.v + ' · ' + dd.up,
+        tileStyle: tile(dd.type, 34, 10), ext: dd.type, pillStyle: docPill(dd.status), status: dd.status,
+        go: () => this.setState({screen: 'docs', docSel: dd.id, sel: null})})),
+      selHasDocs: recDocs.length > 0,
+
+      // ——— Identidade, permissão e auditoria ———
+      meName: me.name, meInitial: me.name.charAt(0), meTitle: me.title, meScope: me.scope,
+      avatarStyle: 'width:34px;height:34px;flex:none;border-radius:50%;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;font:600 13px Outfit,sans-serif;background:' + (me.role === 'admin' ? '#14201c' : '#136AA0') + ';color:#FFF9E7',
+      roleOpen: st.roleOpen,
+      openRole: () => this.setState({roleOpen: true}),
+      closeRole: () => this.setState({roleOpen: false}),
+      userList: USERS.map(u => ({name: u.name, title: u.title, scope: u.scope, initial: u.name.charAt(0),
+        markStyle: 'width:38px;height:38px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 14px Outfit,sans-serif;background:' + (u.role === 'admin' ? '#14201c' : '#EDEBE0') + ';color:' + (u.role === 'admin' ? '#FFF9E7' : '#5A5F58'),
+        style: 'width:100%;text-align:left;padding:12px 13px;border-radius:12px;cursor:pointer;display:flex;gap:12px;align-items:center;background:#fff;border:2px solid ' + (u.id === me.id ? '#20B388' : 'rgba(20,32,28,.1)'),
+        pick: () => { this.setState({user: u.id, roleOpen: false, dept: u.dept || 'jur'}); this.flash('Sessão de ' + u.name + ' · ' + u.title); }})),
+
+      canEditSel: editable, readOnlySel: !!rec && !editable,
+      readOnlyNote: rec ? (me.role === 'contrib' && me.dept === recDept
+        ? 'Somente leitura. Este item é de ' + (rec.owner || 'outra pessoa') + '; você edita os itens em que aparece como responsável.'
+        : 'Somente leitura. Esta tarefa pertence a ' + ((DEPTS.find(d => d.id === recDept) || {}).short || 'outra frente') + '; você acompanha, mas quem edita é a liderança dela.') : '',
+      showPresence,
+      presenceText: showPresence ? presence.who + ' está com este item aberto ' + presence.where : '',
+      audit: rec ? (AUDIT[st.sel] || []).map(a => ({...a, line: a.who + ' ' + a.what,
+        dotStyle: 'width:8px;height:8px;flex:none;border-radius:50%;margin-top:5px;background:' + (a.via === 'Aplicativo' ? '#136AA0' : '#20B388')})) : [],
+      hasAudit: !!(rec && (AUDIT[st.sel] || []).length),
+
+      // ——— Notificações ———
+      unreadCount: unread, hasUnread: unread > 0,
+      notifOpen: st.notifOpen,
+      openNotifs: () => this.setState({notifOpen: true}),
+      closeNotifs: () => this.setState({notifOpen: false}),
+      markAllRead: () => { this.setState({read: NOTIFS.reduce((a, n) => (a[n.id] = true, a), {...st.read})}); this.flash('Todos os avisos marcados como lidos.'); },
+      notifsEmpty: notifs.length === 0,
+      markLabel: unread > 0 ? 'Marcar todos como lidos (' + unread + ')' : 'Nenhum aviso novo',
+      markStyle: 'width:100%;min-height:44px;border:1px solid rgba(20,32,28,.14);border-radius:11px;background:none;cursor:' +
+        (unread > 0 ? 'pointer' : 'default') + ';font:500 12px Outfit,sans-serif;color:' + (unread > 0 ? '#136AA0' : '#a3a99f'),
+      notifs: notifs.map(n => ({...n,
+        kindStyle: 'font:500 10px "Roboto Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:' + (n.tone === 'alert' ? '#8F1B2E' : n.tone === 'good' ? '#0B6B4F' : '#0E4E76'),
+        cardStyle: 'width:100%;text-align:left;padding:14px;border-radius:12px;cursor:pointer;display:block;background:#fff;border:1px solid ' + (st.read[n.id] ? 'rgba(20,32,28,.08)' : (n.tone === 'alert' ? '#F2C9CF' : n.tone === 'good' ? '#B9E8D6' : '#C8DEEE')),
+        go: () => { this.setState({notifOpen: false, read: {...st.read, [n.id]: true}}); if (n.task) this.open('task', n.task); else if (n.doc) this.setState({screen: 'docs', docSel: n.doc}); }})),
+
+      digestCount: mine.filter(t => t.dueDays != null && t.dueDays <= 7).length,
+      digestLine: unread > 0 ? unread + ' aviso(s) novo(s) desde ontem' : 'Nenhum aviso novo desde ontem',
+
+      // ——— Barra de estado da sincronização ———
+      barStyle: 'width:100%;height:26px;border:0;cursor:pointer;display:flex;align-items:center;gap:7px;padding:0 20px;white-space:nowrap;font:500 10.5px/1 "Roboto Mono",monospace;letter-spacing:.02em;background:' +
+        (st.offline ? '#EFEDE4' : st.queue.length || st.sync === 'pending' ? '#FBF2D9' : '#E4F7F0') + ';color:' +
+        (st.offline ? '#4A4F49' : st.queue.length || st.sync === 'pending' ? '#7A5E08' : '#0B6B4F'),
+      barDotStyle: 'width:6px;height:6px;border-radius:50%;background:' + (st.offline ? '#9A9F97' : st.queue.length || st.sync === 'pending' ? '#E0A11B' : '#20B388') +
+        (st.offline ? '' : ';animation:pulsedot ' + (st.sync === 'pending' ? '1s' : '3s') + ' infinite'),
+      barText: st.offline
+        ? 'Offline · ' + st.queue.length + ' na fila'
+        : st.sync === 'pending' ? 'Sincronizando com o Drive…' : 'Ao vivo · SSE conectado',
+      barRight: st.offline ? 'cache 09:41' : st.sync === 'pending' ? '' : '3 online',
+
+      // ——— Autenticação e onboarding ———
+      authOpen: st.auth !== 'in',
+      isLogin: st.auth === 'login', isRegister: st.auth === 'register', isPending: st.auth === 'pending',
+      email: st.email, pw: st.pw, showPw: st.showPw,
+      pwType: st.showPw ? 'text' : 'password',
+      pwToggleLabel: st.showPw ? 'ocultar' : 'mostrar',
+      onEmail: (e) => this.setState({email: e.target.value}),
+      onPw: (e) => this.setState({pw: e.target.value}),
+      togglePw: () => this.setState(s => ({showPw: !s.showPw})),
+      doLogin: () => { this.setState({auth: 'in'}); this.flash('Sessão de ' + this.me().name + ' · ' + this.me().title); },
+      doGoogle: () => { this.setState({auth: 'in'}); this.flash('Autenticado pelo Google Workspace.'); },
+      goRegister: () => this.setState({auth: 'register'}),
+      goLogin: () => this.setState({auth: 'login'}),
+      forgot: () => this.flash('Enviamos o link de redefinição para o seu e-mail corporativo.'),
+      signOut: () => this.setState({auth: 'login', roleOpen: false, sel: null, docSel: null, screen: 'mine'}),
+      regName: st.regName, regEmail: st.regEmail, regPw: st.regPw,
+      onRegName: (e) => this.setState({regName: e.target.value}),
+      onRegEmail: (e) => this.setState({regEmail: e.target.value}),
+      onRegPw: (e) => this.setState({regPw: e.target.value}),
+      regDepts: DEPTS.map(d => ({label: d.short, pick: () => this.setState({regDept: d.id}),
+        style: 'flex:1;min-width:calc(50% - 4px);min-height:44px;border-radius:11px;cursor:pointer;font:500 12px Outfit,sans-serif;border:1px solid ' +
+          (st.regDept === d.id ? '#136AA0' : 'rgba(20,32,28,.14)') + ';background:' + (st.regDept === d.id ? '#E7F1F8' : '#fff') + ';color:' + (st.regDept === d.id ? '#0E4E76' : '#5a625d')})),
+      regReady: !!(st.regName && st.regEmail && st.regPw && st.regDept),
+      regBtnStyle: 'margin-top:18px;width:100%;min-height:52px;border:0;border-radius:12px;font:500 13.5px Outfit,sans-serif;cursor:pointer;background:' +
+        (st.regName && st.regEmail && st.regPw && st.regDept ? '#20B388' : '#EDEBE0') + ';color:' + (st.regName && st.regEmail && st.regPw && st.regDept ? '#08281f' : '#a3a99f'),
+      doRegister: () => this.setState({auth: 'pending'}),
+      connStyle: 'display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:20px;background:#E4F7F0;color:#0B6B4F;font:500 10.5px "Roboto Mono",monospace',
+
+      // ——— Dependências ———
+      depGo: () => depBlocker && this.open('task', depBlocker.id),
+      hasDep: !!depBlocker,
+      depDone: !!(depBlocker && depBlocker.status === 'Executado'),
+      depBannerStyle: 'padding:13px 14px;border-radius:12px;margin-bottom:16px;background:' + (depBlocker && depBlocker.status === 'Executado' ? '#E4F7F0' : '#FBF2D9'),
+      depKicker: depBlocker && depBlocker.status === 'Executado' ? 'Dependência liberada' : 'Aguardando dependência',
+      depKickerStyle: 'font:500 10.5px "Roboto Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:' + (depBlocker && depBlocker.status === 'Executado' ? '#0B6B4F' : '#7A5E08'),
+      depTextStyle: 'font:400 12.5px/1.5 Roboto,sans-serif;margin-top:6px;color:' + (depBlocker && depBlocker.status === 'Executado' ? '#0B6B4F' : '#7A5E08'),
+      depText: depBlocker ? (depBlocker.status === 'Executado'
+        ? '“' + depBlocker.title.replace(/\.$/, '') + '” foi concluída por ' + depBlocker.owner + '. Este item pode começar.'
+        : 'Depende de “' + depBlocker.title.replace(/\.$/, '') + '”, com ' + depBlocker.owner + '.') : '',
+      depPickerOpen: st.depPicker,
+      openDepPicker: () => this.setState({depPicker: true}),
+      closeDepPicker: () => this.setState({depPicker: false}),
+      depCandidates: all.filter(t => t.id !== st.sel).slice(0, 12).map(t => ({
+        title: t.title, owner: t.owner, pillStyle: this.pill(t.status), status: t.status,
+        pick: () => { this.setState(s => ({deps: {...s.deps, [st.sel]: t.id}, depPicker: false})); this.flash('Dependência registrada. ' + (t.owner || '') + ' será avisado ao concluir.'); }
+      })),
+      clearDep: () => { this.setState(s => { const d = {...s.deps}; delete d[st.sel]; return {deps: d}; }); this.flash('Dependência removida.'); },
+
+      // ——— Meu espaço ———
+      feed: st.feed.map(f => ({...f, line: f.who + ' ' + f.what,
+        dotStyle: 'width:7px;height:7px;flex:none;border-radius:50%;margin-top:5px;background:' + (f.when === 'agora' ? '#20B388' : '#C9C6B8')})),
+      isAdmin: me.role === 'admin',
+      approvals: PENDING_ACCOUNTS.filter(p => !st.approved[p.id]).map(p => ({
+        name: p.name, email: p.email, when: p.when,
+        dept: (DEPTS.find(d => d.id === p.dept) || {}).short || '',
+        approve: () => { this.setState(s => ({approved: {...s.approved, [p.id]: true}})); this.flash(p.name + ' aprovado. Acesso liberado à frente ' + ((DEPTS.find(d => d.id === p.dept) || {}).short || '') + '.'); }
+      })),
+      hasApprovals: me.role === 'admin' && PENDING_ACCOUNTS.filter(p => !st.approved[p.id]).length > 0,
+      mineBlocked: mine.filter(t => st.deps[t.id] && !st.unlocked[t.id]).length,
+      pingLead: () => this.flash('Pedido de atualização enviado à liderança da frente.'),
+
+      // ——— Painel individual de produção ———
+      meJob: JOBS[me.id] || me.title,
+      meDeptTag: me.dept ? (DEPTS.find(d => d.id === me.dept) || {}).short : 'Todas as frentes',
+      availOptions: AVAIL.map(a => ({label: a.label,
+        style: 'flex:1;min-height:40px;border:0;border-radius:9px;cursor:pointer;font:500 11px Outfit,sans-serif;' +
+          (st.avail === a.id ? 'background:' + a.bg + ';color:' + a.fg : 'background:none;color:#7a827c'),
+        pick: () => { this.setState({avail: a.id}); this.flash('Disponibilidade: ' + a.label + '. A equipe vê no seu perfil.'); }})),
+      availDotStyle: 'width:9px;height:9px;border-radius:50%;background:' + ((AVAIL.find(a => a.id === st.avail) || AVAIL[0]).dot),
+      availLabel: (AVAIL.find(a => a.id === st.avail) || AVAIL[0]).label,
+
+      mineTotal: mine.length,
+      mineWeek: mine.filter(t => t.status === 'Executado').length,
+      minePend: mine.filter(t => t.status !== 'Executado').length,
+      mineHeld: waitingOn.length,
+
+      myQueue: mine.filter(t => t.status !== 'Executado').map(t => {
+        const s = shapeTask(t);
+        const next = t.status === 'Não iniciado' ? 'Em execução' : 'Executado';
+        const w = waitingOn.find(x => x.mine.id === t.id);
+        const b = blocking.find(x => x.mine.id === t.id);
+        return {...s,
+          isBlocked: !!w, isBlocking: !!b && !w,
+          blockedText: w ? 'Travada por ' + w.blocker.owner + ' · ' + w.blocker.title.replace(/\.$/, '') : '',
+          blockingText: b ? 'Ao concluir, libera “' + b.waiter.title.replace(/\.$/, '') + '” de ' + b.waiter.owner : '',
+          openBlocker: () => w && this.open('task', w.blocker.id),
+          cardStyle: 'padding:14px;border-radius:12px;background:#fff;border:1px solid ' + (w ? '#E8D9A8' : b ? '#F2C9CF' : 'rgba(20,32,28,.08)'),
+          nextLabel: next === 'Executado' ? 'Marcar executado' : 'Iniciar',
+          nextStyle: 'flex:1;min-height:44px;border:0;border-radius:10px;cursor:pointer;font:500 11.5px Outfit,sans-serif;background:' +
+            (next === 'Executado' ? '#20B388' : '#136AA0') + ';color:' + (next === 'Executado' ? '#08281f' : '#FFF9E7'),
+          advance: () => {
+            this.setState(s2 => ({over: {...s2.over, [t.id]: {...(s2.over[t.id] || {}), status: next}},
+              feed: [{who: me.name, what: 'mudou “' + t.title.replace(/\.$/, '') + '” para ' + next, when: 'agora', dept: me.dept || 'jur'}, ...s2.feed].slice(0, 8)}));
+            this.unlockCheck(t.id, next);
+            this.flash('“' + t.title.replace(/\.$/, '') + '” → ' + next + '. Enviado para a planilha.');
+          },
+          note: () => this.open('task', t.id)};
+      }).sort((a, b2) => (b2.isBlocking - a.isBlocking) || (a.isBlocked - b2.isBlocked) ||
+        ((a.dueDays == null ? 999 : a.dueDays) - (b2.dueDays == null ? 999 : b2.dueDays))),
+
+      queueEmptyMine: mine.filter(t => t.status !== 'Executado').length === 0,
+      hasQueueMine: mine.filter(t => t.status !== 'Executado').length > 0,
+      conflictPending: !st.conflictDone,
+      signDocs: signDocs.map(dd => ({title: dd.title, ext: dd.type, meta: dd.v + ' · ' + dd.up,
+        tileStyle: tile(dd.type, 34, 10.5),
+        go: () => this.setState({screen: 'docs', docSel: dd.id})})),
+      hasSignDocs: signDocs.length > 0,
+      signCount: signDocs.length,
+
+      waitingOn: waitingOn.map(w => ({
+        mine: w.mine.title, blocker: w.blocker.title, owner: w.blocker.owner,
+        pillStyle: this.pill(w.blocker.status), status: w.blocker.status,
+        go: () => this.open('task', w.blocker.id)
+      })),
+      hasWaiting: waitingOn.length > 0,
+      blocking: blocking.map(b => ({
+        mine: b.mine.title, waiter: b.waiter.title, owner: b.waiter.owner,
+        pillStyle: this.pill(b.mine.status), status: b.mine.status,
+        go: () => this.open('task', b.mine.id)
+      })),
+      hasBlocking: blocking.length > 0,
+
+      myDocs: myDocs.map(dd => ({title: dd.title, ext: dd.type, meta: dd.v + ' · ' + dd.up,
+        tileStyle: tile(dd.type, 36, 11), pillStyle: docPill(dd.status), status: dd.status,
+        pinned: !!st.pinned[dd.id],
+        go: () => this.setState({screen: 'docs', docSel: dd.id})})),
+      hasMyDocs: myDocs.length > 0,
+
+      myLog: st.feed.filter(f => f.who === me.name).slice(0, 5).map(f => ({line: f.what, when: f.when,
+        dotStyle: 'width:7px;height:7px;flex:none;border-radius:50%;margin-top:5px;background:#136AA0'})),
+      hasMyLog: st.feed.filter(f => f.who === me.name).length > 0,
+
+      toast: !!st.toast, toastText: st.toast
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Use this exact dataset to populate the UI screens:
+
+Department,Task,Owner,Status,Due Date,Budget,Notes
+Infraestrutura,Recepção: marcenaria (projeto, LEDs),Rhanon,Em execução,31/08/2026,R$ 38.000,00,Precisa do Termo de cessão de uso
+Jurídico,Lei de inovação de Saquarema,Ana,Em execução,31/10/2026,-,Depende da Assembleia Legislativa
+Comunicação,Adesivação de salas,Clarice,Em execução,30/09/2026,-,Aguardando Projeto Cerberus
