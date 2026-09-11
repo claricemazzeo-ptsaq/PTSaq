@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PTSaq</string>
+    <string name="title_activity_main">PTSaq</string>
+    <string name="package_name">br.gov.rj.saquarema.ptsaq</string>
+    <string name="custom_url_scheme">br.gov.rj.saquarema.ptsaq</string>
+</resources>

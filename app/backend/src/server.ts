@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import swaggerUi from "swagger-ui-express";
 import { openApiSpec } from "./openapi.js";
-import { env } from "./env.js";
+import { env, MOBILE_APP_ORIGINS } from "./env.js";
 import { attachUser } from "./auth/middleware.js";
 import { apiLimiter } from "./middleware/rateLimit.js";
 import { authRouter } from "./routes/auth.js";
@@ -27,7 +27,7 @@ const app = express();
 // no HTML is ever rendered here, so a strict default-src 'none' CSP is
 // correct (and harmless) rather than the browsing-page-oriented defaults.
 app.use(helmet({ contentSecurityPolicy: { directives: { defaultSrc: ["'none'"] } } }));
-app.use(cors({ origin: env.webOrigin, credentials: true }));
+app.use(cors({ origin: [...env.webOrigins, ...MOBILE_APP_ORIGINS], credentials: true }));
 app.use(apiLimiter);
 app.use(express.json());
 app.use(cookieParser());

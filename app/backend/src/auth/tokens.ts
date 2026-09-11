@@ -25,10 +25,21 @@ export const REFRESH_COOKIE = "ptsaq_refresh";
 
 const isProd = process.env.NODE_ENV === "production";
 
+// The Capacitor apps (capacitor://localhost / http://localhost) and the
+// web PWA install are never the same origin as this API, even in
+// production — every request that carries these cookies is cross-site.
+// SameSite=Lax silently drops cookies on cross-site fetch/XHR (it only
+// forwards them on a top-level GET navigation), which looks like every
+// authenticated request mysteriously coming back 401, not like a
+// configuration error. None+Secure is the only setting that works for
+// both; it's gated on isProd only because Secure cookies need HTTPS,
+// which local dev (plain http) doesn't have.
+const crossSiteCookies = isProd;
+
 export const cookieOptions = {
   httpOnly: true,
-  sameSite: "lax" as const,
-  secure: isProd,
+  sameSite: crossSiteCookies ? ("none" as const) : ("lax" as const),
+  secure: crossSiteCookies,
   maxAge: 15 * 60 * 1000, // matches ACCESS_TOKEN_TTL
   path: "/",
 };
@@ -37,8 +48,8 @@ export const REFRESH_TOKEN_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 export const refreshCookieOptions = {
   httpOnly: true,
-  sameSite: "lax" as const,
-  secure: isProd,
+  sameSite: crossSiteCookies ? ("none" as const) : ("lax" as const),
+  secure: crossSiteCookies,
   maxAge: REFRESH_TOKEN_TTL_MS,
   // Deliberately Path=/, matching the session cookie — not narrowed to
   // "/auth". A narrower path is evaluated by the browser against the URL

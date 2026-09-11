@@ -6,9 +6,25 @@ function required(name: string): string {
   return v;
 }
 
+const webOriginList = (process.env.WEB_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+// Fixed by the platform, not per-deployment — a Capacitor app's WebView
+// always requests from one of these, regardless of which real backend
+// it's pointed at, so there's nothing to configure per environment.
+export const MOBILE_APP_ORIGINS = ["capacitor://localhost", "http://localhost", "https://localhost"];
+
 export const env = {
   port: Number(process.env.PORT || 4000),
-  webOrigin: process.env.WEB_ORIGIN || "http://localhost:5173",
+  // Single canonical origin — used for OAuth redirect targets, which only
+  // make sense pointing at one destination even when several origins
+  // (web install, Capacitor apps) are allowed to call the API.
+  webOrigin: webOriginList[0],
+  // Full allow-list for CORS/cookie origin checks (comma-separated in
+  // WEB_ORIGIN) — the web app and native apps never share one origin.
+  webOrigins: webOriginList,
   databaseUrl: required("DATABASE_URL"),
   jwtSecret: required("JWT_SECRET"),
 

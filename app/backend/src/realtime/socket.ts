@@ -3,7 +3,7 @@ import { Server as SocketServer } from "socket.io";
 import cookie from "cookie";
 import { SESSION_COOKIE, verifySession } from "../auth/tokens.js";
 import { prisma } from "../db.js";
-import { env } from "../env.js";
+import { env, MOBILE_APP_ORIGINS } from "../env.js";
 
 let io: SocketServer | null = null;
 
@@ -12,7 +12,7 @@ const presence = new Map<string, { userId: string; name: string; where: "app" }>
 
 export function initRealtime(server: HttpServer) {
   io = new SocketServer(server, {
-    cors: { origin: env.webOrigin, credentials: true },
+    cors: { origin: [...env.webOrigins, ...MOBILE_APP_ORIGINS], credentials: true },
   });
 
   // Reuses the same httpOnly session cookie the REST API sits behind —

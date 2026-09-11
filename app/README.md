@@ -19,7 +19,18 @@ organization's own credentials is **live** Google Sheets/Drive sync — see
 app/
   backend/    Node.js + TypeScript + Express + Prisma + PostgreSQL + Socket.io
   frontend/   React + TypeScript + Vite PWA
+    android/  Capacitor-generated native Android project (same web code)
+    ios/      Capacitor-generated native Xcode project (same web code)
 ```
+
+**One codebase, every platform** — the frontend is plain React/TypeScript;
+there's no separate "mobile version" to write or maintain in a different
+language. **Windows and macOS** are already covered today: any Chromium or
+Edge browser can install the PWA as a real desktop app (icon, its own
+window, offline-capable) with no extra step. **iOS and Android** get that
+same build wrapped into an actual native app shell by
+[Capacitor](https://capacitorjs.com/) — see "Apps nativos (iOS /
+Android)" below for what that means and how to build one.
 
 - **Auth**: email/password (bcrypt + JWT httpOnly cookie) and, once
   configured, corporate Google OAuth restricted to your Workspace domain.
@@ -185,6 +196,74 @@ restart:
 The app **runs correctly with none of this configured** — it's a complete
 local system on Postgres, useful for development, review, and demoing the
 UX without touching the real spreadsheets.
+
+## Apps nativos (iOS / Android)
+
+Nada aqui reescreve o app — [Capacitor](https://capacitorjs.com/) empacota
+exatamente o mesmo build React/TypeScript (`frontend/dist`) dentro de um
+projeto Xcode (iOS) e de um projeto Android Studio/Gradle (Android) reais,
+prontos para gerar um `.ipa`/`.apk` instalável ou publicável nas lojas.
+`frontend/android/` e `frontend/ios/` já estão no repositório — gerados
+uma vez com `npx cap add android` / `npx cap add ios` a partir deste
+mesmo código.
+
+**Pré-requisitos** (na máquina de quem for gerar o app — nada disso roda
+neste ambiente sandbox onde o projeto foi desenvolvido):
+- **Android**: [Android Studio](https://developer.android.com/studio)
+  (traz o SDK e o emulador juntos). Funciona em Windows, Mac ou Linux.
+- **iOS**: um **Mac** com [Xcode](https://developer.apple.com/xcode/)
+  instalado — isso é uma exigência da própria Apple para compilar
+  qualquer app iOS, não uma limitação deste projeto. Não existe caminho
+  para gerar um `.ipa` em Windows/Linux.
+
+**Passo a passo:**
+
+```bash
+cd frontend
+
+# 1. Aponte o build para o backend real (não o proxy de dev) — o app
+#    empacotado não tem o proxy do Vite, então precisa da URL completa:
+echo "VITE_API_URL=https://SEU-BACKEND-REAL" > .env.production
+echo "VITE_API_ORIGIN=https://SEU-BACKEND-REAL" >> .env.production
+
+# 2. Builda o web app e sincroniza com os dois projetos nativos
+npm run cap:sync
+
+# 3a. Abre no Android Studio (compila/roda no emulador ou celular USB)
+npm run cap:open:android
+
+# 3b. Abre no Xcode (só funciona em Mac; compila/roda no simulador ou iPhone)
+npm run cap:open:ios
+```
+
+A partir do Android Studio/Xcode abertos, é o fluxo normal de qualquer
+app nativo: rodar no emulador/simulador para testar, e usar
+"Build > Generate Signed Bundle/APK" (Android) ou "Product > Archive"
+(Xcode) quando for publicar de verdade na Play Store/App Store — isso
+exige uma conta de desenvolvedor paga em cada loja (Google: taxa única;
+Apple: US$99/ano), que é uma exigência das próprias lojas, não deste
+projeto.
+
+**O que já está pronto para isso funcionar sem erro:**
+- **Cookies entre origens**: o app nativo roda em `capacitor://localhost`
+  (iOS) / `https://localhost` (Android) — uma origem diferente da API.
+  Os cookies de sessão já usam `SameSite=None; Secure` em produção
+  (`backend/src/auth/tokens.ts`) exatamente por causa disso; com
+  `SameSite=Lax` (o padrão mais comum) o app ficaria "deslogando sozinho"
+  a cada request, porque o navegador simplesmente não enviaria o cookie.
+- **CORS**: o backend já libera `capacitor://localhost` e
+  `https://localhost` de saída de fábrica
+  (`backend/src/env.ts` → `MOBILE_APP_ORIGINS`), sem precisar configurar
+  nada por ambiente.
+
+**O que falta (trabalho de design/assets, não de código)**: ícones e
+splash screen reais em PNG para as lojas — hoje só existe o SVG da marca
+(`frontend/public/icon.svg`), suficiente para a PWA mas não para o que
+Apple/Google exigem. O jeito padrão de resolver é gerar um PNG
+1024×1024 do ícone e rodar
+[`@capacitor/assets`](https://github.com/ionic-team/capacitor-assets)
+para gerar automaticamente todos os tamanhos — não fiz isso aqui porque
+exigiria inventar uma arte que não foi fornecida no handoff de design.
 
 ## Known follow-ups (not yet built)
 
