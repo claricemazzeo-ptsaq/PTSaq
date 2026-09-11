@@ -198,11 +198,12 @@ manifest: {
 - **Precache**: Workbox precaches the built JS/CSS/HTML on install
   (`generateSW` mode) so the app shell loads instantly on repeat visits,
   online or off.
-- **Production icons**: only a single SVG icon is shipped today
-  (`frontend/public/icon.svg`, the real brand mark). For the best
-  cross-platform install experience, add raster PNGs at 192×192 and
-  512×512 (iOS in particular prefers a PNG `apple-touch-icon`) — that's
-  an asset-generation task, not a code change.
+- **Production icons — implemented**: the manifest lists the SVG mark
+  (`frontend/public/icon.svg`) plus generated 192×192/512×512 WebP
+  fallbacks (`frontend/public/icons/`), and `index.html` links a real PNG
+  `apple-touch-icon`. All generated from `frontend/assets/*.png` via
+  `npx capacitor-assets generate` — same source used for the iOS/Android
+  native app icons and splash screens, see README "Apps nativos".
 
 ### Client-side offline write queue — implemented
 Reads work offline via the Workbox cache above; writes made offline are

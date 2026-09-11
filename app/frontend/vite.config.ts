@@ -18,7 +18,12 @@ export default defineConfig({
         theme_color: "#136AA0",
         icons: [
           { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
-          { src: "/icon.svg", sizes: "any", type: "image/svg+xml", purpose: "maskable" },
+          // Raster fallbacks (generated from the same brand mark via
+          // `npx capacitor-assets generate`, see frontend/assets/logo.svg) —
+          // some install surfaces (notably Windows) don't honor the SVG
+          // entry above and silently skip the manifest icon without these.
+          { src: "/icons/icon-192.webp", sizes: "192x192", type: "image/webp", purpose: "any maskable" },
+          { src: "/icons/icon-512.webp", sizes: "512x512", type: "image/webp", purpose: "any maskable" },
         ],
       },
       workbox: {

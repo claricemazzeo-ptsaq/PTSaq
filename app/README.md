@@ -256,14 +256,16 @@ projeto.
   (`backend/src/env.ts` → `MOBILE_APP_ORIGINS`), sem precisar configurar
   nada por ambiente.
 
-**O que falta (trabalho de design/assets, não de código)**: ícones e
-splash screen reais em PNG para as lojas — hoje só existe o SVG da marca
-(`frontend/public/icon.svg`), suficiente para a PWA mas não para o que
-Apple/Google exigem. O jeito padrão de resolver é gerar um PNG
-1024×1024 do ícone e rodar
-[`@capacitor/assets`](https://github.com/ionic-team/capacitor-assets)
-para gerar automaticamente todos os tamanhos — não fiz isso aqui porque
-exigiria inventar uma arte que não foi fornecida no handoff de design.
+**Ícones e splash — já gerados.** `frontend/assets/` guarda as fontes
+(`icon-only.png`, `icon-foreground.png`, `icon-background.png`,
+`splash.png`/`splash-dark.png`, todas derivadas da mesma marca gráfica em
+`frontend/public/icon.svg`, sobre o fundo Branco Praia `#FFF9E7`). Rodar
+`npx capacitor-assets generate` nesse diretório gerou de fábrica: ícone
+adaptativo + legado do Android em todas as densidades, `AppIcon` do iOS,
+tela de splash de ambos, ícones PWA em `frontend/public/icons/*.webp`
+(192/512, referenciados no manifest) e `apple-touch-icon.png`. Se a marca
+mudar, é só substituir os PNGs em `frontend/assets/` e rodar o comando de
+novo — não precisa editar nada nos projetos nativos manualmente.
 
 ## Known follow-ups (not yet built)
 
