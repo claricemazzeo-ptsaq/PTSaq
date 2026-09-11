@@ -1,0 +1,61 @@
+/* PTSaq design tokens — transcribed from the Claude Design handoff
+   (brandbook: Verde Saquarema / Azul Mar / Branco Praia on Outfit + Roboto). */
+:root {
+  --brand-green: #20B388;
+  --brand-green-hover: #1a9b74;
+  --brand-blue: #136AA0;
+  --brand-blue-hover: #0E4E76;
+  --brand-paper: #FFF9E7;
+
+  --ink: #14201c;
+  --ink-muted-1: #5a625d;
+  --ink-muted-2: #68706c; /* secondary text — 4.84:1 on --brand-paper */
+  --ink-muted-3: #7a827c;
+  --ink-muted-4: #8a918b;
+  --ink-muted-5: #a3a99f;
+  --ink-segmented-inactive: #565C57; /* inactive segmented-control labels — 5.73:1 on --brand-paper, deliberately higher-contrast than general secondary text since these sit in small interactive pills */
+
+  --border-1: rgba(20, 32, 28, 0.08);
+  --border-2: rgba(20, 32, 28, 0.1);
+  --border-3: rgba(20, 32, 28, 0.12);
+  --border-4: rgba(20, 32, 28, 0.14);
+  --border-5: rgba(20, 32, 28, 0.16);
+
+  --surface: #fff;
+  --surface-sunken: #EDEBE0;
+  --surface-sunken-hover: #F6F3E6;
+  --canvas: #e8e6dd;
+
+  /* status: done */
+  --ok-bg: #E4F7F0; --ok-fg: #0B6B4F; --ok-dot: #20B388;
+  /* status: active/in-progress */
+  --info-bg: #E7F1F8; --info-fg: #0E4E76; --info-dot: #136AA0;
+  /* status: not started */
+  --neutral-bg: #EFEDE4; --neutral-fg: #5A5F58; --neutral-dot: #9A9F97;
+  /* status: justified/blocked */
+  --danger-bg: #FBE9EC; --danger-fg: #8F1B2E; --danger-dot: #D6455A; --danger-border: #F2C9CF;
+  /* status: pending/warning */
+  --warn-bg: #FBF2D9; --warn-fg: #7A5E08; --warn-fg-strong: #8A6A0B; --warn-dot: #E0A11B; --warn-border: #E8D9A8;
+
+  --file-pdf-bg: #FBE9EC; --file-pdf-fg: #8F1B2E;
+  --file-docx-bg: #E7F1F8; --file-docx-fg: #0E4E76;
+  --file-xlsx-bg: #E4F7F0; --file-xlsx-fg: #0B6B4F;
+  --file-other-bg: #EFEDE4; --file-other-fg: #5A5F58;
+
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-body: "Roboto", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 12px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+
+  --shadow-sheet: 0 -8px 28px rgba(20, 32, 28, 0.18);
+  --app-max-width: 480px;
+}
+
+@keyframes pulsedot { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes spin { to { transform: rotate(360deg); } }

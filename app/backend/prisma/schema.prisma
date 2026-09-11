@@ -1,0 +1,305 @@
+// PTSaq — Hub de Operações
+// Data model mirrors the two source spreadsheets (Painel Operacional,
+// Plano de Trabalho) plus the app-only concerns layered on top of them
+// (auth, RBAC, dependencies, notifications, audit trail, offline queue).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin  // Executivo / super-admin — full read+write, approves accounts
+  lead   // Department lead — full read+write inside own department
+  contrib // Contributor — write only on rows where they are Responsável
+}
+
+enum AccountStatus {
+  pending
+  active
+  suspended
+}
+
+enum AvailabilityStatus {
+  office
+  field
+  focus
+}
+
+enum TaskStatus {
+  nao_iniciado // Não iniciado
+  em_execucao  // Em execução
+  executado    // Executado
+  justificada  // Justificada — reachable only from the sheet side; not one of the app's own status buttons (see ItemDetailSheet), so seeing it locally is itself the signal of an unreviewed external edit
+}
+
+enum GoalStatus {
+  a_iniciar     // A iniciar
+  em_andamento  // Em andamento
+  concluida     // Concluída
+  justificada   // Justificada
+}
+
+enum DocumentStatus {
+  aprovado
+  em_revisao
+  aguardando_assinatura
+}
+
+enum SyncOrigin {
+  app
+  google_sheets
+}
+
+enum NotificationKind {
+  bloqueio
+  dependencia_liberada
+  prazo
+  documento
+}
+
+model Department {
+  id    String @id // 'com' | 'jur' | 'tec' | 'adm'
+  short String
+  name  String
+  users User[]
+  tasks Task[]
+  goals Goal[]
+  documents Document[]
+
+  @@map("departments")
+}
+
+model User {
+  id             String              @id @default(cuid())
+  name           String
+  email          String              @unique
+  passwordHash   String?             // null for Google-OAuth-only accounts
+  googleSub      String?             @unique
+  role           Role                @default(contrib)
+  title          String?
+  departmentId   String?
+  department     Department?         @relation(fields: [departmentId], references: [id])
+  status         AccountStatus       @default(pending)
+  availability   AvailabilityStatus  @default(office)
+  notifyPush     Boolean             @default(true)
+  offlineCacheMb Int                 @default(200)
+  approvedById   String?
+  approvedAt     DateTime?
+  createdAt      DateTime            @default(now())
+
+  tasksOwned      Task[]              @relation("TaskOwner")
+  goalsOwned      Goal[]              @relation("GoalOwner")
+  auditEntries    AuditEntry[]
+  notifications   Notification[]
+  activityEntries ActivityEntry[]
+  pinnedDocuments PinnedDocument[]
+  syncQueueItems  SyncQueueItem[]
+  refreshTokens   RefreshToken[]
+
+  @@map("users")
+}
+
+// Rotating refresh tokens: the access token (JWT, short-lived) never gets
+// checked against the DB, but every refresh does. Each use retires the
+// presented token and issues a new one; a revoked token being presented
+// again means it was stolen and replayed, and revokes the whole chain.
+model RefreshToken {
+  id            String    @id @default(cuid())
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash     String    @unique
+  createdAt     DateTime  @default(now())
+  expiresAt     DateTime
+  revokedAt     DateTime?
+  replacedById  String?
+
+  @@map("refresh_tokens")
+}
+
+// Painel Operacional — one row per operational task.
+model Task {
+  id           String     @id // 'T1'..'T24' — matches the sheet row key
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id])
+  frente       String
+  title        String
+  ownerName    String     // free-text as it appears in the sheet's Responsável column
+  ownerId      String?
+  owner        User?      @relation("TaskOwner", fields: [ownerId], references: [id])
+  status       TaskStatus @default(nao_iniciado)
+  dueDate      DateTime?
+  budgetCents  Int?       // null = "não informado" — never inferred
+  note         String?    // Observações column
+  contested    Boolean    @default(false) // has an unresolved edit conflict
+  conflictSheetStatus TaskStatus? // the value the live sheet held at conflict detection, vs. `status` (the app's side) — set only while contested
+  conflictAt   DateTime?
+  goalId       String?    // link into Plano de Trabalho, e.g. '2.4'
+  sheetCell    String?    // provenance, e.g. "Painel Operacional!B4"
+
+  blockedByTaskId String?
+  blockedByTask   Task?   @relation("TaskDependency", fields: [blockedByTaskId], references: [id])
+  blocks          Task[]  @relation("TaskDependency")
+
+  documents   DocumentLink[]
+  auditEntries AuditEntry[]
+  notifications Notification[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tasks")
+}
+
+// Plano de Trabalho — one row per strategic goal ("meta").
+model Goal {
+  id           String     @id // '1.1', '2.4', '3.1.2' ...
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [id])
+  title        String
+  ownerName    String
+  ownerId      String?
+  owner        User?      @relation("GoalOwner", fields: [ownerId], references: [id])
+  schedule     String?    // free text, e.g. "Mês 3 ao 9"
+  status       GoalStatus @default(a_iniciar)
+  dueDate      DateTime?
+  flag         String?    // data-quality note surfaced instead of guessing, e.g. numbering gap
+  note         String?
+  sheetCell    String?    // provenance + live-write target, e.g. "Plano de Trabalho!B6" — best-effort from row order at seed time (the design handoff didn't capture real per-goal cell refs the way it did for tasks); confirm against the live sheet before trusting it for writes
+
+  documents    DocumentLink[]
+  auditEntries AuditEntry[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("goals")
+}
+
+// Institutional Document Repository — mirrors the master Drive folder.
+model Document {
+  id           String         @id @default(cuid())
+  driveFileId  String?        @unique // null until the live Drive sync has matched it
+  departmentId String?        // null = Global scope
+  department   Department?    @relation(fields: [departmentId], references: [id])
+  type         String         // PDF | DOCX | XLSX | SVG | PNG
+  title        String
+  version      String?
+  sizeBytes    Int?
+  status       DocumentStatus @default(em_revisao)
+  note         String?
+  driveUpdatedAt DateTime?
+
+  links     DocumentLink[]
+  pins      PinnedDocument[]
+  notifications Notification[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("documents")
+}
+
+// Cross-reference: a document linked to a task and/or a goal.
+model DocumentLink {
+  id         String    @id @default(cuid())
+  documentId String
+  document   Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  taskId     String?
+  task       Task?     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  goalId     String?
+  goal       Goal?     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, taskId, goalId])
+  @@map("document_links")
+}
+
+model PinnedDocument {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  documentId String
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  pinnedAt   DateTime @default(now())
+
+  @@unique([userId, documentId])
+  @@map("pinned_documents")
+}
+
+// Audit trail — every write, whichever side it came from.
+model AuditEntry {
+  id        String     @id @default(cuid())
+  taskId    String?
+  task      Task?      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  goalId    String?
+  goal      Goal?      @relation(fields: [goalId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?      @relation(fields: [userId], references: [id])
+  origin    SyncOrigin
+  summary   String     // e.g. "mudou o status para Em execução"
+  createdAt DateTime   @default(now())
+
+  @@map("audit_entries")
+}
+
+model Notification {
+  id        String            @id @default(cuid())
+  kind      NotificationKind
+  tone      String            // 'alert' | 'good' | 'neutral' — drives the pill color client-side
+  title     String
+  body      String
+  userId    String
+  user      User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  taskId    String?
+  task      Task?             @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  documentId String?
+  document  Document?         @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  readAt    DateTime?
+  createdAt DateTime          @default(now())
+
+  @@map("notifications")
+}
+
+// Free-text activity feed row (dashboard "Atividade da equipe" / "Minha atividade").
+model ActivityEntry {
+  id           String     @id @default(cuid())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  departmentId String?
+  summary      String
+  createdAt    DateTime   @default(now())
+
+  @@map("activity_entries")
+}
+
+// Outbound write queue — what "Fila de envio" reflects. A row here means
+// the change has been applied locally (Task/Goal already updated) but the
+// write-back to Google Sheets hasn't confirmed yet (or the device is offline).
+model SyncQueueItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  taskId    String?
+  goalId    String?
+  label     String
+  detail    String?
+  state     String   // 'na fila' | 'enviando' | 'erro'
+  createdAt DateTime @default(now())
+
+  @@map("sync_queue_items")
+}
+
+model PendingAccountRequest {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  departmentId String
+  requestedAt  DateTime      @default(now())
+  status       AccountStatus @default(pending)
+
+  @@map("pending_account_requests")
+}
